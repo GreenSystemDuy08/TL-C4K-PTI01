@@ -35,8 +35,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>50</y>
+      <x>50</x>
+      <y>40</y>
       <width>411</width>
       <height>31</height>
      </rect>
@@ -47,14 +47,14 @@
      </font>
     </property>
     <property name="text">
-     <string>           PC Clean for Free!</string>
+     <string>            Duy's App Store</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>90</y>
+      <y>110</y>
       <width>271</width>
       <height>41</height>
      </rect>
@@ -71,8 +71,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>30</y>
+      <x>150</x>
+      <y>20</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -90,7 +90,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>120</y>
+      <y>140</y>
       <width>371</width>
       <height>41</height>
      </rect>
@@ -107,8 +107,8 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>160</y>
+      <x>100</x>
+      <y>180</y>
       <width>371</width>
       <height>41</height>
      </rect>
@@ -125,8 +125,8 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>160</y>
+      <x>50</x>
+      <y>180</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -150,7 +150,7 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>200</y>
+      <y>220</y>
       <width>401</width>
       <height>16</height>
      </rect>
@@ -168,7 +168,7 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>230</y>
+      <y>250</y>
       <width>331</width>
       <height>20</height>
      </rect>
@@ -184,13 +184,45 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>230</y>
+      <y>250</y>
       <width>75</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
      <string>Browse...</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>370</y>
+      <width>221</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>At least 50 MB of free disk space required</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>20</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../Material/3cc089d557f24e431b1cd45ab88d2f1f86d7d2615157b96a7f61c37ec7b25663_100.webp</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
