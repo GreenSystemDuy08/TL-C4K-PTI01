@@ -1,5 +1,7 @@
-App Dọn rác máy tính
-- Chức năng:
-	+ Dọn rác thừa trên máy tính
-	+ Làm trống dung lượng RAM
-	+ 
+App Duy App Store
+Chức năng:
+	+ View App
+	+ Cài App
+	+ Xóa App
+	+ Có chế độ Tiếng Anh + Tiếng Việt
+	+ ...
