@@ -1,0 +1,5 @@
+App Dọn rác máy tính
+- Chức năng:
+	+ Dọn rác thừa trên máy tính
+	+ Làm trống dung lượng RAM
+	+ 
