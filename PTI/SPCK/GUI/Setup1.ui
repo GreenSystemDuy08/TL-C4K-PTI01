@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="bt_next">
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -180,7 +180,7 @@
      <string>Please select destination location!</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="bt_browse">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -203,7 +203,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>At least 50 MB of free disk space required</string>
+     <string>At least 50 MB of free disk space required!</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_9">
