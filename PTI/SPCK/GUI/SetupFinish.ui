@@ -11,54 +11,36 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Duy's App Store Setup</string>
+   <string>Finish Setup</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../Material/3cc089d557f24e431b1cd45ab88d2f1f86d7d2615157b96a7f61c37ec7b25663_100.webp</normaloff>../Material/3cc089d557f24e431b1cd45ab88d2f1f86d7d2615157b96a7f61c37ec7b25663_100.webp</iconset>
+    <normaloff>../../../../WindowsIcons-main/WindowsIcons-main/Icons/emblems/check.ico</normaloff>../../../../WindowsIcons-main/WindowsIcons-main/Icons/emblems/check.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>60</y>
-      <width>411</width>
-      <height>31</height>
+      <x>220</x>
+      <y>110</y>
+      <width>101</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>25</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>            Duy's App Store</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>40</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>9</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Setup the</string>
+     <string>Finish!</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>40</y>
+      <x>240</x>
+      <y>50</y>
       <width>51</width>
       <height>51</height>
      </rect>
@@ -73,42 +55,30 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QProgressBar" name="progressBar">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>200</y>
-      <width>341</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>100</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>170</y>
-      <width>401</width>
-      <height>16</height>
+      <x>40</x>
+      <y>130</y>
+      <width>481</width>
+      <height>141</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Please wait while Duy's App Store is being installed</string>
+     <string>          The installer has finished installing Duy's App Store
+You can turn off your computer or remove the installer CD now!</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="bt_next">
+   <widget class="QPushButton" name="bt_finish">
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>360</y>
+      <y>340</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -119,9 +89,19 @@
      </font>
     </property>
     <property name="text">
-     <string>Next</string>
+     <string>Finish</string>
     </property>
    </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>540</width>
+     <height>21</height>
+    </rect>
+   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
