@@ -29,9 +29,6 @@ class Setup3Page(QMainWindow, QWidget):
         super().__init__()
         uic.loadUi("GUI/setup3.ui", self)
         self.bt_install.clicked.connect(self.showSetup4)
-        self.bt_repair.clicked.connect(self.showRepair)
-    def showRepair(self):
-        Repair.show()
     def showSetup4(self):
         Setup4.show()
         self.close()
@@ -54,8 +51,107 @@ class SetupFinishPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/SetupFinish.ui", self)
-        self.bt_finish.clicked.connect(self.showMain)
-    def showMain(self):
+        self.bt_finish.clicked.connect(self.showSignIn)
+    def showSignIn(self):
+        SignIn.show()
+        self.close()
+
+class SignInPage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/dangnhap.ui", self)
+        self.bt_login.clicked.connect(self.checkLogin)
+        self.bt_register.clicked.connect(self.showSignUp)
+        self.bt_continue.clicked.connect(self.showMainPage)
+    def showMainPage(self):
+        msg_box.setText("Going forward, sign in if you want more features!")
+        msg_box.exec()
+        MainPage.show()
+        self.close()
+    def showSignUp(self):
+        SignUp.show()
+        self.close()
+    def quit(self):
+        self.close()
+    def checkLogin(self):
+        email = self.le_email.text()
+        password = self.le_password.text()
+
+        if not email:
+            msg_box.setText("Vui lòng nhập email hoặc số điện thoại!")
+            msg_box.exec()
+            return
+        if not password:
+            msg_box.setText("Vui lòng nhập mật khẩu!")
+            msg_box.exec()
+            return
+        if email == "admin@gmail.com" and password == "admin":
+            self.close()
+            MainPage.show()
+        else:
+            msg_box.setText("Email hoặc mật khẩu không đúng!")
+            msg_box.exec()
+
+class SignUpPage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/dangky.ui", self)
+        self.bt_signup.clicked.connect(self.SignUp)
+        self.bt_already.clicked.connect(self.Back)
+    def Back(self):
+        SignIn.show()
+        self.close()
+    def SignUp(self):
+        self.name = self.le_fullname.text()
+        email = self.le_account.text()
+        password = self.le_password.text()
+        
+
+        if not self.name:
+            msg_box.setText("Vui lòng nhập tên!")
+            msg_box.exec()
+            return
+        if not email: 
+            msg_box.setText("Vui lòng nhập email hoặc số điện thoại!")
+            msg_box.exec()
+        elif '@' not in email:
+            msg_box.setText("Email invalidate!")
+            msg_box.exec()
+            return
+        if not password:
+            msg_box.setText("Vui lòng nhập mật khẩu!")
+            msg_box.exec()
+            return
+        elif len(password) < 8:
+            msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
+            msg_box.exec()
+            return
+        if not self.cb_day.currentIndex():
+            msg_box.setText("Please check and select your date of birth!")
+            msg_box.exec()
+            return
+
+        elif not self.cb_month.currentIndex():
+            msg_box.setText("Please check and select your date of birth!")
+            msg_box.exec()
+            return
+
+        elif not self.cb_year.currentIndex():
+            msg_box.setText("Please check and select your date of birth!")
+            msg_box.exec()
+            return
+
+        if not self.chb_agree.isChecked():
+            msg_box.setText("Please read and agree to the terms of Online Shopping!")
+            msg_box.exec()
+            return
+        
+
+        
+
+        
+            
+        MainPage.show()
         self.close()
 
 
@@ -67,7 +163,8 @@ if __name__ == '__main__':
     Setup3 = Setup3Page()
     Setup4 = Setup4Page()
     SetupFinish = SetupFinishPage()
-    Repair = RepairPage()
+    SignIn = SignInPage()
+    SignUp = SignUpPage()
     msg_box = QMessageBox()
     msg_box.setWindowTitle("Online Shopping Warning")
     msg_box.setIcon(QMessageBox.Icon.Warning)

@@ -91,24 +91,6 @@
      <string>After you click &quot;Install now!&quot;, Duy's App Store application will be installed</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="bt_repair">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>340</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Repair Tool</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
