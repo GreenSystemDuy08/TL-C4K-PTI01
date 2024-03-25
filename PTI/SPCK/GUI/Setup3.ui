@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Duy's App Store Setup</string>
+   <string>Note for WOW! Setup</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -39,8 +39,8 @@
    <widget class="QPushButton" name="bt_install">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>340</y>
+      <x>220</x>
+      <y>250</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -88,7 +88,7 @@
      </font>
     </property>
     <property name="text">
-     <string>After you click &quot;Install now!&quot;, Duy's App Store application will be installed</string>
+     <string>After you click &quot;Install now!&quot;, Note for WOW! application will be installed</string>
     </property>
    </widget>
   </widget>

@@ -28,21 +28,7 @@ class Setup3Page(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/setup3.ui", self)
-        self.bt_install.clicked.connect(self.showSetup4)
-    def showSetup4(self):
-        Setup4.show()
-        self.close()
-
-class RepairPage(QMainWindow, QWidget):
-    def __init__(self):
-        super().__init__()
-        uic.loadUi("GUI/Repair.ui", self)
-
-class Setup4Page(QMainWindow, QWidget):
-    def __init__(self):
-        super().__init__()
-        uic.loadUi("GUI/setup4.ui", self)
-        self.bt_next.clicked.connect(self.showSetupFinish)
+        self.bt_install.clicked.connect(self.showSetupFinish)
     def showSetupFinish(self):
         SetupFinish.show()
         self.close()
@@ -161,7 +147,6 @@ if __name__ == '__main__':
     MainPage.show()
     Setup2 = Setup2Page()
     Setup3 = Setup3Page()
-    Setup4 = Setup4Page()
     SetupFinish = SetupFinishPage()
     SignIn = SignInPage()
     SignUp = SignUpPage()

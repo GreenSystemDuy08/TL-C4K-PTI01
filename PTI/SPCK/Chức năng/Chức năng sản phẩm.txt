@@ -1,7 +1,6 @@
-App Duy App Store
+App Note
 Chức năng:
-	+ View App
-	+ Cài App
-	+ Xóa App
-	+ Có chế độ Tiếng Anh + Tiếng Việt
+	+ Note lại mọi thứ
+	+ Đăng nhập, đăng ký (hoặc không cần)
+	+ Cài đặt App Note (FAKE)
 	+ ...

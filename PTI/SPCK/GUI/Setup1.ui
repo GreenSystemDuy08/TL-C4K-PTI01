@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Duy's App Store Setup</string>
+   <string>Note for WOW! Setup</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -51,7 +51,7 @@
      </font>
     </property>
     <property name="text">
-     <string>            Duy's App Store</string>
+     <string>                Note for WOW!</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -75,7 +75,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>180</x>
       <y>20</y>
       <width>71</width>
       <height>20</height>
@@ -105,7 +105,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Where should Duy's App Store be installed?</string>
+     <string>Where should Note for WOW! be installed?</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -123,7 +123,7 @@
      </font>
     </property>
     <property name="text">
-     <string>The installer will install PC Clean into the following folder</string>
+     <string>The installer will install Note for WOW! into the following folder</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
