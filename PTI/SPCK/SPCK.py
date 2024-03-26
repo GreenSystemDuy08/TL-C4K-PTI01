@@ -2,6 +2,15 @@ import sys
 from PyQt6.QtWidgets import QMainWindow, QApplication, QMessageBox , QWidget
 from PyQt6 import uic
 
+class AdminPage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/AdminTool.ui", self)
+        self.bt_save.clicked.connect(self.showSignIn)
+    def showSignIn(self):
+        SignIn.show()
+        self.close()
+
 class Setup1(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
@@ -17,6 +26,16 @@ class Setup2Page(QMainWindow, QWidget):
         uic.loadUi("GUI/setup2.ui", self)
         self.bt_next.clicked.connect(self.showSetup3)
     def showSetup3(self):
+        if not self.cb_language.currentIndex():
+            msg_box.setText("Please check and select language to install!")
+            msg_box.exec()
+            return
+
+        elif not self.cb_edition.currentIndex():
+            msg_box.setText("Please check and select this app edtion!")
+            msg_box.exec()
+            return
+
         if not self.chb_accept.isChecked():
             msg_box.setText("Please read and agree to the terms of this Application!")
             msg_box.exec()
@@ -73,7 +92,11 @@ class SignInPage(QMainWindow, QWidget):
             return
         if email == "admin@gmail.com" and password == "admin":
             self.close()
-            MainPage.show()
+            AdminTool.show()
+        elif '@' in email:
+            msg_box.setText("Standard Account")
+            msg_box.exec()
+            return
         else:
             msg_box.setText("Email hoặc mật khẩu không đúng!")
             msg_box.exec()
@@ -145,6 +168,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     MainPage = Setup1()
     MainPage.show()
+    AdminTool = AdminPage()
     Setup2 = Setup2Page()
     Setup3 = Setup3Page()
     SetupFinish = SetupFinishPage()

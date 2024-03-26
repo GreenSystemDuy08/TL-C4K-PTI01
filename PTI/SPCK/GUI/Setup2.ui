@@ -112,7 +112,7 @@
      <string>Setup the</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="cb_language">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -142,7 +142,7 @@
      </property>
     </item>
    </widget>
-   <widget class="QComboBox" name="comboBox_2">
+   <widget class="QComboBox" name="cb_edition">
     <property name="geometry">
      <rect>
       <x>90</x>
