@@ -2,11 +2,24 @@ import sys
 from PyQt6.QtWidgets import QMainWindow, QApplication, QMessageBox , QWidget
 from PyQt6 import uic
 
+class MainNotePage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/mainnote.ui", self)
+
 class AdminPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/AdminTool.ui", self)
         self.bt_save.clicked.connect(self.showSignIn)
+        self.bt_exit.clicked.connect(self.showSignIn)
+        self.bt_remove1.clicked.connect(self.showCaution)
+        self.bt_remove2.clicked.connect(self.showCaution)
+    def showCaution(self):
+        msg_box1.setText("The notes page has been successfully removed!")
+        msg_box1.exec()
+        return
+        
     def showSignIn(self):
         SignIn.show()
         self.close()
@@ -71,7 +84,7 @@ class SignInPage(QMainWindow, QWidget):
     def showMainPage(self):
         msg_box.setText("Going forward, sign in if you want more features!")
         msg_box.exec()
-        MainPage.show()
+        MainNote.show()
         self.close()
     def showSignUp(self):
         SignUp.show()
@@ -90,12 +103,18 @@ class SignInPage(QMainWindow, QWidget):
             msg_box.setText("Vui lòng nhập mật khẩu!")
             msg_box.exec()
             return
-        if email == "admin@gmail.com" and password == "admin":
+        elif email == "admin@gmail.com" and password == "admin":
             self.close()
             AdminTool.show()
+        elif len(password) < 8:
+            msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
+            msg_box.exec()
+            return
         elif '@' in email:
             msg_box.setText("Standard Account")
             msg_box.exec()
+            MainNote.show()
+            self.close()
             return
         else:
             msg_box.setText("Email hoặc mật khẩu không đúng!")
@@ -116,10 +135,6 @@ class SignUpPage(QMainWindow, QWidget):
         password = self.le_password.text()
         
 
-        if not self.name:
-            msg_box.setText("Vui lòng nhập tên!")
-            msg_box.exec()
-            return
         if not email: 
             msg_box.setText("Vui lòng nhập email hoặc số điện thoại!")
             msg_box.exec()
@@ -133,6 +148,10 @@ class SignUpPage(QMainWindow, QWidget):
             return
         elif len(password) < 8:
             msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
+            msg_box.exec()
+            return
+        if not self.name:
+            msg_box.setText("Vui lòng nhập tên!")
             msg_box.exec()
             return
         if not self.cb_day.currentIndex():
@@ -169,12 +188,16 @@ if __name__ == '__main__':
     MainPage = Setup1()
     MainPage.show()
     AdminTool = AdminPage()
+    MainNote = MainNotePage()
     Setup2 = Setup2Page()
     Setup3 = Setup3Page()
     SetupFinish = SetupFinishPage()
     SignIn = SignInPage()
     SignUp = SignUpPage()
     msg_box = QMessageBox()
-    msg_box.setWindowTitle("Online Shopping Warning")
+    msg_box1 = QMessageBox()
+    msg_box1.setWindowTitle("Note for WOW! Notification")
+    msg_box1.setIcon(QMessageBox.Icon.Information)
+    msg_box.setWindowTitle("Note for WOW! Warning")
     msg_box.setIcon(QMessageBox.Icon.Warning)
     sys.exit(app.exec())
