@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>989</width>
+    <width>1007</width>
     <height>594</height>
    </rect>
   </property>
@@ -52,7 +52,7 @@ Only for Administrator account!</string>
    <widget class="QPushButton" name="bt_save">
     <property name="geometry">
      <rect>
-      <x>840</x>
+      <x>860</x>
       <y>450</y>
       <width>121</width>
       <height>51</height>
@@ -70,7 +70,7 @@ Only for Administrator account!</string>
    <widget class="QPushButton" name="bt_exit">
     <property name="geometry">
      <rect>
-      <x>840</x>
+      <x>860</x>
       <y>520</y>
       <width>121</width>
       <height>51</height>
