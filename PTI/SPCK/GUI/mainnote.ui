@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Note for WOW! MainPage</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 243, 207);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -54,9 +57,9 @@
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>60</y>
+      <y>80</y>
       <width>101</width>
-      <height>71</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">

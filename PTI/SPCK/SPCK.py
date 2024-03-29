@@ -6,6 +6,20 @@ class MainNotePage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/mainnote.ui", self)
+        self.bt_edit1.clicked.connect(self.showEditNote)
+        self.bt_edit2.clicked.connect(self.showEditNote)
+        self.bt_add.clicked.connect(self.showCaution)
+    def showCaution(self):
+        msg_box1.setText("The notes page has been added successfully!")
+        msg_box1.exec()
+        return
+    def showEditNote(self):
+        EditNote.show()
+
+class EditNotePage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/editNote.ui", self)
 
 class AdminPage(QMainWindow, QWidget):
     def __init__(self):
@@ -194,6 +208,7 @@ if __name__ == '__main__':
     SetupFinish = SetupFinishPage()
     SignIn = SignInPage()
     SignUp = SignUpPage()
+    EditNote = EditNotePage()
     msg_box = QMessageBox()
     msg_box1 = QMessageBox()
     msg_box1.setWindowTitle("Note for WOW! Notification")

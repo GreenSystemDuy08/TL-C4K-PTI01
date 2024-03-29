@@ -1,6 +1,10 @@
 App Note
+Announcing Note for WOW! Beta 1:
 Chức năng:
 	+ Note lại mọi thứ
 	+ Đăng nhập, đăng ký (hoặc không cần)
 	+ Cài đặt App Note (FAKE)
+	+ ...
+Chưa làm được:
+	+ Chưa lưu được
 	+ ...

@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Note for WOW! - Edit Page</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
@@ -20,7 +23,7 @@
       <x>220</x>
       <y>30</y>
       <width>341</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="placeholderText">
@@ -51,7 +54,7 @@
       <x>30</x>
       <y>80</y>
       <width>691</width>
-      <height>341</height>
+      <height>351</height>
      </rect>
     </property>
     <property name="placeholderText">
@@ -62,7 +65,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>430</y>
+      <y>440</y>
       <width>101</width>
       <height>41</height>
      </rect>
