@@ -6,18 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>420</width>
-    <height>506</height>
+    <width>511</width>
+    <height>553</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Register</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(216, 255, 205);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>120</x>
       <y>0</y>
       <width>281</width>
       <height>121</height>
@@ -27,6 +30,9 @@
      <font>
       <pointsize>20</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(8, 0, 255);</string>
     </property>
     <property name="text">
      <string>CREATE AN ACCOUNT</string>
@@ -41,6 +47,9 @@
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 4);</string>
+    </property>
     <property name="text">
      <string>EMAIL OR PHONE NUMBER</string>
     </property>
@@ -50,8 +59,8 @@
      <rect>
       <x>40</x>
       <y>140</y>
-      <width>311</width>
-      <height>21</height>
+      <width>401</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="placeholderText">
@@ -62,10 +71,13 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>170</y>
+      <y>180</y>
       <width>71</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 4);</string>
     </property>
     <property name="text">
      <string>PASSWORD</string>
@@ -75,9 +87,9 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>190</y>
-      <width>311</width>
-      <height>21</height>
+      <y>200</y>
+      <width>401</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="echoMode">
@@ -91,10 +103,13 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>220</y>
+      <y>240</y>
       <width>131</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 4);</string>
     </property>
     <property name="text">
      <string>USERNAME TO DISPLAY</string>
@@ -104,9 +119,9 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>240</y>
-      <width>311</width>
-      <height>21</height>
+      <y>260</y>
+      <width>401</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="placeholderText">
@@ -117,10 +132,13 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>270</y>
+      <y>300</y>
       <width>101</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 4);</string>
     </property>
     <property name="text">
      <string>DATE OF BIRTH</string>
@@ -129,10 +147,10 @@
    <widget class="QComboBox" name="cb_month">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>310</y>
-      <width>81</width>
-      <height>22</height>
+      <x>160</x>
+      <y>340</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
     <item>
@@ -205,9 +223,9 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>310</y>
-      <width>69</width>
-      <height>22</height>
+      <y>340</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
     <item>
@@ -374,10 +392,10 @@
    <widget class="QComboBox" name="cb_year">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>310</y>
-      <width>69</width>
-      <height>22</height>
+      <x>300</x>
+      <y>340</y>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <item>
@@ -490,7 +508,7 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>290</y>
+      <y>320</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -503,7 +521,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>340</y>
+      <y>380</y>
       <width>251</width>
       <height>17</height>
      </rect>
@@ -520,8 +538,8 @@
    <widget class="QPushButton" name="bt_signup">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>370</y>
+      <x>210</x>
+      <y>410</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -544,6 +562,14 @@
       <height>16</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 4);</string>
+    </property>
     <property name="text">
      <string>Please enter some of your personal information:</string>
     </property>
@@ -551,8 +577,8 @@
    <widget class="QPushButton" name="bt_already">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>410</y>
+      <x>170</x>
+      <y>450</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -567,17 +593,17 @@
     </property>
    </widget>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>420</width>
+     <width>511</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

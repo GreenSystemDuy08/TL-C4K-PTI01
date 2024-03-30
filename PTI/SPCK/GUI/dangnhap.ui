@@ -20,7 +20,7 @@
    <number>0</number>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">background-color: rgb(216, 255, 205);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -37,6 +37,9 @@
       <pointsize>30</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>Welcome Back!</string>
     </property>
@@ -49,6 +52,9 @@
       <width>171</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 4);</string>
     </property>
     <property name="text">
      <string>EMAIL OR PHONE NUMBER</string>
@@ -81,6 +87,9 @@
       <width>141</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 4);</string>
     </property>
     <property name="text">
      <string>PASSWORD</string>
@@ -173,7 +182,7 @@
       <x>200</x>
       <y>320</y>
       <width>141</width>
-      <height>21</height>
+      <height>16</height>
      </rect>
     </property>
     <property name="font">
@@ -204,6 +213,9 @@
      <font>
       <pointsize>9</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 4);</string>
     </property>
     <property name="text">
      <string>OR LOG IN WITH QR CODE!*</string>
@@ -255,6 +267,9 @@
       <pointsize>9</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>*The QR Code image above is for testing purposes only!</string>
     </property>
@@ -262,7 +277,7 @@
    <widget class="QPushButton" name="bt_register">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>50</x>
       <y>340</y>
       <width>121</width>
       <height>31</height>

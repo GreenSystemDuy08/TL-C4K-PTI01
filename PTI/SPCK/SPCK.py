@@ -9,6 +9,13 @@ class MainNotePage(QMainWindow, QWidget):
         self.bt_edit1.clicked.connect(self.showEditNote)
         self.bt_edit2.clicked.connect(self.showEditNote)
         self.bt_add.clicked.connect(self.showCaution)
+        self.bt_quit.clicked.connect(self.Close)
+        self.bt_save.clicked.connect(self.showSignIn)
+    def showSignIn(self):
+        SignIn.show()
+        self.close()
+    def Close(self):
+        self.close()
     def showCaution(self):
         msg_box1.setText("The notes page has been added successfully!")
         msg_box1.exec()
@@ -96,8 +103,8 @@ class SignInPage(QMainWindow, QWidget):
         self.bt_register.clicked.connect(self.showSignUp)
         self.bt_continue.clicked.connect(self.showMainPage)
     def showMainPage(self):
-        msg_box.setText("Going forward, sign in if you want more features!")
-        msg_box.exec()
+        msg_box1.setText("Going forward, sign in if you want more features!")
+        msg_box1.exec()
         MainNote.show()
         self.close()
     def showSignUp(self):
@@ -184,7 +191,7 @@ class SignUpPage(QMainWindow, QWidget):
             return
 
         if not self.chb_agree.isChecked():
-            msg_box.setText("Please read and agree to the terms of Online Shopping!")
+            msg_box.setText("Please read and agree to the terms of this Application!")
             msg_box.exec()
             return
         
@@ -193,7 +200,7 @@ class SignUpPage(QMainWindow, QWidget):
 
         
             
-        MainPage.show()
+        MainNote.show()
         self.close()
 
 
