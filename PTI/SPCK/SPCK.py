@@ -27,23 +27,65 @@ class EditNotePage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/editNote.ui", self)
+        self.bt_save.clicked.connect(self.Close)
+    def Close(self):
+        self.close()
 
 class AdminPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi("GUI/AdminTool.ui", self)
+        uic.loadUi("GUI/AdminPage.ui", self)
+        self.bt_add.clicked.connect(self.showCaution)
         self.bt_save.clicked.connect(self.showSignIn)
         self.bt_exit.clicked.connect(self.showSignIn)
-        self.bt_remove1.clicked.connect(self.showCaution)
-        self.bt_remove2.clicked.connect(self.showCaution)
+        self.bt_tool1.clicked.connect(self.showTool1)
+        self.bt_tool2.clicked.connect(self.showTool2)
+        self.bt_edit1.clicked.connect(self.showEditNote)
+        self.bt_edit2.clicked.connect(self.showEditNote)
     def showCaution(self):
-        msg_box1.setText("The notes page has been successfully removed!")
+        msg_box1.setText("The notes page has been added successfully!")
         msg_box1.exec()
         return
-        
+    def showTool1(self):
+        Tool1.show()
+        self.close()
+    def showTool2(self):
+        Tool2.show()
+        self.close()
     def showSignIn(self):
         SignIn.show()
         self.close()
+    def showEditNote(self):
+        EditNote.show()
+        self.close()
+class Tool1Page(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/AdminTool - note1.ui", self)
+        self.bt_back.clicked.connect(self.back)
+        self.bt_remove.clicked.connect(self.Caution)
+    def back(self):
+        AdminTool.show()
+        self.close()
+    def Caution(self):
+        msg_box1.setText("The notes page has been successfully removed!")
+        msg_box1.exec()
+        return
+
+class Tool2Page(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/AdminTool - note2.ui", self)
+        self.bt_back.clicked.connect(self.back)
+        self.bt_remove.clicked.connect(self.Caution)
+    def Caution(self):
+        msg_box1.setText("The notes page has been successfully removed!")
+        msg_box1.exec()
+        return
+    def back(self):
+        AdminTool.show()
+        self.close()
+
 
 class Setup1(QMainWindow, QWidget):
     def __init__(self):
@@ -124,7 +166,7 @@ class SignInPage(QMainWindow, QWidget):
             msg_box.setText("Vui lòng nhập mật khẩu!")
             msg_box.exec()
             return
-        elif email == "admin@gmail.com" and password == "admin":
+        if email == "admin@gmail.com" and password == "admin":
             self.close()
             AdminTool.show()
         elif len(password) < 8:
@@ -216,6 +258,8 @@ if __name__ == '__main__':
     SignIn = SignInPage()
     SignUp = SignUpPage()
     EditNote = EditNotePage()
+    Tool1 = Tool1Page()
+    Tool2 = Tool2Page()
     msg_box = QMessageBox()
     msg_box1 = QMessageBox()
     msg_box1.setWindowTitle("Note for WOW! Notification")

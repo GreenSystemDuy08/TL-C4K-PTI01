@@ -53,24 +53,6 @@
      <string>Welcome to</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>80</y>
-      <width>101</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Beta 2 Test Only!</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="bt_edit1">
     <property name="geometry">
      <rect>
@@ -98,6 +80,9 @@
       <height>192</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -114,6 +99,9 @@ p, li { white-space: pre-wrap; }
       <width>256</width>
       <height>192</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -186,6 +174,9 @@ p, li { white-space: pre-wrap; }
       <height>121</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
    </widget>
    <widget class="QPushButton" name="bt_apply">
     <property name="geometry">
@@ -240,6 +231,9 @@ p, li { white-space: pre-wrap; }
       <height>31</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
     <property name="placeholderText">
      <string>Your title name?</string>
     </property>
@@ -273,6 +267,24 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>Save change</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>80</y>
+      <width>131</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Release Version 1</string>
     </property>
    </widget>
   </widget>

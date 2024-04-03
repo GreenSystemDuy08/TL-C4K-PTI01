@@ -70,7 +70,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string/>
@@ -108,7 +108,7 @@
      <cursorShape>IBeamCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>
