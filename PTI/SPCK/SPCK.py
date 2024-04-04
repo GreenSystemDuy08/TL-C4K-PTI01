@@ -52,6 +52,7 @@ class AdminPage(QMainWindow, QWidget):
         self.bt_tool2.clicked.connect(self.showTool2)
         self.bt_edit1.clicked.connect(self.showEditNote1)
         self.bt_edit2.clicked.connect(self.showEditNote2)
+        self.bt_setting.clicked.connect(self.showSetting)
     def showCaution(self):
         msg_box1.setText("The notes page has been added successfully!")
         msg_box1.exec()
@@ -69,6 +70,19 @@ class AdminPage(QMainWindow, QWidget):
         EditNote1.show()
     def showEditNote2(self):
         EditNote2.show()
+    def showSetting(self):
+        Setting.show()
+        self.close()
+
+class SettingPage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/setting.ui", self)
+        self.bt_save.clicked.connect(self.back)
+    def back(self):
+        AdminTool.show()
+        self.close()
+
 class Tool1Page(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
@@ -300,6 +314,7 @@ if __name__ == '__main__':
     Tool2 = Tool2Page()
     NoteDetail1 = DetailPage1()
     NoteDetail2 = DetailPage2()
+    Setting = SettingPage()
     msg_box = QMessageBox()
     msg_box1 = QMessageBox()
     msg_box1.setWindowTitle("Note for WOW! Notification")
