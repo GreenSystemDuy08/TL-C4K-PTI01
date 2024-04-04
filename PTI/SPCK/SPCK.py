@@ -11,6 +11,7 @@ class MainNotePage(QMainWindow, QWidget):
         self.bt_add.clicked.connect(self.showCaution)
         self.bt_quit.clicked.connect(self.Close)
         self.bt_save.clicked.connect(self.showSignIn)
+        self.bt_apply.clicked.connect(self.checkName)
     def showSignIn(self):
         SignIn.show()
         self.close()
@@ -24,7 +25,18 @@ class MainNotePage(QMainWindow, QWidget):
         EditNote1.show()
     def showEditNote2(self):
         EditNote2.show()
+    def checkName(self):
+        name = self.le_name.text()
 
+        if not name:
+            msg_box.setText("Please enter a title name!")
+            msg_box.exec()
+            return
+        else:
+            msg_box1.setText("Apply title name successfully!")
+            msg_box1.exec()
+            return
+        
 class EditNote1Page(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
@@ -53,6 +65,7 @@ class AdminPage(QMainWindow, QWidget):
         self.bt_edit1.clicked.connect(self.showEditNote1)
         self.bt_edit2.clicked.connect(self.showEditNote2)
         self.bt_setting.clicked.connect(self.showSetting)
+        self.bt_apply.clicked.connect(self.checkName)
     def showCaution(self):
         msg_box1.setText("The notes page has been added successfully!")
         msg_box1.exec()
@@ -73,15 +86,36 @@ class AdminPage(QMainWindow, QWidget):
     def showSetting(self):
         Setting.show()
         self.close()
+    def checkName(self):
+        name = self.le_name.text()
+
+        if not name:
+            msg_box.setText("Please enter a title name!")
+            msg_box.exec()
+            return
+        else:
+            msg_box1.setText("Apply title name successfully!")
+            msg_box1.exec()
+            return
 
 class SettingPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/setting.ui", self)
         self.bt_save.clicked.connect(self.back)
+        self.bt_reset.clicked.connect(self.showCautionReset)
+        self.bt_delete.clicked.connect(self.showCautionDelete)
     def back(self):
         AdminTool.show()
         self.close()
+    def showCautionDelete(self):
+        msg_box1.setText("All of the notes page has been successfully removed!")
+        msg_box1.exec()
+        return
+    def showCautionReset(self):
+        msg_box1.setText("Everything has been reset to factory defaults!")
+        msg_box1.exec()
+        return
 
 class Tool1Page(QMainWindow, QWidget):
     def __init__(self):

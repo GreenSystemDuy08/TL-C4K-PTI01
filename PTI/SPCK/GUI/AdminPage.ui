@@ -247,7 +247,7 @@ p, li { white-space: pre-wrap; }
      <string>Title</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="le_name">
     <property name="geometry">
      <rect>
       <x>580</x>
@@ -383,7 +383,7 @@ p, li { white-space: pre-wrap; }
    <zorder>line</zorder>
    <zorder>label_3</zorder>
    <zorder>label_4</zorder>
-   <zorder>lineEdit</zorder>
+   <zorder>le_name</zorder>
    <zorder>bt_apply</zorder>
    <zorder>bt_cancel</zorder>
    <zorder>bt_add</zorder>
