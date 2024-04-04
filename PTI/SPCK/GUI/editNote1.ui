@@ -57,6 +57,14 @@
       <height>351</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="plainText">
+     <string>Today is March 28....</string>
+    </property>
     <property name="placeholderText">
      <string>Edit or start your Notes here!</string>
     </property>

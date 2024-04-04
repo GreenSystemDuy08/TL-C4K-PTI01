@@ -6,8 +6,8 @@ class MainNotePage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/mainnote.ui", self)
-        self.bt_edit1.clicked.connect(self.showEditNote)
-        self.bt_edit2.clicked.connect(self.showEditNote)
+        self.bt_edit1.clicked.connect(self.showEditNote1)
+        self.bt_edit2.clicked.connect(self.showEditNote2)
         self.bt_add.clicked.connect(self.showCaution)
         self.bt_quit.clicked.connect(self.Close)
         self.bt_save.clicked.connect(self.showSignIn)
@@ -20,13 +20,23 @@ class MainNotePage(QMainWindow, QWidget):
         msg_box1.setText("The notes page has been added successfully!")
         msg_box1.exec()
         return
-    def showEditNote(self):
-        EditNote.show()
+    def showEditNote1(self):
+        EditNote1.show()
+    def showEditNote2(self):
+        EditNote2.show()
 
-class EditNotePage(QMainWindow, QWidget):
+class EditNote1Page(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi("GUI/editNote.ui", self)
+        uic.loadUi("GUI/editNote1.ui", self)
+        self.bt_save.clicked.connect(self.Close)
+    def Close(self):
+        self.close()
+
+class EditNote2Page(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/editNote2.ui", self)
         self.bt_save.clicked.connect(self.Close)
     def Close(self):
         self.close()
@@ -40,8 +50,8 @@ class AdminPage(QMainWindow, QWidget):
         self.bt_exit.clicked.connect(self.showSignIn)
         self.bt_tool1.clicked.connect(self.showTool1)
         self.bt_tool2.clicked.connect(self.showTool2)
-        self.bt_edit1.clicked.connect(self.showEditNote)
-        self.bt_edit2.clicked.connect(self.showEditNote)
+        self.bt_edit1.clicked.connect(self.showEditNote1)
+        self.bt_edit2.clicked.connect(self.showEditNote2)
     def showCaution(self):
         msg_box1.setText("The notes page has been added successfully!")
         msg_box1.exec()
@@ -55,15 +65,17 @@ class AdminPage(QMainWindow, QWidget):
     def showSignIn(self):
         SignIn.show()
         self.close()
-    def showEditNote(self):
-        EditNote.show()
-        self.close()
+    def showEditNote1(self):
+        EditNote1.show()
+    def showEditNote2(self):
+        EditNote2.show()
 class Tool1Page(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/AdminTool - note1.ui", self)
         self.bt_back.clicked.connect(self.back)
         self.bt_remove.clicked.connect(self.Caution)
+        self.bt_detail.clicked.connect(self.showNoteDetail)
     def back(self):
         AdminTool.show()
         self.close()
@@ -71,6 +83,9 @@ class Tool1Page(QMainWindow, QWidget):
         msg_box1.setText("The notes page has been successfully removed!")
         msg_box1.exec()
         return
+    def showNoteDetail(self):
+        NoteDetail1.show()
+        self.close()
 
 class Tool2Page(QMainWindow, QWidget):
     def __init__(self):
@@ -78,12 +93,34 @@ class Tool2Page(QMainWindow, QWidget):
         uic.loadUi("GUI/AdminTool - note2.ui", self)
         self.bt_back.clicked.connect(self.back)
         self.bt_remove.clicked.connect(self.Caution)
+        self.bt_detail.clicked.connect(self.showNoteDetail)
     def Caution(self):
         msg_box1.setText("The notes page has been successfully removed!")
         msg_box1.exec()
         return
     def back(self):
         AdminTool.show()
+        self.close()
+    def showNoteDetail(self):
+        NoteDetail2.show()
+        self.close()
+
+class DetailPage1(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/noteDetail1.ui", self)
+        self.bt_close.clicked.connect(self.back)
+    def back(self):
+        Tool1.show()
+        self.close()
+
+class DetailPage2(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/noteDetail2.ui", self)
+        self.bt_close.clicked.connect(self.back)
+    def back(self):
+        Tool2.show()
         self.close()
 
 
@@ -113,7 +150,7 @@ class Setup2Page(QMainWindow, QWidget):
             return
 
         if not self.chb_accept.isChecked():
-            msg_box.setText("Please read and agree to the terms of this Application!")
+            msg_box.setText("Please agree to the terms of this Application!")
             msg_box.exec()
         if self.chb_accept.isChecked():
             Setup3.show()
@@ -233,7 +270,7 @@ class SignUpPage(QMainWindow, QWidget):
             return
 
         if not self.chb_agree.isChecked():
-            msg_box.setText("Please read and agree to the terms of this Application!")
+            msg_box.setText("Please agree to the terms of this Application!")
             msg_box.exec()
             return
         
@@ -257,9 +294,12 @@ if __name__ == '__main__':
     SetupFinish = SetupFinishPage()
     SignIn = SignInPage()
     SignUp = SignUpPage()
-    EditNote = EditNotePage()
+    EditNote1 = EditNote1Page()
+    EditNote2 = EditNote2Page()
     Tool1 = Tool1Page()
     Tool2 = Tool2Page()
+    NoteDetail1 = DetailPage1()
+    NoteDetail2 = DetailPage2()
     msg_box = QMessageBox()
     msg_box1 = QMessageBox()
     msg_box1.setWindowTitle("Note for WOW! Notification")
