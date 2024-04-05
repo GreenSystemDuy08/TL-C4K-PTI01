@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(216, 255, 205);</string>
+   <string notr="true">background-color: rgb(220, 220, 220);</string>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>true</bool>
@@ -97,6 +97,9 @@
      <font>
       <pointsize>12</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Language:</string>
@@ -231,6 +234,9 @@
       <pointsize>12</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(29, 0, 255);</string>
+    </property>
     <property name="text">
      <string>Settings for Notes page</string>
     </property>
@@ -273,7 +279,7 @@
 Notes pages</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QCheckBox" name="chb_name">
     <property name="geometry">
      <rect>
       <x>570</x>
@@ -318,7 +324,7 @@ Notes pages</string>
      <string> Danger Zone!</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_2">
+   <widget class="QCheckBox" name="chb_read">
     <property name="geometry">
      <rect>
       <x>570</x>
@@ -342,7 +348,7 @@ Notes pages</string>
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_3">
+   <widget class="QCheckBox" name="chb_enable">
     <property name="geometry">
      <rect>
       <x>280</x>
@@ -380,8 +386,36 @@ Notes pages</string>
       <pointsize>12</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(29, 0, 255);</string>
+    </property>
     <property name="text">
      <string>Change settings for this app</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="chb_enable_2">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>310</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Enable Detail for Local Account
+(Read-only)</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
     </property>
    </widget>
    <zorder>label_7</zorder>
@@ -397,10 +431,11 @@ Notes pages</string>
    <zorder>label_2</zorder>
    <zorder>bt_reset</zorder>
    <zorder>bt_delete</zorder>
-   <zorder>checkBox</zorder>
+   <zorder>chb_name</zorder>
    <zorder>label_6</zorder>
-   <zorder>checkBox_2</zorder>
-   <zorder>checkBox_3</zorder>
+   <zorder>chb_read</zorder>
+   <zorder>chb_enable</zorder>
+   <zorder>chb_enable_2</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

@@ -322,13 +322,29 @@ class SignUpPage(QMainWindow, QWidget):
             msg_box.exec()
             return
         
+        if self.rb_admin.isChecked():
+            msg_box1.setText("Hello, Administrator!")
+            msg_box1.exec()
+            AdminTool.show()
+            self.close()
+            return
 
+        if self.rb_local.isChecked():
+            msg_box1.setText("Hello, Administrator!")
+            msg_box1.exec()
+            MainNote.show()
+            self.close()
+            return
         
-
+        elif not self.rb_admin.isChecked():
+            msg_box.setText("ERROR 404!")
+            msg_box.exec()
+            return
         
-            
-        MainNote.show()
-        self.close()
+        elif not self.rb_local.isChecked():
+            msg_box.setText("ERROR 404!")
+            msg_box.exec()
+            return
 
 
 if __name__ == '__main__':

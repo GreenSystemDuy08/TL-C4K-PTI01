@@ -1,11 +1,12 @@
 App Note
-Announcing Note for WOW! Beta 4:
+Announcing Note for WOW! April Test Release:
 Chức năng:
 	+ Note lại mọi thứ
 	+ Đăng nhập, đăng ký (hoặc không cần)
 	+ Cài đặt App Note (FAKE)
 	+ Có thể điều chỉnh chi tiết phần ghi chú (Admin)
 	+ Đã có Setting (Admin)
+	+ Mục đăng ký có đăng ký tài khoản admin hoặc bình thường
 	+ ...
 Chưa làm được:
 	+ Chưa lưu được những gì đã note

@@ -226,7 +226,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>Beta 4 Testing Only!</string>
+     <string> April Test Release</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">

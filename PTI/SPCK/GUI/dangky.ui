@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>511</width>
+    <width>805</width>
     <height>553</height>
    </rect>
   </property>
@@ -20,7 +20,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>290</x>
       <y>0</y>
       <width>281</width>
       <height>121</height>
@@ -963,8 +963,8 @@
    <widget class="QCheckBox" name="chb_agree">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>380</y>
+      <x>310</x>
+      <y>400</y>
       <width>251</width>
       <height>17</height>
      </rect>
@@ -981,8 +981,8 @@
    <widget class="QPushButton" name="bt_signup">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>410</y>
+      <x>370</x>
+      <y>430</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -1020,8 +1020,8 @@
    <widget class="QPushButton" name="bt_already">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>450</y>
+      <x>330</x>
+      <y>470</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -1035,6 +1035,77 @@
      <string>Already have an account</string>
     </property>
    </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>110</y>
+      <width>20</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>140</y>
+      <width>241</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 4);</string>
+    </property>
+    <property name="text">
+     <string>Finally, choose your account type
+to complete registration!</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb_admin">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>220</y>
+      <width>151</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Administrator Account</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb_local">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>260</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Local Account</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
@@ -1042,7 +1113,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>511</width>
+     <width>805</width>
      <height>21</height>
     </rect>
    </property>
