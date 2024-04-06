@@ -244,11 +244,11 @@ class SignInPage(QMainWindow, QWidget):
         password = self.le_password.text()
 
         if not email:
-            msg_box.setText("Vui lòng nhập email hoặc số điện thoại!")
+            msg_box.setText("Please enter email or phone number!")
             msg_box.exec()
             return
         if not password:
-            msg_box.setText("Vui lòng nhập mật khẩu!")
+            msg_box.setText("Please enter a password!")
             msg_box.exec()
             return
         if email == "admin@gmail.com" and password == "admin":
@@ -259,13 +259,13 @@ class SignInPage(QMainWindow, QWidget):
             msg_box.exec()
             return
         elif '@' in email:
-            msg_box.setText("Standard Account")
-            msg_box.exec()
+            msg_box1.setText("Welcome to Note for WOW! Application!")
+            msg_box1.exec()
             MainNote.show()
             self.close()
             return
         else:
-            msg_box.setText("Email hoặc mật khẩu không đúng!")
+            msg_box.setText("Email or password is incorrect!")
             msg_box.exec()
 
 class SignUpPage(QMainWindow, QWidget):
@@ -284,14 +284,15 @@ class SignUpPage(QMainWindow, QWidget):
         
 
         if not email: 
-            msg_box.setText("Vui lòng nhập email hoặc số điện thoại!")
+            msg_box.setText("Please enter email or phone number!")
             msg_box.exec()
+            return
         elif '@' not in email:
             msg_box.setText("Email invalidate!")
             msg_box.exec()
             return
         if not password:
-            msg_box.setText("Vui lòng nhập mật khẩu!")
+            msg_box.setText("Please enter a password!")
             msg_box.exec()
             return
         elif len(password) < 8:
@@ -299,23 +300,24 @@ class SignUpPage(QMainWindow, QWidget):
             msg_box.exec()
             return
         if not self.name:
-            msg_box.setText("Vui lòng nhập tên!")
+            msg_box.setText("Please enter a name!")
             msg_box.exec()
             return
-        if not self.cb_day.currentIndex():
-            msg_box.setText("Please check and select your date of birth!")
-            msg_box.exec()
-            return
+        if not self.chb_skip.isChecked():
+            if not self.cb_day.currentIndex():
+                msg_box.setText("Please check and select your date of birth!")
+                msg_box.exec()
+                return
 
-        elif not self.cb_month.currentIndex():
-            msg_box.setText("Please check and select your date of birth!")
-            msg_box.exec()
-            return
+            elif not self.cb_month.currentIndex():
+                msg_box.setText("Please check and select your date of birth!")
+                msg_box.exec()
+                return
 
-        elif not self.cb_year.currentIndex():
-            msg_box.setText("Please check and select your date of birth!")
-            msg_box.exec()
-            return
+            elif not self.cb_year.currentIndex():
+                msg_box.setText("Please check and select your date of birth!")
+                msg_box.exec()
+                return
 
         if not self.chb_agree.isChecked():
             msg_box.setText("Please agree to the terms of this Application!")
@@ -330,19 +332,19 @@ class SignUpPage(QMainWindow, QWidget):
             return
 
         if self.rb_local.isChecked():
-            msg_box1.setText("Hello, Administrator!")
+            msg_box1.setText("Welcome to Note for WOW! Application!")
             msg_box1.exec()
             MainNote.show()
             self.close()
             return
         
         elif not self.rb_admin.isChecked():
-            msg_box.setText("ERROR 404!")
+            msg_box.setText("ERROR 404!\nYOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!")
             msg_box.exec()
             return
         
         elif not self.rb_local.isChecked():
-            msg_box.setText("ERROR 404!")
+            msg_box.setText("ERROR 404!\nYOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!")
             msg_box.exec()
             return
 
