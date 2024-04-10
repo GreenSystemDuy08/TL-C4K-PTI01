@@ -1,4 +1,6 @@
 import sys
+from tkinter import *
+import csv
 from PyQt6.QtWidgets import QMainWindow, QApplication, QMessageBox , QWidget
 from PyQt6 import uic
 
@@ -172,14 +174,40 @@ class DetailPage2(QMainWindow, QWidget):
         self.close()
 
 
-class Setup1(QMainWindow, QWidget):
+class Setup1Page(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/setup1.ui", self)
         self.bt_next.clicked.connect(self.showSetup2)
+        self.bt_browse.clicked.connect(self.browsecsv)
+        # self.bt_browse.clicked.connect(self.showBrowse)
     def showSetup2(self):
         Setup2.show()
         self.close()
+    # def showBrowse(self):
+    #     msg_box.setText("ERROR! Browse not found!")
+    #     msg_box.exec()
+    def browsecsv(self):
+        from tkinter import Tk
+        from tkinter.filedialog import askopenfilename
+
+        # Hide the main Tkinter window
+        Tk().withdraw()
+
+        # Ask the user to select a file
+        filename = askopenfilename()
+
+        # Process the selected file (you can modify this part)
+        with open(filename, 'rb') as csvfile:
+            logreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            rownum = 0
+            for row in logreader:
+                NumColumns = len(row)
+                rownum += 1
+                Matrix = [[0 for x in range(NumColumns)] for x in range(rownum)]
+
+        csvfile.close()
+        Setup1.show()
 
 class Setup2Page(QMainWindow, QWidget):
     def __init__(self):
@@ -351,7 +379,8 @@ class SignUpPage(QMainWindow, QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    MainPage = Setup1()
+    MainPage = Setup1Page()
+    Setup1 = Setup1Page()
     MainPage.show()
     AdminTool = AdminPage()
     MainNote = MainNotePage()

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>742</width>
-    <height>441</height>
+    <height>439</height>
    </rect>
   </property>
   <property name="cursor">
@@ -283,8 +283,12 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">color: rgb(85, 0, 255);
+border-radius: 15px;</string>
     </property>
     <property name="text">
      <string>Register</string>
