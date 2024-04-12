@@ -393,7 +393,7 @@ Notes pages</string>
      <string>Change settings for this app</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="chb_enable_2">
+   <widget class="QCheckBox" name="chb_detail">
     <property name="geometry">
      <rect>
       <x>280</x>
@@ -723,7 +723,7 @@ Notes pages</string>
    <zorder>label_6</zorder>
    <zorder>chb_read</zorder>
    <zorder>chb_enable</zorder>
-   <zorder>chb_enable_2</zorder>
+   <zorder>chb_detail</zorder>
    <zorder>fontComboBox</zorder>
    <zorder>label_9</zorder>
    <zorder>label_10</zorder>

@@ -1,4 +1,4 @@
-App Note
+App Note for WOW!
 Announcing Note for WOW! April Test Release:
 Chức năng:
 	+ Note lại mọi thứ
@@ -7,9 +7,13 @@ Chức năng:
 	+ Có thể điều chỉnh chi tiết phần ghi chú (Admin)
 	+ Đã có Setting (Admin)
 	+ Mục đăng ký có đăng ký tài khoản admin hoặc bình thường
+	+ Đã thêm chức năng Browse khi cài đặt 
 	+ ...
 Chưa làm được:
 	+ Chưa lưu được những gì đã note
 	+ Chưa lược tên tiêu đề của trang note
 	+ Phần setting chưa hoạt động
+	+ Chưa làm được các Tiếng có trong lựa chọn phần cài đặt
 	+ ...
+Lỗi:
+	+ Chức năng browse bị lỗi khi bấm nút "Cancel"

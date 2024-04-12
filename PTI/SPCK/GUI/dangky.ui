@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>805</width>
-    <height>640</height>
+    <height>632</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -427,9 +427,9 @@
    <widget class="QComboBox" name="cb_year">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>290</x>
       <y>390</y>
-      <width>91</width>
+      <width>101</width>
       <height>31</height>
      </rect>
     </property>

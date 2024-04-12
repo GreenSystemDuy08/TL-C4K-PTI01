@@ -1,7 +1,6 @@
 import sys
 from tkinter import *
-import csv
-from PyQt6.QtWidgets import QMainWindow, QApplication, QMessageBox , QWidget
+from PyQt6.QtWidgets import QMainWindow, QApplication, QMessageBox , QWidget, QFileDialog
 from PyQt6 import uic
 
 class MainNotePage(QMainWindow, QWidget):
@@ -31,7 +30,7 @@ class MainNotePage(QMainWindow, QWidget):
         name = self.le_name.text()
 
         if not name:
-            msg_box.setText("Please enter a title name!")
+            msg_box.setText("Please enter a title name before clicking Apply!")
             msg_box.exec()
             return
         else:
@@ -92,7 +91,7 @@ class AdminPage(QMainWindow, QWidget):
         name = self.le_name.text()
 
         if not name:
-            msg_box.setText("Please enter a title name!")
+            msg_box.setText("Please enter a title name before clicking Apply!")
             msg_box.exec()
             return
         else:
@@ -108,6 +107,14 @@ class SettingPage(QMainWindow, QWidget):
         self.bt_reset.clicked.connect(self.showCautionReset)
         self.bt_delete.clicked.connect(self.showCautionDelete)
     def back(self):
+        if self.chb_enable.isChecked():
+            msg_box.setText("ERROR: This feature is not currently available or being tested!\nThis Program will not enable this feature")
+            msg_box.exec()
+        
+        if self.chb_detail.isChecked():
+            msg_box.setText("ERROR: This feature is not currently available or being tested!\nThis Program will not enable this feature")
+            msg_box.exec()
+        
         AdminTool.show()
         self.close()
     def showCautionDelete(self):
@@ -188,26 +195,11 @@ class Setup1Page(QMainWindow, QWidget):
     #     msg_box.setText("ERROR! Browse not found!")
     #     msg_box.exec()
     def browsecsv(self):
-        from tkinter import Tk
-        from tkinter.filedialog import askopenfilename
-
-        # Hide the main Tkinter window
-        Tk().withdraw()
-
-        # Ask the user to select a file
-        filename = askopenfilename()
-
-        # Process the selected file (you can modify this part)
-        with open(filename, 'rb') as csvfile:
-            logreader = csv.reader(csvfile, delimiter=',', quotechar='|')
-            rownum = 0
-            for row in logreader:
-                NumColumns = len(row)
-                rownum += 1
-                Matrix = [[0 for x in range(NumColumns)] for x in range(rownum)]
-
-        csvfile.close()
-        Setup1.show()
+        folder_path = QFileDialog.getExistingDirectory(self, "Select Folder")
+        if folder_path:
+            self.lineEdit.setText(folder_path)
+        else:
+            pass
 
 class Setup2Page(QMainWindow, QWidget):
     def __init__(self):
