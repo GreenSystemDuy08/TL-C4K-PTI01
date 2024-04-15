@@ -9,14 +9,14 @@ class Homework:
             print("--------------------------------------------------")
     def all_finished():
         for Homework in Homeworks:
-            if Homework.completed == "Chưa hoàn thành":
+            if Homework.completed == "Chưa hoàn thành" or "chưa hoàn thành":
                 print("Bài tập chưa hoàn thành:", Homework.name)
 
 Homework1 = Homework("Lập trình App Producer", "Cao", "Chưa hoàn thành")
 Homework2 = Homework("Làm văn", "Trung bình", "Đã hoàn thành")
 Homework3 = Homework("Lập trình GameMaker", "Thấp", "Chưa hoàn thành")
 Homeworks = [Homework1, Homework2, Homework3]
-Homework4 = Homework("Làm toán", "Trung Bình", "Đã hoàn thành")
+Homework4 = Homework("Làm toán", "Trung Bình", "Chưa hoàn thành")
 Homeworks.append(Homework4)
 
 Homework.duyet_phan_tu()
