@@ -11,19 +11,15 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Note for WOW! Setup</string>
-  </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>../Material/3cc089d557f24e431b1cd45ab88d2f1f86d7d2615157b96a7f61c37ec7b25663_100.webp</normaloff>../Material/3cc089d557f24e431b1cd45ab88d2f1f86d7d2615157b96a7f61c37ec7b25663_100.webp</iconset>
+   <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>130</y>
-      <width>141</width>
+      <x>60</x>
+      <y>40</y>
+      <width>411</width>
       <height>31</height>
      </rect>
     </property>
@@ -33,32 +29,14 @@
      </font>
     </property>
     <property name="text">
-     <string>Thank You!</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="bt_install">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>240</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Install now!</string>
+     <string>             Note for WOW!</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>60</y>
+      <x>390</x>
+      <y>20</y>
       <width>51</width>
       <height>51</height>
      </rect>
@@ -73,13 +51,13 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>180</y>
-      <width>401</width>
-      <height>16</height>
+      <x>170</x>
+      <y>20</y>
+      <width>71</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
@@ -88,14 +66,68 @@
      </font>
     </property>
     <property name="text">
-     <string>After you click &quot;Install now!&quot;, Note for WOW! application will be installed</string>
+     <string>Welcome to</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="bt_back">
+   <widget class="QRadioButton" name="rb_portable">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>290</y>
+      <x>150</x>
+      <y>190</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Portable Mode</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb_install">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>230</y>
+      <width>281</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Installation mode</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>130</y>
+      <width>301</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Choose the program's installation type:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_next">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>340</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -106,7 +138,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Back</string>
+     <string>Next</string>
     </property>
    </widget>
   </widget>
