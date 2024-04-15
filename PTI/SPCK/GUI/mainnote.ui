@@ -271,7 +271,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>Finall April Test Release</string>
+     <string>Final April Test Release</string>
     </property>
    </widget>
    <widget class="Line" name="line_2">
