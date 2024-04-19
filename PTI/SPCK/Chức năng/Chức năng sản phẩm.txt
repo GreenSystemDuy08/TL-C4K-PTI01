@@ -1,5 +1,5 @@
 App Note for WOW!
-Announcing Note for WOW! Final April Test Release:
+Announcing Note for WOW! First Public RTM Release:
 Chức năng:
 	+ Note lại mọi thứ
 	+ Đăng nhập, đăng ký (hoặc không cần)
@@ -10,6 +10,7 @@ Chức năng:
 	+ Đã thêm chức năng Browse khi cài đặt 
 	+ Có phần chỉnh font ở giao diện Local Account
 	+ Có phần Portable Mode - không cần cài đặt
+	+ Có phần "Forgot your Password"
 	+ ...
 Chưa làm được:
 	+ Chưa lưu được những gì đã note
@@ -17,6 +18,7 @@ Chưa làm được:
 	+ Phần setting chưa hoạt động
 	+ Chưa làm được các thứ Tiếng có trong lựa chọn phần cài đặt
 	+ Phần chỉnh font chưa hoạt động (Phần setting + Loacal Account)
+	+ "Forgot your Password" chưa lưu được mật khẩu mới
 	+ ...
 Lỗi:
 	+ Chưa có lỗi được tìm thấy (N/A)

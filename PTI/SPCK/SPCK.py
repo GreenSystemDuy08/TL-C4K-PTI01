@@ -145,9 +145,13 @@ class SignInPage(QMainWindow, QWidget):
         self.bt_login.clicked.connect(self.checkLogin)
         self.bt_register.clicked.connect(self.showSignUp)
         self.bt_continue.clicked.connect(self.showMainPage)
+        self.bt_forgot.clicked.connect(self.showForgotPass)
+    def showForgotPass(self):
+        forgotPass.show()
     def showMainPage(self):
         msg_box1.setText("Going forward, sign in if you want more features!")
         msg_box1.exec()
+        # QMessageBox.warning(self, 'Warning', 'Going forward, sign in if you want more features!')
         MainNote.show()
         self.close()
     def showSignUp(self):
@@ -184,6 +188,57 @@ class SignInPage(QMainWindow, QWidget):
             msg_box.setText("Email or password is incorrect!")
             msg_box.exec()
 
+class forgotPassword1(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/forgotPassword1.ui", self)
+        self.bt_next.clicked.connect(self.showforgotPass2)
+    def showforgotPass2(self):
+        email = self.le_email.text()
+        if not email: 
+            msg_box.setText("Please enter email or phone number!")
+            msg_box.exec()
+            return
+        
+        elif '@' not in email:
+            msg_box.setText("Invalid email!")
+            msg_box.exec()
+            return
+        elif email == "admin@gmail.com":
+            msg_box.setText("ERROR: This account is built into the System.\nYou cannot change the password for this account!")
+            msg_box.exec()
+            return
+        
+        forgotPass2.show()
+        self.close()
+
+class forgotPassword2(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/forgotPassword.ui", self)
+        self.bt_ok.clicked.connect(self.Close)
+    def Close(self):
+        new = self.le_new.text()
+        re_enter = self.le_re_enter.text()
+        if not new:
+            msg_box.setText("Please enter your new password!")
+            msg_box.exec()
+            return
+        elif not re_enter:
+            msg_box.setText("Please re-enter your new password!")
+            msg_box.exec()
+            return
+        elif len(new) < 8 or len(re_enter) < 8:
+            msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
+            msg_box.exec()
+            return
+        
+
+        msg_box1.setText("Your new password has been set successfully!")
+        msg_box1.exec()
+        self.close()
+        return
+
 class SignUpPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
@@ -204,13 +259,18 @@ class SignUpPage(QMainWindow, QWidget):
             msg_box.exec()
             return
         elif '@' not in email:
-            msg_box.setText("Email invalidate!")
+            msg_box.setText("Invalid email!")
             msg_box.exec()
             return
+
         if not password:
             msg_box.setText("Please enter a password!")
             msg_box.exec()
             return
+        
+        elif password == "admin":
+            pass
+
         elif len(password) < 8:
             msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
             msg_box.exec()
@@ -221,17 +281,17 @@ class SignUpPage(QMainWindow, QWidget):
             return
         if not self.chb_skip.isChecked():
             if not self.cb_day.currentIndex():
-                msg_box.setText("Please check and select your date of birth!")
+                msg_box.setText("Please select your date of birth\nOr check the box 'Skip choosing your date of birth'")
                 msg_box.exec()
                 return
 
             elif not self.cb_month.currentIndex():
-                msg_box.setText("Please check and select your date of birth!")
+                msg_box.setText("Please select your date of birth\nOr check the box 'Skip choosing your date of birth'")
                 msg_box.exec()
                 return
 
             elif not self.cb_year.currentIndex():
-                msg_box.setText("Please check and select your date of birth!")
+                msg_box.setText("Please select your date of birth\nOr check the box 'Skip choosing your date of birth'")
                 msg_box.exec()
                 return
 
@@ -254,13 +314,20 @@ class SignUpPage(QMainWindow, QWidget):
             self.close()
             return
         
+        elif email == "admin@gmail.com" and password == "admin":
+            msg_box1.setText("Hello, Administrator!")
+            msg_box1.exec()
+            AdminTool.show()
+            self.close()
+            return
+        
         elif not self.rb_admin.isChecked():
-            msg_box.setText("ERROR 404!\nYOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!")
+            msg_box.setText("ERROR 404!\nYOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!\nNote: Exception admin account!")
             msg_box.exec()
             return
         
         elif not self.rb_local.isChecked():
-            msg_box.setText("ERROR 404!\nYOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!")
+            msg_box.setText("ERROR 404!\nYOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!\nNote: Exception admin account!")
             msg_box.exec()
             return
 
@@ -472,6 +539,8 @@ if __name__ == '__main__':
     Setup3 = Setup3Page()
     SetupFinish = SetupFinishPage()
     SignIn = SignInPage()
+    forgotPass = forgotPassword1()
+    forgotPass2 = forgotPassword2()
     SignUp = SignUpPage()
     EditNote1 = EditNote1Page()
     EditNote2 = EditNote2Page()
