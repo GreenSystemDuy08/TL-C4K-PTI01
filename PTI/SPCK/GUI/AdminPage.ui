@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1007</width>
-    <height>639</height>
+    <height>641</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -214,9 +214,9 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>130</x>
       <y>150</y>
-      <width>151</width>
+      <width>181</width>
       <height>21</height>
      </rect>
     </property>
@@ -226,7 +226,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>First Public RTM Release</string>
+     <string>Beta Test Release - Build 2504</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -280,26 +280,13 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>860</x>
-      <y>80</y>
+      <y>100</y>
       <width>81</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Apply</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="bt_cancel">
-    <property name="geometry">
-     <rect>
-      <x>860</x>
-      <y>120</y>
-      <width>81</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Cancel</string>
     </property>
    </widget>
    <widget class="QPushButton" name="bt_add">
@@ -385,7 +372,6 @@ p, li { white-space: pre-wrap; }
    <zorder>label_4</zorder>
    <zorder>le_name</zorder>
    <zorder>bt_apply</zorder>
-   <zorder>bt_cancel</zorder>
    <zorder>bt_add</zorder>
    <zorder>label_5</zorder>
    <zorder>line_3</zorder>

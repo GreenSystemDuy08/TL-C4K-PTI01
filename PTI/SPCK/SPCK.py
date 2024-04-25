@@ -10,7 +10,7 @@ class SetupPage(QMainWindow, QWidget):
         self.bt_next.clicked.connect(self.check)
     def check(self):
         if self.rb_portable.isChecked():
-            Setup2_2.show()
+            Finish.show()
             self.close()
             return
         
@@ -29,33 +29,6 @@ class SetupPage(QMainWindow, QWidget):
             msg_box.exec()
             return
 
-class Setup2_2Page(QMainWindow, QWidget):
-    def __init__(self):
-        super().__init__()
-        uic.loadUi("GUI/setup2.ui", self)
-        self.bt_next.clicked.connect(self.showSetup3)
-        self.bt_back.clicked.connect(self.back)
-    def back(self):
-        Setup.show()
-        self.close()
-    def showSetup3(self):
-        if not self.cb_language.currentIndex():
-            msg_box.setText("Please check and select the program language!")
-            msg_box.exec()
-            return
-
-        elif not self.cb_edition.currentIndex():
-            msg_box.setText("Please check and select this app edtion!")
-            msg_box.exec()
-            return
-
-        if not self.chb_accept.isChecked():
-            msg_box.setText("Please agree to the terms of this Application!")
-            msg_box.exec()
-        if self.chb_accept.isChecked():
-            Finish.show()
-            self.close()
-
 class FinishPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
@@ -63,7 +36,7 @@ class FinishPage(QMainWindow, QWidget):
         self.bt_finish.clicked.connect(self.showSignIn)
         self.bt_back.clicked.connect(self.back)
     def back(self):
-        Setup2_2.show()
+        Setup.show()
         self.close()
     def showSignIn(self):
         SignIn.show()
@@ -142,10 +115,24 @@ class SignInPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/dangnhap.ui", self)
-        self.bt_login.clicked.connect(self.checkLogin)
+        self.bt_google.clicked.connect(self.showGoogle)
+        self.bt_outlook.clicked.connect(self.showOutlook)
+        self.bt_apple.clicked.connect(self.showApple)
+        self.bt_microsoft.clicked.connect(self.showMicrosoft)
+        self.bt_admin.clicked.connect(self.showAdmin)
         self.bt_register.clicked.connect(self.showSignUp)
         self.bt_continue.clicked.connect(self.showMainPage)
         self.bt_forgot.clicked.connect(self.showForgotPass)
+    def showAdmin(self):
+        Admin.show()
+    def showMicrosoft(self):
+        Microsoft.show()
+    def showApple(self):
+        Apple.show()
+    def showOutlook(self):
+        Outlook.show()
+    def showGoogle(self):
+        Google.show()
     def showForgotPass(self):
         forgotPass.show()
     def showMainPage(self):
@@ -159,7 +146,13 @@ class SignInPage(QMainWindow, QWidget):
         self.close()
     def quit(self):
         self.close()
-    def checkLogin(self):
+
+class AdminSignInPage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/admin.ui", self)
+        self.bt_login.clicked.connect(self.showMainPage)
+    def showMainPage(self):
         email = self.le_email.text()
         password = self.le_password.text()
 
@@ -172,21 +165,168 @@ class SignInPage(QMainWindow, QWidget):
             msg_box.exec()
             return
         if email == "admin@gmail.com" and password == "admin":
-            self.close()
+            msg_box1.setText("Hello, Administrator!")
+            msg_box1.exec()
             AdminTool.show()
+            self.close()
+            SignIn.close()
+            return
+        elif not password == "admin":
+            msg_box.setText("Wrong password for admin account!")
+            msg_box.exec()
+            return
+        else:
+            msg_box.setText("Invalid email!")
+            msg_box.exec()
+            return
+
+class GoogleSignInPage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/google.ui", self)
+        self.bt_login.clicked.connect(self.showMainPage)
+    def showMainPage(self):
+        email = self.le_email.text()
+        password = self.le_password.text()
+
+        if not email:
+            msg_box.setText("Please enter email or phone number!")
+            msg_box.exec()
+            return
+        elif email == "admin@gmail.com":
+            msg_box.setText("Admin account does not support normal account login form!")
+            msg_box.exec()
+            return
+        if not password:
+            msg_box.setText("Please enter a password!")
+            msg_box.exec()
+            return
         elif len(password) < 8:
             msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
             msg_box.exec()
             return
-        elif '@' in email:
+        if '@gmail.com' in email:
             msg_box1.setText("Welcome to Note for WOW! Application!")
             msg_box1.exec()
             MainNote.show()
             self.close()
+            SignIn.close()
             return
-        else:
-            msg_box.setText("Email or password is incorrect!")
+        elif "@gmail.com" not in email:
+            msg_box.setText("Invalid email!")
             msg_box.exec()
+            return
+        
+class AppleSignInPage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/apple.ui", self)
+        self.bt_login.clicked.connect(self.showMainPage)
+    def showMainPage(self):
+        email = self.le_email.text()
+        password = self.le_password.text()
+
+        if not email:
+            msg_box.setText("Please enter email or phone number!")
+            msg_box.exec()
+            return
+        elif email == "admin@gmail.com":
+            msg_box.setText("Admin account does not support normal account login form!")
+            msg_box.exec()
+            return
+        if not password:
+            msg_box.setText("Please enter a password!")
+            msg_box.exec()
+            return
+        elif len(password) < 8:
+            msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
+            msg_box.exec()
+            return
+        if '@apple.com' in email:
+            msg_box1.setText("Welcome to Note for WOW! Application!")
+            msg_box1.exec()
+            MainNote.show()
+            self.close()
+            SignIn.close()
+            return
+        elif "@apple.com" not in email:
+            msg_box.setText("Invalid email!")
+            msg_box.exec()
+            return
+
+class MicrosoftSignInPage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/microsoft.ui", self)
+        self.bt_login.clicked.connect(self.showMainPage)
+    def showMainPage(self):
+        email = self.le_email.text()
+        password = self.le_password.text()
+
+        if not email:
+            msg_box.setText("Please enter email or phone number!")
+            msg_box.exec()
+            return
+        elif email == "admin@gmail.com":
+            msg_box.setText("Admin account does not support normal account login form!")
+            msg_box.exec()
+            return
+        if not password:
+            msg_box.setText("Please enter a password!")
+            msg_box.exec()
+            return
+        elif len(password) < 8:
+            msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
+            msg_box.exec()
+            return
+        if '@microsoft.com' in email:
+            msg_box1.setText("Welcome to Note for WOW! Application!")
+            msg_box1.exec()
+            MainNote.show()
+            self.close()
+            SignIn.close()
+            return
+        elif "@microsoft.com" not in email:
+            msg_box.setText("Invalid email!")
+            msg_box.exec()
+            return
+
+class OutlookSignInPage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/outlook.ui", self)
+        self.bt_login.clicked.connect(self.showMainPage)
+    def showMainPage(self):
+        email = self.le_email.text()
+        password = self.le_password.text()
+
+        if not email:
+            msg_box.setText("Please enter email or phone number!")
+            msg_box.exec()
+            return
+        elif email == "admin@gmail.com":
+            msg_box.setText("Admin account does not support normal account login form!")
+            msg_box.exec()
+            return
+        if not password:
+            msg_box.setText("Please enter a password!")
+            msg_box.exec()
+            return
+        elif len(password) < 8:
+            msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
+            msg_box.exec()
+            return
+        if '@outlook.com' in email:
+            msg_box1.setText("Welcome to Note for WOW! Application!")
+            msg_box1.exec()
+            MainNote.show()
+            self.close()
+            SignIn.close()
+            return
+        elif "@outlook.com" not in email:
+            msg_box.setText("Invalid email!")
+            msg_box.exec()
+            return
 
 class forgotPassword1(QMainWindow, QWidget):
     def __init__(self):
@@ -232,11 +372,14 @@ class forgotPassword2(QMainWindow, QWidget):
             msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
             msg_box.exec()
             return
+        elif not new == re_enter:
+            msg_box.setText("Please re-enter your new password! Your new password and your new re-enter password do not match!")
+            msg_box.exec()
+            return
         
-
+        self.close()
         msg_box1.setText("Your new password has been set successfully!")
         msg_box1.exec()
-        self.close()
         return
 
 class SignUpPage(QMainWindow, QWidget):
@@ -337,7 +480,7 @@ class MainNotePage(QMainWindow, QWidget):
         uic.loadUi("GUI/mainnote.ui", self)
         self.bt_edit1.clicked.connect(self.showEditNote1)
         self.bt_edit2.clicked.connect(self.showEditNote2)
-        self.bt_add.clicked.connect(self.showCaution)
+        self.bt_add.clicked.connect(self.showCreateNote)
         self.bt_quit.clicked.connect(self.Close)
         self.bt_save.clicked.connect(self.showSignIn)
         self.bt_apply.clicked.connect(self.checkName)
@@ -350,10 +493,8 @@ class MainNotePage(QMainWindow, QWidget):
         self.close()
     def Close(self):
         self.close()
-    def showCaution(self):
-        msg_box1.setText("The notes page has been added successfully!")
-        msg_box1.exec()
-        return
+    def showCreateNote(self):
+        Create.show()
     def showEditNote1(self):
         EditNote1.show()
     def showEditNote2(self):
@@ -369,6 +510,34 @@ class MainNotePage(QMainWindow, QWidget):
             msg_box1.setText("Apply title name successfully!")
             msg_box1.exec()
             return
+        
+class CreatePage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/create.ui", self)
+        self.bt_close.clicked.connect(self.check)
+    def check(self):
+        title = self.le_title.text()
+        name = self.le_name.text()
+        if not title: 
+            msg_box.setText("Please enter a title name!")
+            msg_box.exec()
+            return
+        
+        elif not name:
+            msg_box.setText("Please enter a Note name!")
+            msg_box.exec()
+            return
+        
+        if not self.cb_type.currentIndex():
+            msg_box.setText("Please select the type of Note you want to create!")
+            msg_box.exec()
+            return
+        
+        self.close()
+        msg_box1.setText("The notes page has been added successfully!")
+        msg_box1.exec()
+        return
         
 class FontPage(QMainWindow, QWidget):
     def __init__(self):
@@ -399,7 +568,7 @@ class AdminPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/AdminPage.ui", self)
-        self.bt_add.clicked.connect(self.showCaution)
+        self.bt_add.clicked.connect(self.showCreateNote)
         self.bt_save.clicked.connect(self.showSignIn)
         self.bt_exit.clicked.connect(self.showSignIn)
         self.bt_tool1.clicked.connect(self.showTool1)
@@ -408,10 +577,8 @@ class AdminPage(QMainWindow, QWidget):
         self.bt_edit2.clicked.connect(self.showEditNote2)
         self.bt_setting.clicked.connect(self.showSetting)
         self.bt_apply.clicked.connect(self.checkName)
-    def showCaution(self):
-        msg_box1.setText("The notes page has been added successfully!")
-        msg_box1.exec()
-        return
+    def showCreateNote(self):
+        Create.show()
     def showTool1(self):
         Tool1.show()
         self.close()
@@ -447,6 +614,9 @@ class SettingPage(QMainWindow, QWidget):
         self.bt_save.clicked.connect(self.back)
         self.bt_reset.clicked.connect(self.showCautionReset)
         self.bt_delete.clicked.connect(self.showCautionDelete)
+        self.bt_about.clicked.connect(self.showAbout)
+    def showAbout(self):
+        About.show()
     def back(self):
         if self.chb_enable.isChecked():
             msg_box.setText("ERROR: This feature is not currently available or being tested!\nThis Program will not enable this feature")
@@ -468,6 +638,14 @@ class SettingPage(QMainWindow, QWidget):
         msg_box1.setText("Everything has been reset to factory defaults!")
         msg_box1.exec()
         return
+    
+class AboutPage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/about.ui", self)
+        self.bt_ok.clicked.connect(self.Close)
+    def Close(self):
+        self.close()
 
 class Tool1Page(QMainWindow, QWidget):
     def __init__(self):
@@ -534,11 +712,16 @@ if __name__ == '__main__':
     AdminTool = AdminPage()
     MainNote = MainNotePage()
     Font = FontPage()
-    Setup2_2 = Setup2_2Page()
+    Create = CreatePage()
     Setup2 = Setup2Page()
     Setup3 = Setup3Page()
     SetupFinish = SetupFinishPage()
     SignIn = SignInPage()
+    Admin = AdminSignInPage()
+    Google = GoogleSignInPage()
+    Apple = AppleSignInPage()
+    Microsoft = MicrosoftSignInPage()
+    Outlook = OutlookSignInPage()
     forgotPass = forgotPassword1()
     forgotPass2 = forgotPassword2()
     SignUp = SignUpPage()
@@ -549,6 +732,7 @@ if __name__ == '__main__':
     NoteDetail1 = DetailPage1()
     NoteDetail2 = DetailPage2()
     Setting = SettingPage()
+    About = AboutPage()
     msg_box = QMessageBox()
     msg_box1 = QMessageBox()
     msg_box1.setWindowTitle("Note for WOW! Notification")

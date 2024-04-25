@@ -20,15 +20,15 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>70</x>
       <y>70</y>
-      <width>401</width>
+      <width>381</width>
       <height>111</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>22</pointsize>
+      <pointsize>20</pointsize>
      </font>
     </property>
     <property name="text">
@@ -38,7 +38,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>170</x>
       <y>90</y>
       <width>91</width>
       <height>21</height>
@@ -182,26 +182,13 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>830</x>
-      <y>100</y>
+      <y>120</y>
       <width>81</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Apply</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="bt_cancel">
-    <property name="geometry">
-     <rect>
-      <x>830</x>
-      <y>140</y>
-      <width>81</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Cancel</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -254,24 +241,6 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>Save change</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>140</y>
-      <width>151</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>First Public RTM Release</string>
     </property>
    </widget>
    <widget class="Line" name="line_2">
@@ -331,6 +300,25 @@ p, li { white-space: pre-wrap; }
      <string>Font</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>140</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Beta Test Release
+      Build 2504</string>
+    </property>
+   </widget>
    <zorder>line_2</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
@@ -342,14 +330,13 @@ p, li { white-space: pre-wrap; }
    <zorder>bt_add</zorder>
    <zorder>graphicsView</zorder>
    <zorder>bt_apply</zorder>
-   <zorder>bt_cancel</zorder>
    <zorder>label_4</zorder>
    <zorder>le_name</zorder>
    <zorder>bt_save</zorder>
-   <zorder>label_3</zorder>
    <zorder>line</zorder>
    <zorder>line_3</zorder>
    <zorder>bt_font</zorder>
+   <zorder>label_3</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

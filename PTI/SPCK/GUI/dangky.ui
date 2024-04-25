@@ -72,7 +72,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="placeholderText">
-     <string>Nhập tài khoản/số điện thoại của bạn vào đây!</string>
+     <string>Enter your account/phone number here!</string>
     </property>
    </widget>
    <widget class="QLabel" name="lb_password">
@@ -112,7 +112,7 @@
      <enum>QLineEdit::Password</enum>
     </property>
     <property name="placeholderText">
-     <string>Nhập mật khẩu của bạn vào đây!</string>
+     <string>Enter your password here!</string>
     </property>
    </widget>
    <widget class="QLabel" name="lb_fullname">
@@ -149,7 +149,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="placeholderText">
-     <string>Tên hiển thị của bạn</string>
+     <string>Your display name </string>
     </property>
    </widget>
    <widget class="QLabel" name="lb_date">
@@ -181,6 +181,11 @@
       <width>101</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -259,6 +264,11 @@
       <width>101</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -432,6 +442,11 @@
       <width>101</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);</string>

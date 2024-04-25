@@ -1,5 +1,5 @@
 App Note for WOW!
-Announcing Note for WOW! First Public RTM Release:
+Announcing Note for WOW! Beta Release Build 2504:
 Chức năng:
 	+ Note lại mọi thứ
 	+ Đăng nhập, đăng ký (hoặc không cần)
@@ -11,6 +11,7 @@ Chức năng:
 	+ Có phần chỉnh font ở giao diện Local Account
 	+ Có phần Portable Mode - không cần cài đặt
 	+ Có phần "Forgot your Password"
+	+ Có mục đăng nhập với từng loại tài khoản
 	+ ...
 Chưa làm được:
 	+ Chưa lưu được những gì đã note
