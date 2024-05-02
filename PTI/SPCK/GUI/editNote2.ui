@@ -74,7 +74,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Consolas</family>
+      <family>Tahoma</family>
       <pointsize>15</pointsize>
      </font>
     </property>

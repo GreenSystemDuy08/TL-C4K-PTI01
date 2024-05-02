@@ -431,7 +431,7 @@ Notes pages</string>
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="currentText">
-     <string>Consolas</string>
+     <string>Tahoma</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">

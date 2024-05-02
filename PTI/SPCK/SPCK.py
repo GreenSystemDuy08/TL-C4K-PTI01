@@ -1,6 +1,5 @@
 import sys
-from tkinter import *
-from PyQt6.QtWidgets import QMainWindow, QApplication, QMessageBox , QWidget, QFileDialog
+from PyQt6.QtWidgets import *
 from PyQt6 import uic
 
 class SetupPage(QMainWindow, QWidget):
@@ -142,7 +141,7 @@ class SignInPage(QMainWindow, QWidget):
         MainNote.show()
         self.close()
     def showSignUp(self):
-        SignUp.show()
+        SignUp2.show()
         self.close()
     def quit(self):
         self.close()
@@ -381,6 +380,30 @@ class forgotPassword2(QMainWindow, QWidget):
         msg_box1.setText("Your new password has been set successfully!")
         msg_box1.exec()
         return
+    
+class SignUpPage2(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/dangky2.ui", self)
+        self.bt_next.clicked.connect(self.check)
+    def check(self):
+        if self.rb_google.isChecked():
+            SignUp.show()
+            return
+        if self.rb_apple.isChecked():
+            SignUp.show()
+            return
+        if self.rb_microsoft.isChecked():
+            SignUp.show()
+            return
+        if self.rb_outlook.isChecked():
+            SignUp.show()
+            return
+        
+        else:
+            msg_box.setText("You have not chosen an account type to proceed to the next registration step!")
+            msg_box.exec()
+            return
 
 class SignUpPage(QMainWindow, QWidget):
     def __init__(self):
@@ -401,6 +424,62 @@ class SignUpPage(QMainWindow, QWidget):
             msg_box.setText("Please enter email or phone number!")
             msg_box.exec()
             return
+        if SignUp2.rb_google.isChecked():
+            if email == "admin@gmail.com" and password == "admin":
+                msg_box1.setText("Hello, Administrator!")
+                msg_box1.exec()
+                AdminTool.show()
+                self.close()
+                SignUp2.close()
+                return
+            elif "@gmail.com" in email:
+                pass
+            else:
+                msg_box.setText("ERROR! You have selected email type: @gmail.com\nThe email you entered is not the same as the account type you selected!")
+                msg_box.exec()
+                msg_box1.setText("Email Type: Example: @abc.com")
+                msg_box1.exec()
+                return
+        
+        if SignUp2.rb_apple.isChecked():
+            if "@apple.com" in email:
+                pass
+            else:
+                msg_box.setText("ERROR! You have selected email type: @apple.com\nThe email you entered is not the same as the account type you selected!")
+                msg_box.exec()
+                msg_box1.setText("Email Type: Example: @abc.com")
+                msg_box1.exec()
+                return
+
+        if SignUp2.rb_microsoft.isChecked():
+            if "@microsoft.com" in email:
+                pass
+
+            else:
+                msg_box.setText("ERROR! You have selected email type: @microsoft.com\nThe email you entered is not the same as the account type you selected!")
+                msg_box.exec()
+                msg_box1.setText("Email Type: Example: @abc.com")
+                msg_box1.exec()
+                return
+        
+        if SignUp2.rb_outlook.isChecked():
+            if "@outlook.com" in email:
+                pass
+
+            else:
+                msg_box.setText("ERROR! You have selected email type: @outlook.com\nThe email you entered is not the same as the account type you selected!")
+                msg_box.exec()
+                msg_box1.setText("Email Type: Example: @abc.com")
+                msg_box1.exec()
+                return
+        elif email == "admin@gmail.com" and password == "admin":
+            msg_box1.setText("Hello, Administrator!")
+            msg_box1.exec()
+            AdminTool.show()
+            SignUp2.close()
+            self.close()
+            return
+
         elif '@' not in email:
             msg_box.setText("Invalid email!")
             msg_box.exec()
@@ -447,6 +526,7 @@ class SignUpPage(QMainWindow, QWidget):
             msg_box1.setText("Hello, Administrator!")
             msg_box1.exec()
             AdminTool.show()
+            SignUp2.close()
             self.close()
             return
 
@@ -454,15 +534,8 @@ class SignUpPage(QMainWindow, QWidget):
             msg_box1.setText("Welcome to Note for WOW! Application!")
             msg_box1.exec()
             MainNote.show()
+            SignUp2.close()
             self.close()
-            return
-        
-        elif email == "admin@gmail.com" and password == "admin":
-            msg_box1.setText("Hello, Administrator!")
-            msg_box1.exec()
-            AdminTool.show()
-            self.close()
-            return
         
         elif not self.rb_admin.isChecked():
             msg_box.setText("ERROR 404!\nYOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!\nNote: Exception admin account!")
@@ -570,13 +643,15 @@ class AdminPage(QMainWindow, QWidget):
         uic.loadUi("GUI/AdminPage.ui", self)
         self.bt_add.clicked.connect(self.showCreateNote)
         self.bt_save.clicked.connect(self.showSignIn)
-        self.bt_exit.clicked.connect(self.showSignIn)
+        self.bt_exit.clicked.connect(self.Close)
         self.bt_tool1.clicked.connect(self.showTool1)
         self.bt_tool2.clicked.connect(self.showTool2)
         self.bt_edit1.clicked.connect(self.showEditNote1)
         self.bt_edit2.clicked.connect(self.showEditNote2)
         self.bt_setting.clicked.connect(self.showSetting)
         self.bt_apply.clicked.connect(self.checkName)
+    def Close(self):
+        self.close()
     def showCreateNote(self):
         Create.show()
     def showTool1(self):
@@ -725,6 +800,7 @@ if __name__ == '__main__':
     forgotPass = forgotPassword1()
     forgotPass2 = forgotPassword2()
     SignUp = SignUpPage()
+    SignUp2 = SignUpPage2()
     EditNote1 = EditNote1Page()
     EditNote2 = EditNote2Page()
     Tool1 = Tool1Page()
