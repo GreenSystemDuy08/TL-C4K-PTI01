@@ -1,19 +1,16 @@
 import sys
-from PyQt6.QtWidgets import QMainWindow, QApplication
+from PyQt6.QtWidgets import *
 from PyQt6 import uic
-
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super(MainWindow, self).__init__()
-        self.ui = uic.loadUi("listwidget.ui", self)
-
-        self.ls = ["Dog", "Cat", "Duck"]
-        self.ui.listWidget.addItems(self.ls)
-        self.show()
+from widgets.listwidget import listwidgets
+from widgets.add import add
+from widgets.update import update
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-
-    sys.exit(app.exec())
+    page_add = add()
+    page_update = update()
+    page_listwidget = listwidgets(page_add, page_update)
+    page_add.set_page(page_listwidget)
+    page_update.set_page(page_listwidget)
+    page_listwidget.show()
+    app.exec()
