@@ -88,7 +88,8 @@
      </font>
     </property>
     <property name="text">
-     <string>Version: Developer Test Release - Build 205</string>
+     <string>Version: Developer Test Release
+                  Build 305.1724</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">

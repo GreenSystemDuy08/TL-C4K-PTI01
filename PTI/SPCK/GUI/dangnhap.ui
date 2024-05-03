@@ -26,22 +26,22 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>270</x>
       <y>40</y>
       <width>331</width>
-      <height>51</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>30</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>Welcome Back!</string>
+     <string>Welcome back to</string>
     </property>
    </widget>
    <widget class="QPushButton" name="bt_google">
@@ -362,7 +362,27 @@ border-radius: 15px;</string>
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <zorder>label</zorder>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>50</y>
+      <width>331</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Note for WOW! Application</string>
+    </property>
+   </widget>
    <zorder>bt_google</zorder>
    <zorder>label_4</zorder>
    <zorder>label_7</zorder>
@@ -378,6 +398,8 @@ border-radius: 15px;</string>
    <zorder>bt_admin</zorder>
    <zorder>line_2</zorder>
    <zorder>line</zorder>
+   <zorder>label_3</zorder>
+   <zorder>label</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menuBar">

@@ -225,7 +225,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>Developer Test Release - Build 205</string>
+     <string>Developer Test Release - Build 305</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -288,7 +288,7 @@ p, li { white-space: pre-wrap; }
      <string>Apply</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="bt_add">
+   <widget class="QPushButton" name="bt_tool">
     <property name="geometry">
      <rect>
       <x>710</x>
@@ -303,7 +303,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>Add more Notes</string>
+     <string>Tools</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -371,7 +371,7 @@ p, li { white-space: pre-wrap; }
    <zorder>label_4</zorder>
    <zorder>le_name</zorder>
    <zorder>bt_apply</zorder>
-   <zorder>bt_add</zorder>
+   <zorder>bt_tool</zorder>
    <zorder>label_5</zorder>
    <zorder>line_3</zorder>
    <zorder>bt_setting</zorder>

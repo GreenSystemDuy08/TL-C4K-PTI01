@@ -282,7 +282,7 @@ p, li { white-space: pre-wrap; }
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="bt_font">
+   <widget class="QPushButton" name="bt_tool">
     <property name="geometry">
      <rect>
       <x>850</x>
@@ -297,7 +297,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>Font</string>
+     <string>Tools</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -316,7 +316,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>Developer Test Release
-         Build 205</string>
+         Build 305</string>
     </property>
    </widget>
    <zorder>line_2</zorder>
@@ -335,7 +335,7 @@ p, li { white-space: pre-wrap; }
    <zorder>bt_save</zorder>
    <zorder>line</zorder>
    <zorder>line_3</zorder>
-   <zorder>bt_font</zorder>
+   <zorder>bt_tool</zorder>
    <zorder>label_3</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

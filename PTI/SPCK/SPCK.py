@@ -135,9 +135,6 @@ class SignInPage(QMainWindow, QWidget):
     def showForgotPass(self):
         forgotPass.show()
     def showMainPage(self):
-        msg_box1.setText("Going forward, sign in if you want more features!")
-        msg_box1.exec()
-        # QMessageBox.warning(self, 'Warning', 'Going forward, sign in if you want more features!')
         MainNote.show()
         self.close()
     def showSignUp(self):
@@ -557,10 +554,9 @@ class MainNotePage(QMainWindow, QWidget):
         self.bt_quit.clicked.connect(self.Close)
         self.bt_save.clicked.connect(self.showSignIn)
         self.bt_apply.clicked.connect(self.checkName)
-        self.bt_font.clicked.connect(self.showFont)
-    def showFont(self):
-        Font.show()
-        self.close()
+        self.bt_tool.clicked.connect(self.showTool)
+    def showTool(self):
+        Tool3.show()
     def showSignIn(self):
         SignIn.show()
         self.close()
@@ -583,6 +579,24 @@ class MainNotePage(QMainWindow, QWidget):
             msg_box1.setText("Apply title name successfully!")
             msg_box1.exec()
             return
+        
+class Tool3Page(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/tool2.ui", self)
+        self.bt_close.clicked.connect(self.close)
+        self.bt_add.clicked.connect(self.showAdd)
+        self.bt_font.clicked.connect(self.showFont)
+    def showFont(self):
+        Font.show()    
+    def showAdd(self):
+        Add.show()
+
+class AddPage(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/task.ui", self)
+        self.bt_ok.clicked.connect(self.close)
         
 class CreatePage(QMainWindow, QWidget):
     def __init__(self):
@@ -641,7 +655,7 @@ class AdminPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/AdminPage.ui", self)
-        self.bt_add.clicked.connect(self.showCreateNote)
+        self.bt_tool.clicked.connect(self.showTool)
         self.bt_save.clicked.connect(self.showSignIn)
         self.bt_exit.clicked.connect(self.Close)
         self.bt_tool1.clicked.connect(self.showTool1)
@@ -652,8 +666,8 @@ class AdminPage(QMainWindow, QWidget):
         self.bt_apply.clicked.connect(self.checkName)
     def Close(self):
         self.close()
-    def showCreateNote(self):
-        Create.show()
+    def showTool(self):
+        Tool4.show()
     def showTool1(self):
         Tool1.show()
         self.close()
@@ -681,6 +695,18 @@ class AdminPage(QMainWindow, QWidget):
             msg_box1.setText("Apply title name successfully!")
             msg_box1.exec()
             return
+        
+class Tool4Page(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/tool3.ui", self)
+        self.bt_add_2.clicked.connect(self.showAdd2)
+        self.bt_add.clicked.connect(self.showAdd)
+        self.bt_close.clicked.connect(self.close)
+    def showAdd(self):
+        Add.show()
+    def showAdd2(self):
+        Create.show()
 
 class SettingPage(QMainWindow, QWidget):
     def __init__(self):
@@ -809,6 +835,9 @@ if __name__ == '__main__':
     NoteDetail2 = DetailPage2()
     Setting = SettingPage()
     About = AboutPage()
+    Tool3 = Tool3Page()
+    Tool4 = Tool4Page()
+    Add = AddPage()
     msg_box = QMessageBox()
     msg_box1 = QMessageBox()
     msg_box1.setWindowTitle("Note for WOW! Notification")
