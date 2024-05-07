@@ -13,11 +13,20 @@ anime = AnimeItem(1, "One Piece", "01/01/2001")
 
 class AnimeDatabase:
     def __init__(self):
-        pass
+        self.anime_item_list = list()
+        self.anime_dict_data = load_json_data()
+        self.anime_title_list = self.get_title_list()
     def items_to_data(self):
         pass
     def load_data(self):
-        pass
+        for anime_dict in self.anime_dict_data:
+            anime = AnimeItem(anime_id = anime_dict["id"],
+                              title = anime_dict["title"],
+                              release_date = anime_dict ["release_date"],
+                              image = anime_dict ["image"],
+                              rating = anime_dict ["rating"],
+                              link = anime_dict ["link"])
+            self.anime_item_list.append(anime)
     def get_first_item_by_title(self, anime_title):
         pass
     def add_item(self, anime_dict):
@@ -35,7 +44,8 @@ class AnimeDatabase:
     def sort_item_by_date(self, top = None):
         pass
     def get_title_list(self):
-        pass        
+        titles = (anime["title"] for anime in self.anime_dict_data)
+        return titles
 
 # with open("data.json", "w") as file:
 #     json.dump(anime.__dict__, file)
