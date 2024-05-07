@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Sign Up Account Type</string>
+   <string>Sign In - Sign Up Account Type</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QRadioButton" name="rb_google">

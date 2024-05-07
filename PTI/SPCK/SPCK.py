@@ -52,8 +52,14 @@ class Setup1Page(QMainWindow, QWidget):
         Setup.show()
         self.close()
     def showSetup2(self):
-        Setup2.show()
-        self.close()
+        path = self.le_path.text()
+        if not path:
+            msg_box.setText("Please enter the path to start the installation process!")
+            msg_box.exec()
+            return
+        else:
+            Setup2.show()
+            self.close()
     def browsecsv(self):
         folder_path = QFileDialog.getExistingDirectory(self, "Select the destination path")
         if folder_path:
@@ -114,24 +120,15 @@ class SignInPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/dangnhap.ui", self)
-        self.bt_google.clicked.connect(self.showGoogle)
-        self.bt_outlook.clicked.connect(self.showOutlook)
-        self.bt_apple.clicked.connect(self.showApple)
-        self.bt_microsoft.clicked.connect(self.showMicrosoft)
+        self.bt_start.clicked.connect(self.showStart)
         self.bt_admin.clicked.connect(self.showAdmin)
         self.bt_register.clicked.connect(self.showSignUp)
         self.bt_continue.clicked.connect(self.showMainPage)
         self.bt_forgot.clicked.connect(self.showForgotPass)
     def showAdmin(self):
         Admin.show()
-    def showMicrosoft(self):
-        Microsoft.show()
-    def showApple(self):
-        Apple.show()
-    def showOutlook(self):
-        Outlook.show()
-    def showGoogle(self):
-        Google.show()
+    def showStart(self):
+        Start.show()
     def showForgotPass(self):
         forgotPass.show()
     def showMainPage(self):
@@ -142,6 +139,30 @@ class SignInPage(QMainWindow, QWidget):
         self.close()
     def quit(self):
         self.close()
+
+class SignInPage2(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/dangky2.ui", self)
+        self.bt_next.clicked.connect(self.check)
+    def check(self):
+        if self.rb_google.isChecked():
+            Google.show()
+            return
+        if self.rb_apple.isChecked():
+            Apple.show()
+            return
+        if self.rb_microsoft.isChecked():
+            Microsoft.show()
+            return
+        if self.rb_outlook.isChecked():
+            Outlook.show()
+            return
+        
+        else:
+            msg_box.setText("You have not selected an account type to move to the next login step!")
+            msg_box.exec()
+            return
 
 class AdminSignInPage(QMainWindow, QWidget):
     def __init__(self):
@@ -206,6 +227,7 @@ class GoogleSignInPage(QMainWindow, QWidget):
             msg_box1.exec()
             MainNote.show()
             self.close()
+            Start.close()
             SignIn.close()
             return
         elif "@gmail.com" not in email:
@@ -243,6 +265,7 @@ class AppleSignInPage(QMainWindow, QWidget):
             msg_box1.exec()
             MainNote.show()
             self.close()
+            Start.close()
             SignIn.close()
             return
         elif "@apple.com" not in email:
@@ -280,6 +303,7 @@ class MicrosoftSignInPage(QMainWindow, QWidget):
             msg_box1.exec()
             MainNote.show()
             self.close()
+            Start.close()
             SignIn.close()
             return
         elif "@microsoft.com" not in email:
@@ -317,6 +341,7 @@ class OutlookSignInPage(QMainWindow, QWidget):
             msg_box1.exec()
             MainNote.show()
             self.close()
+            Start.close()
             SignIn.close()
             return
         elif "@outlook.com" not in email:
@@ -411,6 +436,7 @@ class SignUpPage(QMainWindow, QWidget):
     def Back(self):
         SignIn.show()
         self.close()
+        SignUp2.close()
     def SignUp(self):
         self.name = self.le_fullname.text()
         email = self.le_account.text()
@@ -833,6 +859,7 @@ if __name__ == '__main__':
     Tool2 = Tool2Page()
     NoteDetail1 = DetailPage1()
     NoteDetail2 = DetailPage2()
+    Start = SignInPage2()
     Setting = SettingPage()
     About = AboutPage()
     Tool3 = Tool3Page()

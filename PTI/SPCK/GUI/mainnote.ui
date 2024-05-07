@@ -240,7 +240,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>Save change</string>
+     <string>Sign Out</string>
     </property>
    </widget>
    <widget class="Line" name="line_2">
@@ -316,7 +316,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>Developer Test Release
-         Build 305</string>
+         Build 705</string>
     </property>
    </widget>
    <zorder>line_2</zorder>

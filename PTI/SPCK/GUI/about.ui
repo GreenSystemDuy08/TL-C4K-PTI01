@@ -89,7 +89,7 @@
     </property>
     <property name="text">
      <string>Version: Developer Test Release
-                  Build 305.1724</string>
+                  Build 705.1710</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
@@ -123,7 +123,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../../PTA/SPCK/material/icons8-windows-defender-96.png</pixmap>
+     <pixmap>../Material/document1.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

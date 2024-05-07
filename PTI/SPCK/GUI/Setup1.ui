@@ -153,13 +153,13 @@
      <string>To continue, click Next. If you want to change directory, click Browse</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="le_path">
     <property name="geometry">
      <rect>
       <x>50</x>
       <y>250</y>
       <width>331</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
@@ -174,8 +174,8 @@
      <rect>
       <x>400</x>
       <y>250</y>
-      <width>75</width>
-      <height>23</height>
+      <width>81</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
