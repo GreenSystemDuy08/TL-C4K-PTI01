@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>524</width>
-    <height>309</height>
+    <height>378</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QRadioButton" name="rb_google">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>100</y>
-      <width>141</width>
+      <x>140</x>
+      <y>110</y>
+      <width>241</width>
       <height>31</height>
      </rect>
     </property>
@@ -29,14 +29,14 @@
      </font>
     </property>
     <property name="text">
-     <string>Google Account</string>
+     <string>Continue with Google Account</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>40</y>
+      <x>110</x>
+      <y>50</y>
       <width>321</width>
       <height>41</height>
      </rect>
@@ -47,7 +47,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 12, 255);</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Choose your account type</string>
@@ -56,9 +56,9 @@
    <widget class="QRadioButton" name="rb_outlook">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>220</y>
-      <width>141</width>
+      <x>140</x>
+      <y>230</y>
+      <width>261</width>
       <height>31</height>
      </rect>
     </property>
@@ -68,15 +68,15 @@
      </font>
     </property>
     <property name="text">
-     <string>Outlook Account</string>
+     <string>Continue with Outlook Account</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="rb_microsoft">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>180</y>
-      <width>151</width>
+      <x>140</x>
+      <y>190</y>
+      <width>271</width>
       <height>31</height>
      </rect>
     </property>
@@ -86,15 +86,15 @@
      </font>
     </property>
     <property name="text">
-     <string>Microsoft Account</string>
+     <string>Continue with Microsoft Account</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="rb_apple">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>140</y>
-      <width>141</width>
+      <x>140</x>
+      <y>150</y>
+      <width>241</width>
       <height>31</height>
      </rect>
     </property>
@@ -104,14 +104,14 @@
      </font>
     </property>
     <property name="text">
-     <string>Apple Account</string>
+     <string>Continue with Apple Account</string>
     </property>
    </widget>
    <widget class="QPushButton" name="bt_next">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>140</y>
+      <x>210</x>
+      <y>280</y>
       <width>101</width>
       <height>51</height>
      </rect>

@@ -1,6 +1,5 @@
 App Note for WOW!
-Announcing Note for WOW! Developer Test Release - Build 705.1710:
-*Lưu ý: đuôi .1710 là bản cập nhật của Build 705. Bản cập nhật này cập nhật về những chức năng được đề cập bên dưới:
+Announcing Note for WOW! RTM Release 2 - Build 1405.1620:
 Chức năng:
 	+ Note lại mọi thứ
 	+ Đăng nhập, đăng ký (hoặc không cần)
@@ -15,7 +14,8 @@ Chức năng:
 	+ Có mục đăng nhập với từng loại tài khoản
 	+ Thêm mục đăng ký với từng loại tài khoản
 	+ Thêm phần Task cho cả Local và Admin
-	+ Thêm phần kiểm tra xem có đường dẫn cho quá trình cài đặt chưa 
+	+ Thêm phần kiểm tra xem có đường dẫn cho quá trình cài đặt chưa
+	+ Cập nhật giao diện đăng nhập mới
 	+ ...
 Chưa làm được:
 	+ Chưa lưu được những gì đã note

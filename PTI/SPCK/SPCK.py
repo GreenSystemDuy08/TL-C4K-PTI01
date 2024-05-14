@@ -63,7 +63,7 @@ class Setup1Page(QMainWindow, QWidget):
     def browsecsv(self):
         folder_path = QFileDialog.getExistingDirectory(self, "Select the destination path")
         if folder_path:
-            self.lineEdit.setText(folder_path)
+            self.le_path.setText(folder_path)
         else:
             pass
 
@@ -143,26 +143,53 @@ class SignInPage(QMainWindow, QWidget):
 class SignInPage2(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi("GUI/dangky2.ui", self)
-        self.bt_next.clicked.connect(self.check)
-    def check(self):
-        if self.rb_google.isChecked():
-            Google.show()
-            return
-        if self.rb_apple.isChecked():
-            Apple.show()
-            return
-        if self.rb_microsoft.isChecked():
-            Microsoft.show()
-            return
-        if self.rb_outlook.isChecked():
-            Outlook.show()
-            return
-        
-        else:
-            msg_box.setText("You have not selected an account type to move to the next login step!")
+        uic.loadUi("GUI/dangnhap2.ui", self)
+        self.bt_google.clicked.connect(self.showGoogle)
+        self.bt_microsoft.clicked.connect(self.showMicrosoft)
+        self.bt_apple.clicked.connect(self.showApple)
+        self.bt_outlook.clicked.connect(self.showOutlook)
+        self.bt_finish.clicked.connect(self.checkLogin)
+    def showGoogle(self):
+        Google.show()
+        self.close()
+    def showMicrosoft(self):
+        Microsoft.show()
+        self.close()
+    def showApple(self):
+        Apple.show()
+        self.close()
+    def showOutlook(self):
+        Outlook.show()
+        self.close()
+    def checkLogin(self):
+        email = self.le_email.text()
+        password = self.le_password.text()
+        if not email:
+            msg_box.setText("Please enter your email!")
             msg_box.exec()
             return
+        if "@" not in email:
+            msg_box.setText("Email invalid!")
+            msg_box.exec()
+            return
+        elif email == "admin@gmail.com":
+            msg_box.setText("Admin account does not support normal account login form!")
+            msg_box.exec()
+            return
+        if not password:
+            msg_box.setText("Please enter your password!")
+            msg_box.exec()
+            return
+        elif len(password) < 8:
+            msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
+            msg_box.exec()
+            return
+        else:
+            msg_box1.setText("Welcome to Note for WOW! Application!")
+            msg_box1.exec()
+            MainNote.show()
+            self.close()
+            SignIn.close()
 
 class AdminSignInPage(QMainWindow, QWidget):
     def __init__(self):
@@ -174,7 +201,7 @@ class AdminSignInPage(QMainWindow, QWidget):
         password = self.le_password.text()
 
         if not email:
-            msg_box.setText("Please enter email or phone number!")
+            msg_box.setText("Please enter your admin email!")
             msg_box.exec()
             return
         if not password:
