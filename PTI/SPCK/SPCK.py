@@ -169,7 +169,7 @@ class SignInPage2(QMainWindow, QWidget):
             msg_box.exec()
             return
         if "@" not in email:
-            msg_box.setText("Email invalid!")
+            msg_box.setText("Invalid email!")
             msg_box.exec()
             return
         elif email == "admin@gmail.com":
@@ -894,8 +894,8 @@ if __name__ == '__main__':
     Add = AddPage()
     msg_box = QMessageBox()
     msg_box1 = QMessageBox()
-    msg_box1.setWindowTitle("Note for WOW! Notification")
+    msg_box1.setWindowTitle("App Notification")
     msg_box1.setIcon(QMessageBox.Icon.Information)
-    msg_box.setWindowTitle("Note for WOW! Warning")
+    msg_box.setWindowTitle("App Warning")
     msg_box.setIcon(QMessageBox.Icon.Warning)
     sys.exit(app.exec())
