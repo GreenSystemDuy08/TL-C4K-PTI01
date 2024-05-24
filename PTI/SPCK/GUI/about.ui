@@ -106,7 +106,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Version: Final Test Release - Build 1705.2000</string>
+     <string>Version: Final Release - Build 8.0</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">

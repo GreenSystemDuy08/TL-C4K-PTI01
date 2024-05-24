@@ -213,7 +213,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>130</x>
       <y>150</y>
       <width>221</width>
       <height>21</height>
@@ -225,7 +225,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string> Final Test Release - Build 1705.2000</string>
+     <string> Final Release - Build 8.0</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
