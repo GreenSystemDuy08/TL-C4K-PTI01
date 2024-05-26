@@ -1,6 +1,12 @@
 import sys
 from PyQt6.QtWidgets import *
 from PyQt6 import uic
+import json
+
+# Đọc dữ liệu từ tệp JSON
+with open('account.json', 'r') as file:
+    data = json.load(file)
+    # print(data)
 
 class SetupPage(QMainWindow, QWidget):
     def __init__(self):
@@ -164,32 +170,33 @@ class SignInPage2(QMainWindow, QWidget):
     def checkLogin(self):
         email = self.le_email.text()
         password = self.le_password.text()
+        found = False
+
         if not email:
-            msg_box.setText("Please enter your email!")
+            msg_box.setText("Please enter your admin email!")
             msg_box.exec()
             return
-        if "@" not in email:
-            msg_box.setText("Invalid email!")
+        if not password:
+            msg_box.setText("Please enter a password!")
             msg_box.exec()
             return
         elif email == "admin@gmail.com":
             msg_box.setText("Admin account does not support normal account login form!")
             msg_box.exec()
             return
-        if not password:
-            msg_box.setText("Please enter your password!")
-            msg_box.exec()
+        for account in data:
+            if account['email'] == email and account['password'] == password:
+                msg_box1.setText("Welcome to Note for WOW! Application!")
+                msg_box1.exec()
+                MainNote.show()
+                SignIn.close()
+                Start.close()
+                found = True
+                break
+
+        if not found:
+            QMessageBox.warning(self, 'ERROR AT LOGIN!', '=(((\nAccount or password is incorrect or has not been registered!')
             return
-        elif len(password) < 8:
-            msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
-            msg_box.exec()
-            return
-        else:
-            msg_box1.setText("Welcome to Note for WOW! Application!")
-            msg_box1.exec()
-            MainNote.show()
-            self.close()
-            SignIn.close()
 
 class AdminSignInPage(QMainWindow, QWidget):
     def __init__(self):
@@ -383,22 +390,26 @@ class forgotPassword1(QMainWindow, QWidget):
         self.bt_next.clicked.connect(self.showforgotPass2)
     def showforgotPass2(self):
         email = self.le_email.text()
+        found = False
         if not email: 
             msg_box.setText("Please enter email or phone number!")
             msg_box.exec()
             return
         
-        elif '@' not in email:
-            msg_box.setText("Invalid email!")
-            msg_box.exec()
+        for account in data:
+            if account['email'] == email:
+                found == True
+                forgotPass2.show()
+                self.close()
+                return
+        if not found:
+            QMessageBox.warning(self, 'ERROR!', '=(((\nAccount or password is incorrect or has not been registered!')
             return
+
         elif email == "admin@gmail.com":
             msg_box.setText("ERROR: This account is built into the System.\nYou cannot change the password for this account!")
             msg_box.exec()
             return
-        
-        forgotPass2.show()
-        self.close()
 
 class forgotPassword2(QMainWindow, QWidget):
     def __init__(self):
@@ -406,8 +417,15 @@ class forgotPassword2(QMainWindow, QWidget):
         uic.loadUi("GUI/forgotPassword.ui", self)
         self.bt_ok.clicked.connect(self.Close)
     def Close(self):
+        current = self.le_current.text()
+        email = forgotPass.le_email.text()
         new = self.le_new.text()
         re_enter = self.le_re_enter.text()
+        found = False
+        if not current:
+            msg_box.setText("Please enter your current password!")
+            msg_box.exec()
+            return
         if not new:
             msg_box.setText("Please enter your new password!")
             msg_box.exec()
@@ -416,19 +434,34 @@ class forgotPassword2(QMainWindow, QWidget):
             msg_box.setText("Please re-enter your new password!")
             msg_box.exec()
             return
-        elif len(new) < 8 or len(re_enter) < 8:
-            msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
+        elif len(new) < 8:
+            msg_box.setText("Your new password is too short! The program requires password more than 8 characters!")
             msg_box.exec()
             return
         elif not new == re_enter:
             msg_box.setText("Please re-enter your new password! Your new password and your new re-enter password do not match!")
             msg_box.exec()
             return
-        
-        self.close()
-        msg_box1.setText("Your new password has been set successfully!")
-        msg_box1.exec()
-        return
+        if new == current or re_enter == current:
+            QMessageBox.warning(self, 'ERROR!', '=(((\nYour new password is similar to the current password!')
+            return
+        for account in data:
+            if account['password'] == current:
+                self.close()
+                msg_box1.setText("Your new password has been set successfully!")
+                msg_box1.exec()
+                found == True
+                new_account = {
+                "email": email,
+                "password": new
+                }
+                data.append(new_account)    
+                with open('account.json', "w") as json_file:
+                    json.dump(data, json_file, indent=4) 
+                    return
+        if not found:
+            QMessageBox.warning(self, 'ERROR!', '=(((\nThe current password is not right!')
+            return
     
 class SignUpPage2(QMainWindow, QWidget):
     def __init__(self):
@@ -469,7 +502,6 @@ class SignUpPage(QMainWindow, QWidget):
         email = self.le_account.text()
         password = self.le_password.text()
         
-
         if not email: 
             msg_box.setText("Please enter email or phone number!")
             msg_box.exec()
@@ -534,6 +566,11 @@ class SignUpPage(QMainWindow, QWidget):
             msg_box.setText("Invalid email!")
             msg_box.exec()
             return
+        
+        for account in data:
+            if account['email'] == email:
+                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', '=(((\nExisting or previously registered account!')
+                return
 
         if not password:
             msg_box.setText("Please enter a password!")
@@ -596,6 +633,15 @@ class SignUpPage(QMainWindow, QWidget):
             msg_box.setText("ERROR 404!\nYOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!\nNote: Exception admin account!")
             msg_box.exec()
             return
+        
+        if email and password:
+            new_account = {
+            "email": email,
+            "password": password
+            }
+            data.append(new_account)    
+            with open('account.json', "w") as json_file:
+                json.dump(data, json_file, indent=4) 
 
 class MainNotePage(QMainWindow, QWidget):
     def __init__(self):
@@ -772,16 +818,6 @@ class SettingPage(QMainWindow, QWidget):
     def showAbout(self):
         About.show()
     def back(self):
-        if self.chb_enable.isChecked():
-            msg_box.setText("ERROR: This feature is not currently available or being tested!\nThis Program will not enable this feature")
-            msg_box.exec()
-            return
-        
-        if self.chb_detail.isChecked():
-            msg_box.setText("ERROR: This feature is not currently available or being tested!\nThis Program will not enable this feature")
-            msg_box.exec()
-            return
-        
         AdminTool.show()
         self.close()
     def showCautionDelete(self):

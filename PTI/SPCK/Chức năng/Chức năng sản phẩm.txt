@@ -1,5 +1,5 @@
 App Note for WOW!
-Announcing Note for WOW! RTM Release 2 - Build 1405.1620:
+Announcing Note for WOW! Final Release 8.0:
 Chức năng:
 	+ Note lại mọi thứ
 	+ Đăng nhập, đăng ký (hoặc không cần)

@@ -366,7 +366,7 @@ Notes pages</string>
      <string>Enable Setting for Local Account</string>
     </property>
     <property name="checkable">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="checked">
      <bool>false</bool>
@@ -412,7 +412,7 @@ Notes pages</string>
 (Read-only)</string>
     </property>
     <property name="checkable">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="checked">
      <bool>false</bool>
