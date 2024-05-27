@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 243, 207);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
@@ -22,6 +25,9 @@
       <width>341</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="placeholderText">
      <string>You can enter the Notes Page name here!</string>
@@ -85,6 +91,10 @@
      <string>Edit or start your Notes here!</string>
     </property>
    </widget>
+   <zorder>label</zorder>
+   <zorder>lineEdit</zorder>
+   <zorder>bt_save</zorder>
+   <zorder>plainTextEdit</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

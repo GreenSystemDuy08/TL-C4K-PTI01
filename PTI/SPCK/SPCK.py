@@ -173,11 +173,11 @@ class SignInPage2(QMainWindow, QWidget):
         found = False
 
         if not email:
-            msg_box.setText("Please enter your admin email!")
+            msg_box.setText("Please enter your email!")
             msg_box.exec()
             return
         if not password:
-            msg_box.setText("Please enter a password!")
+            msg_box.setText("Please enter your password!")
             msg_box.exec()
             return
         elif email == "admin@gmail.com":
@@ -212,7 +212,7 @@ class AdminSignInPage(QMainWindow, QWidget):
             msg_box.exec()
             return
         if not password:
-            msg_box.setText("Please enter a password!")
+            msg_box.setText("Please enter admin password!")
             msg_box.exec()
             return
         if email == "admin@gmail.com" and password == "admin":
@@ -241,7 +241,7 @@ class GoogleSignInPage(QMainWindow, QWidget):
         password = self.le_password.text()
 
         if not email:
-            msg_box.setText("Please enter email or phone number!")
+            msg_box.setText("Please enter your email!")
             msg_box.exec()
             return
         elif email == "admin@gmail.com":
@@ -249,7 +249,7 @@ class GoogleSignInPage(QMainWindow, QWidget):
             msg_box.exec()
             return
         if not password:
-            msg_box.setText("Please enter a password!")
+            msg_box.setText("Please enter your password!")
             msg_box.exec()
             return
         elif len(password) < 8:
@@ -279,7 +279,7 @@ class AppleSignInPage(QMainWindow, QWidget):
         password = self.le_password.text()
 
         if not email:
-            msg_box.setText("Please enter email or phone number!")
+            msg_box.setText("Please enter your email!")
             msg_box.exec()
             return
         elif email == "admin@gmail.com":
@@ -287,7 +287,7 @@ class AppleSignInPage(QMainWindow, QWidget):
             msg_box.exec()
             return
         if not password:
-            msg_box.setText("Please enter a password!")
+            msg_box.setText("Please enter your password!")
             msg_box.exec()
             return
         elif len(password) < 8:
@@ -317,7 +317,7 @@ class MicrosoftSignInPage(QMainWindow, QWidget):
         password = self.le_password.text()
 
         if not email:
-            msg_box.setText("Please enter email or phone number!")
+            msg_box.setText("Please enter your email!")
             msg_box.exec()
             return
         elif email == "admin@gmail.com":
@@ -325,7 +325,7 @@ class MicrosoftSignInPage(QMainWindow, QWidget):
             msg_box.exec()
             return
         if not password:
-            msg_box.setText("Please enter a password!")
+            msg_box.setText("Please enter your password!")
             msg_box.exec()
             return
         elif len(password) < 8:
@@ -355,7 +355,7 @@ class OutlookSignInPage(QMainWindow, QWidget):
         password = self.le_password.text()
 
         if not email:
-            msg_box.setText("Please enter email or phone number!")
+            msg_box.setText("Please enter your email!")
             msg_box.exec()
             return
         elif email == "admin@gmail.com":
@@ -363,7 +363,7 @@ class OutlookSignInPage(QMainWindow, QWidget):
             msg_box.exec()
             return
         if not password:
-            msg_box.setText("Please enter a password!")
+            msg_box.setText("Please enter your password!")
             msg_box.exec()
             return
         elif len(password) < 8:
@@ -392,12 +392,12 @@ class forgotPassword1(QMainWindow, QWidget):
         email = self.le_email.text()
         found = False
         if not email: 
-            msg_box.setText("Please enter email or phone number!")
+            msg_box.setText("Please enter your email!")
             msg_box.exec()
             return
         
         for account in data:
-            if account['email'] == email:
+            if account["email"] == email:
                 found == True
                 forgotPass2.show()
                 self.close()
@@ -451,13 +451,28 @@ class forgotPassword2(QMainWindow, QWidget):
                 msg_box1.setText("Your new password has been set successfully!")
                 msg_box1.exec()
                 found == True
+                if "email" and "password" in account:
+                    del account["email"]
+                    del account["password"]
+                    with open('account.json', "w") as f:
+                        json.dump(data, f, indent=4)
+                        data.clear()
+                # if "{" or "}" in account:
+                #     del ["{"]
+                #     del ["}"]
+                #     with open('account.json', "w") as f:
+                #         json.dump(data, f, indent=4)
+                # if "password" in account:
+                #     del account["password"]
+                #     with open('account.json', "w") as f:
+                #         json.dump(data, f, indent=4)
                 new_account = {
                 "email": email,
                 "password": new
                 }
-                data.append(new_account)    
+                data.append(new_account)
                 with open('account.json', "w") as json_file:
-                    json.dump(data, json_file, indent=4) 
+                    json.dump(data, json_file, indent=4)
                     return
         if not found:
             QMessageBox.warning(self, 'ERROR!', '=(((\nThe current password is not right!')
@@ -503,7 +518,7 @@ class SignUpPage(QMainWindow, QWidget):
         password = self.le_password.text()
         
         if not email: 
-            msg_box.setText("Please enter email or phone number!")
+            msg_box.setText("Please enter your email!")
             msg_box.exec()
             return
         if SignUp2.rb_google.isChecked():
@@ -573,7 +588,7 @@ class SignUpPage(QMainWindow, QWidget):
                 return
 
         if not password:
-            msg_box.setText("Please enter a password!")
+            msg_box.setText("Please enter your password!")
             msg_box.exec()
             return
         
@@ -585,7 +600,7 @@ class SignUpPage(QMainWindow, QWidget):
             msg_box.exec()
             return
         if not self.name:
-            msg_box.setText("Please enter a name!")
+            msg_box.setText("Please enter your display name!")
             msg_box.exec()
             return
         if not self.chb_skip.isChecked():
