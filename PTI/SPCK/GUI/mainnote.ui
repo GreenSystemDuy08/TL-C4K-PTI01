@@ -53,12 +53,12 @@
      <string>Welcome to</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="bt_edit1">
+   <widget class="QPushButton" name="bt_edit">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>530</y>
-      <width>121</width>
+      <x>400</x>
+      <y>580</y>
+      <width>131</width>
       <height>51</height>
      </rect>
     </property>
@@ -68,65 +68,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Edit this note</string>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="textBrowser_2">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>320</y>
-      <width>256</width>
-      <height>192</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;I'm a student....&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="textBrowser">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>320</y>
-      <width>256</width>
-      <height>192</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Today is March 28....&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="bt_edit2">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>530</y>
-      <width>121</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Edit this note</string>
+     <string>Edit selected Notes</string>
     </property>
    </widget>
    <widget class="QPushButton" name="bt_quit">
@@ -150,8 +92,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="bt_add">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>200</y>
+      <x>780</x>
+      <y>190</y>
       <width>121</width>
       <height>51</height>
      </rect>
@@ -178,25 +120,30 @@ p, li { white-space: pre-wrap; }
      <string notr="true"/>
     </property>
    </widget>
-   <widget class="QPushButton" name="bt_apply">
+   <widget class="QPushButton" name="bt_search">
     <property name="geometry">
      <rect>
       <x>830</x>
       <y>120</y>
-      <width>81</width>
+      <width>91</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>Apply</string>
+     <string>Search now!</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>70</y>
-      <width>31</width>
+      <x>690</x>
+      <y>80</y>
+      <width>91</width>
       <height>21</height>
      </rect>
     </property>
@@ -206,7 +153,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>Title</string>
+     <string>Search Panel</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="le_name">
@@ -222,7 +169,7 @@ p, li { white-space: pre-wrap; }
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="placeholderText">
-     <string>Your title name?</string>
+     <string>Type here to seach</string>
     </property>
    </widget>
    <widget class="QPushButton" name="bt_save">
@@ -318,17 +265,60 @@ p, li { white-space: pre-wrap; }
      <string> Final Release - Build 8.0</string>
     </property>
    </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>270</y>
+      <width>461</width>
+      <height>291</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <item>
+     <property name="text">
+      <string>Note Page 1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Note Page 2</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="bt_add_2">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>190</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Remove selected Note</string>
+    </property>
+   </widget>
    <zorder>line_2</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
-   <zorder>bt_edit1</zorder>
-   <zorder>textBrowser_2</zorder>
-   <zorder>textBrowser</zorder>
-   <zorder>bt_edit2</zorder>
+   <zorder>bt_edit</zorder>
    <zorder>bt_quit</zorder>
    <zorder>bt_add</zorder>
    <zorder>graphicsView</zorder>
-   <zorder>bt_apply</zorder>
+   <zorder>bt_search</zorder>
    <zorder>label_4</zorder>
    <zorder>le_name</zorder>
    <zorder>bt_save</zorder>
@@ -336,6 +326,8 @@ p, li { white-space: pre-wrap; }
    <zorder>line_3</zorder>
    <zorder>bt_tool</zorder>
    <zorder>label_3</zorder>
+   <zorder>listWidget</zorder>
+   <zorder>bt_add_2</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

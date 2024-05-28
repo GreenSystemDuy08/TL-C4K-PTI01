@@ -186,13 +186,26 @@ class SignInPage2(QMainWindow, QWidget):
             return
         for account in data:
             if account['email'] == email and account['password'] == password:
-                msg_box1.setText("Welcome to Note for WOW! Application!")
-                msg_box1.exec()
-                MainNote.show()
-                SignIn.close()
-                Start.close()
+                # msg_box1.setText("Welcome to Note for WOW! Application!")
+                # msg_box1.exec()
+                # MainNote.show()
+                # SignIn.close()
+                # Start.close()
                 found = True
-                break
+                if account["type"] == "local":
+                    msg_box1.setText("Welcome to Note for WOW! Application!")
+                    msg_box1.exec()
+                    MainNote.show()
+                    SignIn.close()
+                    Start.close()
+                    return
+                if account["type"] == "admin":
+                    msg_box1.setText("Hello, Administrator!")
+                    msg_box1.exec()
+                    AdminTool.show()
+                    SignIn.close()
+                    Start.close()
+                    return
 
         if not found:
             QMessageBox.warning(self, 'ERROR AT LOGIN!', '=(((\nAccount or password is incorrect or has not been registered!')
@@ -445,37 +458,44 @@ class forgotPassword2(QMainWindow, QWidget):
         if new == current or re_enter == current:
             QMessageBox.warning(self, 'ERROR!', '=(((\nYour new password is similar to the current password!')
             return
-        for account in data:
-            if account['password'] == current:
-                self.close()
-                msg_box1.setText("Your new password has been set successfully!")
-                msg_box1.exec()
-                found == True
-                if "email" and "password" in account:
-                    del account["email"]
-                    del account["password"]
-                    with open('account.json', "w") as f:
-                        json.dump(data, f, indent=4)
-                        data.clear()
-                # if "{" or "}" in account:
-                #     del ["{"]
-                #     del ["}"]
-                #     with open('account.json', "w") as f:
-                #         json.dump(data, f, indent=4)
-                # if "password" in account:
-                #     del account["password"]
-                #     with open('account.json', "w") as f:
-                #         json.dump(data, f, indent=4)
-                new_account = {
-                "email": email,
-                "password": new
-                }
-                data.append(new_account)
-                with open('account.json', "w") as json_file:
-                    json.dump(data, json_file, indent=4)
-                    return
-        if not found:
-            QMessageBox.warning(self, 'ERROR!', '=(((\nThe current password is not right!')
+        
+        if self.rb_admin.isChecked() or self.rb_local.isChecked():
+            if self.rb_admin.isChecked():
+                Account_type = "admin"
+            if self.rb_local.isChecked():
+                Account_type = "local"
+            for account in data:
+                if account['password'] == current:
+                    self.close()
+                    msg_box1.setText("Your new password has been set successfully!")
+                    msg_box1.exec()
+                    found == True
+                    if "email" and "password" in account:
+                        del account["email"]
+                        del account["password"]
+                        with open('account.json', "w") as f:
+                            json.dump(data, f, indent=4)
+                            data.clear()
+                    new_account = {
+                    "email": email,
+                    "password": new,
+                    "type": Account_type
+                    }
+                    data.append(new_account)
+                    with open('account.json', "w") as json_file:
+                        json.dump(data, json_file, indent=4)
+                        return
+            if not found:
+                QMessageBox.warning(self, 'ERROR!', '=(((\nThe current password is not right!')
+                return
+            
+        if not self.rb_admin.isChecked():
+            msg_box.setText("You haven't choosed an account to register!")
+            msg_box.exec()
+            return
+        if not self.rb_local.isChecked():
+            msg_box.setText("You haven't choosed an account to register!")
+            msg_box.exec()
             return
     
 class SignUpPage2(QMainWindow, QWidget):
@@ -516,15 +536,14 @@ class SignUpPage(QMainWindow, QWidget):
         self.name = self.le_fullname.text()
         email = self.le_account.text()
         password = self.le_password.text()
+        # Account_type = ""
         
         if not email: 
-            msg_box.setText("Please enter your email!")
-            msg_box.exec()
+            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "Please enter your email!")
             return
         if SignUp2.rb_google.isChecked():
             if email == "admin@gmail.com" and password == "admin":
-                msg_box1.setText("Hello, Administrator!")
-                msg_box1.exec()
+                QMessageBox.information(self, 'Sign Up Information', "Hello, Administrator!")
                 AdminTool.show()
                 self.close()
                 SignUp2.close()
@@ -532,20 +551,16 @@ class SignUpPage(QMainWindow, QWidget):
             elif "@gmail.com" in email:
                 pass
             else:
-                msg_box.setText("ERROR! You have selected email type: @gmail.com\nThe email you entered is not the same as the account type you selected!")
-                msg_box.exec()
-                msg_box1.setText("Email Type: Example: @abc.com")
-                msg_box1.exec()
+                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "You have selected email type: @gmail.com\nThe email you entered is not the same as the account type you selected!")
+                QMessageBox.information(self, 'Sign Up Information', "Email Type: Example: @abc.com")
                 return
         
         if SignUp2.rb_apple.isChecked():
             if "@apple.com" in email:
                 pass
             else:
-                msg_box.setText("ERROR! You have selected email type: @apple.com\nThe email you entered is not the same as the account type you selected!")
-                msg_box.exec()
-                msg_box1.setText("Email Type: Example: @abc.com")
-                msg_box1.exec()
+                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "You have selected email type: @apple.com\nThe email you entered is not the same as the account type you selected!")
+                QMessageBox.information(self, 'Sign Up Information', "Email Type: Example: @abc.com")
                 return
 
         if SignUp2.rb_microsoft.isChecked():
@@ -553,10 +568,8 @@ class SignUpPage(QMainWindow, QWidget):
                 pass
 
             else:
-                msg_box.setText("ERROR! You have selected email type: @microsoft.com\nThe email you entered is not the same as the account type you selected!")
-                msg_box.exec()
-                msg_box1.setText("Email Type: Example: @abc.com")
-                msg_box1.exec()
+                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "You have selected email type: @microsoft.com\nThe email you entered is not the same as the account type you selected!")
+                QMessageBox.information(self, 'Sign Up Information', "Email Type: Example: @abc.com")
                 return
         
         if SignUp2.rb_outlook.isChecked():
@@ -564,10 +577,8 @@ class SignUpPage(QMainWindow, QWidget):
                 pass
 
             else:
-                msg_box.setText("ERROR! You have selected email type: @outlook.com\nThe email you entered is not the same as the account type you selected!")
-                msg_box.exec()
-                msg_box1.setText("Email Type: Example: @abc.com")
-                msg_box1.exec()
+                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "You have selected email type: @outlook.com\nThe email you entered is not the same as the account type you selected!")
+                QMessageBox.information(self, 'Sign Up Information', "Email Type: Example: @abc.com")
                 return
         elif email == "admin@gmail.com" and password == "admin":
             msg_box1.setText("Hello, Administrator!")
@@ -578,8 +589,7 @@ class SignUpPage(QMainWindow, QWidget):
             return
 
         elif '@' not in email:
-            msg_box.setText("Invalid email!")
-            msg_box.exec()
+            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Invalid email!')
             return
         
         for account in data:
@@ -588,43 +598,37 @@ class SignUpPage(QMainWindow, QWidget):
                 return
 
         if not password:
-            msg_box.setText("Please enter your password!")
-            msg_box.exec()
+            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please enter your password!')
             return
         
         elif password == "admin":
             pass
 
         elif len(password) < 8:
-            msg_box.setText("Password is too short! The program requires a password of more than 8 characters!")
-            msg_box.exec()
+            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Password is too short! The program requires a password of more than 8 characters!')
             return
         if not self.name:
-            msg_box.setText("Please enter your display name!")
-            msg_box.exec()
+            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please enter your display name!')
             return
         if not self.chb_skip.isChecked():
             if not self.cb_day.currentIndex():
-                msg_box.setText("Please select your date of birth\nOr check the box 'Skip choosing your date of birth'")
-                msg_box.exec()
+                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please select your date of birth\nOr check the box "Skip choosing your date of birth"')
                 return
 
             elif not self.cb_month.currentIndex():
-                msg_box.setText("Please select your date of birth\nOr check the box 'Skip choosing your date of birth'")
-                msg_box.exec()
+                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please select your date of birth\nOr check the box "Skip choosing your date of birth"')
                 return
 
             elif not self.cb_year.currentIndex():
-                msg_box.setText("Please select your date of birth\nOr check the box 'Skip choosing your date of birth'")
-                msg_box.exec()
+                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please select your date of birth\nOr check the box "Skip choosing your date of birth"')
                 return
 
         if not self.chb_agree.isChecked():
-            msg_box.setText("Please agree to the terms of this Application!")
-            msg_box.exec()
+            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please agree to the terms of this Application!')
             return
         
         if self.rb_admin.isChecked():
+            Account_type = "admin"
             msg_box1.setText("Hello, Administrator!")
             msg_box1.exec()
             AdminTool.show()
@@ -633,6 +637,7 @@ class SignUpPage(QMainWindow, QWidget):
             return
 
         if self.rb_local.isChecked():
+            Account_type = "local"
             msg_box1.setText("Welcome to Note for WOW! Application!")
             msg_box1.exec()
             MainNote.show()
@@ -640,19 +645,18 @@ class SignUpPage(QMainWindow, QWidget):
             self.close()
         
         elif not self.rb_admin.isChecked():
-            msg_box.setText("ERROR 404!\nYOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!\nNote: Exception admin account!")
-            msg_box.exec()
+            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "YOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!\nNote: Exception admin account!")
             return
         
         elif not self.rb_local.isChecked():
-            msg_box.setText("ERROR 404!\nYOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!\nNote: Exception admin account!")
-            msg_box.exec()
+            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "YOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!\nNote: Exception admin account!")
             return
         
         if email and password:
             new_account = {
             "email": email,
-            "password": password
+            "password": password,
+            "type": Account_type
             }
             data.append(new_account)    
             with open('account.json', "w") as json_file:
@@ -662,12 +666,11 @@ class MainNotePage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/mainnote.ui", self)
-        self.bt_edit1.clicked.connect(self.showEditNote1)
-        self.bt_edit2.clicked.connect(self.showEditNote2)
+        self.bt_edit.clicked.connect(self.showEditNote1)
         self.bt_add.clicked.connect(self.showCreateNote)
         self.bt_quit.clicked.connect(self.Close)
         self.bt_save.clicked.connect(self.showSignIn)
-        self.bt_apply.clicked.connect(self.checkName)
+        self.bt_search.clicked.connect(self.check)
         self.bt_tool.clicked.connect(self.showTool)
     def showTool(self):
         Tool3.show()
@@ -680,13 +683,11 @@ class MainNotePage(QMainWindow, QWidget):
         Create.show()
     def showEditNote1(self):
         EditNote1.show()
-    def showEditNote2(self):
-        EditNote2.show()
-    def checkName(self):
+    def check(self):
         name = self.le_name.text()
 
         if not name:
-            msg_box.setText("Please enter a title name before clicking Apply!")
+            msg_box.setText("Please enter the note page name to start searching!")
             msg_box.exec()
             return
         else:
