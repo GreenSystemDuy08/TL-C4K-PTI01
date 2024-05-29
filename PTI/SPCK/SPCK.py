@@ -674,7 +674,12 @@ class MainNotePage(QMainWindow, QWidget):
         self.bt_remove.clicked.connect(self.remove)
     def remove(self):
         selected_items = self.noteList.selectedItems()
-        self.noteList.takeItem(self.noteList.row(selected_items[0]))
+        if not selected_items:
+            msg_box2.setText("You have not selected a note page to delete or there are no more note pages to delete!")
+            msg_box2.exec()
+            return
+        else:
+            self.noteList.takeItem(self.noteList.row(selected_items[0]))
     def showTool(self):
         Tool3.show()
     def showSignIn(self):
@@ -700,8 +705,8 @@ class MainNotePage(QMainWindow, QWidget):
             msg_box.exec()
             return
         else:
-            msg_box1.setText("Apply title name successfully!")
-            msg_box1.exec()
+            msg_box2.setText("Failed!")
+            msg_box2.exec()
             return
         
 class Tool3Page(QMainWindow, QWidget):
@@ -840,7 +845,12 @@ class AdminPage(QMainWindow, QWidget):
         NoteDetail.show()
     def remove(self):
         selected_items = self.noteList.selectedItems()
-        self.noteList.takeItem(self.noteList.row(selected_items[0]))
+        if not selected_items:
+            msg_box2.setText("You have not selected a note page to delete or there are no more note pages to delete!")
+            msg_box2.exec()
+            return
+        else:
+            self.noteList.takeItem(self.noteList.row(selected_items[0]))
     def Close(self):
         self.close()
     def showAdd(self):
@@ -867,8 +877,8 @@ class AdminPage(QMainWindow, QWidget):
             msg_box.exec()
             return
         else:
-            msg_box1.setText("Apply title name successfully!")
-            msg_box1.exec()
+            msg_box2.setText("Failed!")
+            msg_box2.exec()
             return
 
 class SettingPage(QMainWindow, QWidget):

@@ -14,7 +14,7 @@
    <string>Note Detail</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="le_date">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -117,7 +117,7 @@
      <string>Name:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="le_name">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -127,7 +127,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Today is March 28....</string>
+     <string/>
     </property>
     <property name="placeholderText">
      <string>You can edit this information</string>
