@@ -842,7 +842,13 @@ class AdminPage(QMainWindow, QWidget):
     def showTask(self):
         Add.show()
     def showDetail(self):
-        NoteDetail.show()
+        selected = self.noteList.selectedItems()
+        if not selected:
+            msg_box2.setText("You have not selected a note page to view/edit note page details!")
+            msg_box2.exec()
+            return
+        else:
+            NoteDetail.show()
     def remove(self):
         selected_items = self.noteList.selectedItems()
         if not selected_items:
