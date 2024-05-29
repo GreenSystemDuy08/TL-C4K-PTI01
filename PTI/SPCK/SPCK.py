@@ -6,7 +6,6 @@ import json
 # Đọc dữ liệu từ tệp JSON
 with open('account.json', 'r') as file:
     data = json.load(file)
-    # print(data)
 
 class SetupPage(QMainWindow, QWidget):
     def __init__(self):
@@ -490,11 +489,11 @@ class forgotPassword2(QMainWindow, QWidget):
                 return
             
         if not self.rb_admin.isChecked():
-            msg_box.setText("You haven't choosed an account to register!")
+            msg_box.setText("You have not confirmed your account type!")
             msg_box.exec()
             return
         if not self.rb_local.isChecked():
-            msg_box.setText("You haven't choosed an account to register!")
+            msg_box.setText("You have not confirmed your account type!")
             msg_box.exec()
             return
     
@@ -666,12 +665,16 @@ class MainNotePage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/mainnote.ui", self)
-        self.bt_edit.clicked.connect(self.showEditNote1)
+        self.bt_edit.clicked.connect(self.showEditNote)
         self.bt_add.clicked.connect(self.showCreateNote)
         self.bt_quit.clicked.connect(self.Close)
         self.bt_save.clicked.connect(self.showSignIn)
         self.bt_search.clicked.connect(self.check)
         self.bt_tool.clicked.connect(self.showTool)
+        self.bt_remove.clicked.connect(self.remove)
+    def remove(self):
+        selected_items = self.noteList.selectedItems()
+        self.noteList.takeItem(self.noteList.row(selected_items[0]))
     def showTool(self):
         Tool3.show()
     def showSignIn(self):
@@ -680,9 +683,15 @@ class MainNotePage(QMainWindow, QWidget):
     def Close(self):
         self.close()
     def showCreateNote(self):
-        Create.show()
-    def showEditNote1(self):
-        EditNote1.show()
+        Create1.show()
+    def showEditNote(self):
+        selected = self.noteList.selectedItems()
+        if not selected:
+            msg_box2.setText("ERROR! You haven't selected the note page you want to edit!")
+            msg_box2.exec()
+            return
+        else:
+            EditNote1.show()
     def check(self):
         name = self.le_name.text()
 
@@ -713,7 +722,7 @@ class AddPage(QMainWindow, QWidget):
         uic.loadUi("GUI/task.ui", self)
         self.bt_ok.clicked.connect(self.close)
         
-class CreatePage(QMainWindow, QWidget):
+class Create1Page(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/create.ui", self)
@@ -736,10 +745,46 @@ class CreatePage(QMainWindow, QWidget):
             msg_box.exec()
             return
         
-        self.close()
-        msg_box1.setText("The notes page has been added successfully!")
-        msg_box1.exec()
-        return
+        text = self.le_name.text()
+        if text:
+            item = QListWidgetItem(text)
+            MainNote.noteList.addItem(item)
+            self.close()
+            msg_box1.setText("The notes page has been added successfully!")
+            msg_box1.exec()
+            return
+    
+class Create2Page(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/create1.ui", self)
+        self.bt_close.clicked.connect(self.check)
+    def check(self):
+        title = self.le_title.text()
+        name = self.le_name.text()
+        if not title: 
+            msg_box.setText("Please enter a title name!")
+            msg_box.exec()
+            return
+        
+        elif not name:
+            msg_box.setText("Please enter a Note name!")
+            msg_box.exec()
+            return
+        
+        if not self.cb_type.currentIndex():
+            msg_box.setText("Please select the type of Note you want to create!")
+            msg_box.exec()
+            return
+
+        text = self.le_name.text()
+        if text:
+            item = QListWidgetItem(text)
+            AdminTool.noteList.addItem(item)
+            self.close()
+            msg_box1.setText("The notes page has been added successfully!")
+            msg_box1.exec()
+            return
         
 class FontPage(QMainWindow, QWidget):
     def __init__(self):
@@ -750,78 +795,81 @@ class FontPage(QMainWindow, QWidget):
         MainNote.show()
         self.close()
         
-class EditNote1Page(QMainWindow, QWidget):
+class EditNotePage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi("GUI/editNote1.ui", self)
+        uic.loadUi("GUI/editNote.ui", self)
         self.bt_save.clicked.connect(self.Close)
     def Close(self):
+        selected = AdminTool.noteList.selectedItems()
+        if selected:
+            text = self.le_name.text()
+            if text:
+                selected[0].setText(text)
         self.close()
 
-class EditNote2Page(QMainWindow, QWidget):
+class EditNotePage_Local(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi("GUI/editNote2.ui", self)
+        uic.loadUi("GUI/editNote.ui", self)
         self.bt_save.clicked.connect(self.Close)
     def Close(self):
+        selected = MainNote.noteList.selectedItems()
+        if selected:
+            text = self.le_name.text()
+            if text:
+                selected[0].setText(text)
         self.close()
 
 class AdminPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/AdminPage.ui", self)
-        self.bt_tool.clicked.connect(self.showTool)
+        self.bt_add.clicked.connect(self.showAdd)
         self.bt_save.clicked.connect(self.showSignIn)
         self.bt_exit.clicked.connect(self.Close)
-        self.bt_tool1.clicked.connect(self.showTool1)
-        self.bt_tool2.clicked.connect(self.showTool2)
-        self.bt_edit1.clicked.connect(self.showEditNote1)
-        self.bt_edit2.clicked.connect(self.showEditNote2)
+        self.bt_edit.clicked.connect(self.showEditNote)
         self.bt_setting.clicked.connect(self.showSetting)
-        self.bt_apply.clicked.connect(self.checkName)
+        self.bt_search.clicked.connect(self.check)
+        self.bt_remove.clicked.connect(self.remove)
+        self.bt_detail.clicked.connect(self.showDetail)
+        self.bt_task.clicked.connect(self.showTask)
+    def showTask(self):
+        Add.show()
+    def showDetail(self):
+        NoteDetail.show()
+    def remove(self):
+        selected_items = self.noteList.selectedItems()
+        self.noteList.takeItem(self.noteList.row(selected_items[0]))
     def Close(self):
         self.close()
-    def showTool(self):
-        Tool4.show()
-    def showTool1(self):
-        Tool1.show()
-        self.close()
-    def showTool2(self):
-        Tool2.show()
-        self.close()
+    def showAdd(self):
+        Create2.show()
     def showSignIn(self):
         SignIn.show()
         self.close()
-    def showEditNote1(self):
-        EditNote1.show()
-    def showEditNote2(self):
-        EditNote2.show()
+    def showEditNote(self):
+        selected = self.noteList.selectedItems()
+        if not selected:
+            msg_box2.setText("ERROR! You haven't selected the note page you want to edit!")
+            msg_box2.exec()
+            return
+        else:
+            EditNote.show()
     def showSetting(self):
         Setting.show()
         self.close()
-    def checkName(self):
+    def check(self):
         name = self.le_name.text()
 
         if not name:
-            msg_box.setText("Please enter a title name before clicking Apply!")
+            msg_box.setText("Please enter the note page name to start searching!")
             msg_box.exec()
             return
         else:
             msg_box1.setText("Apply title name successfully!")
             msg_box1.exec()
             return
-        
-class Tool4Page(QMainWindow, QWidget):
-    def __init__(self):
-        super().__init__()
-        uic.loadUi("GUI/tool3.ui", self)
-        self.bt_add_2.clicked.connect(self.showAdd2)
-        self.bt_add.clicked.connect(self.showAdd)
-        self.bt_close.clicked.connect(self.close)
-    def showAdd(self):
-        Add.show()
-    def showAdd2(self):
-        Create.show()
 
 class SettingPage(QMainWindow, QWidget):
     def __init__(self):
@@ -837,12 +885,12 @@ class SettingPage(QMainWindow, QWidget):
         AdminTool.show()
         self.close()
     def showCautionDelete(self):
-        msg_box1.setText("All of the notes page has been successfully removed!")
-        msg_box1.exec()
+        msg_box2.setText("Process cannot be done!")
+        msg_box2.exec()
         return
     def showCautionReset(self):
-        msg_box1.setText("Everything has been reset to factory defaults!")
-        msg_box1.exec()
+        msg_box2.setText("Process cannot be done!")
+        msg_box2.exec()
         return
     
 class AboutPage(QMainWindow, QWidget):
@@ -853,58 +901,13 @@ class AboutPage(QMainWindow, QWidget):
     def Close(self):
         self.close()
 
-class Tool1Page(QMainWindow, QWidget):
+class DetailPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi("GUI/AdminTool - note1.ui", self)
-        self.bt_back.clicked.connect(self.back)
-        self.bt_remove.clicked.connect(self.Caution)
-        self.bt_detail.clicked.connect(self.showNoteDetail)
-    def back(self):
-        AdminTool.show()
-        self.close()
-    def Caution(self):
-        msg_box1.setText("The notes page has been successfully removed!")
-        msg_box1.exec()
-        return
-    def showNoteDetail(self):
-        NoteDetail1.show()
-        self.close()
-
-class Tool2Page(QMainWindow, QWidget):
-    def __init__(self):
-        super().__init__()
-        uic.loadUi("GUI/AdminTool - note2.ui", self)
-        self.bt_back.clicked.connect(self.back)
-        self.bt_remove.clicked.connect(self.Caution)
-        self.bt_detail.clicked.connect(self.showNoteDetail)
-    def Caution(self):
-        msg_box1.setText("The notes page has been successfully removed!")
-        msg_box1.exec()
-        return
-    def back(self):
-        AdminTool.show()
-        self.close()
-    def showNoteDetail(self):
-        NoteDetail2.show()
-        self.close()
-
-class DetailPage1(QMainWindow, QWidget):
-    def __init__(self):
-        super().__init__()
-        uic.loadUi("GUI/noteDetail1.ui", self)
+        uic.loadUi("GUI/noteDetail.ui", self)
         self.bt_close.clicked.connect(self.back)
     def back(self):
-        Tool1.show()
-        self.close()
-
-class DetailPage2(QMainWindow, QWidget):
-    def __init__(self):
-        super().__init__()
-        uic.loadUi("GUI/noteDetail2.ui", self)
-        self.bt_close.clicked.connect(self.back)
-    def back(self):
-        Tool2.show()
+        AdminTool.show()
         self.close()
 
 
@@ -918,7 +921,8 @@ if __name__ == '__main__':
     AdminTool = AdminPage()
     MainNote = MainNotePage()
     Font = FontPage()
-    Create = CreatePage()
+    Create1 = Create1Page()
+    Create2 = Create2Page()
     Setup2 = Setup2Page()
     Setup3 = Setup3Page()
     SetupFinish = SetupFinishPage()
@@ -932,22 +936,21 @@ if __name__ == '__main__':
     forgotPass2 = forgotPassword2()
     SignUp = SignUpPage()
     SignUp2 = SignUpPage2()
-    EditNote1 = EditNote1Page()
-    EditNote2 = EditNote2Page()
-    Tool1 = Tool1Page()
-    Tool2 = Tool2Page()
-    NoteDetail1 = DetailPage1()
-    NoteDetail2 = DetailPage2()
+    EditNote = EditNotePage()
+    EditNote1 = EditNotePage_Local()
+    NoteDetail = DetailPage()
     Start = SignInPage2()
     Setting = SettingPage()
     About = AboutPage()
     Tool3 = Tool3Page()
-    Tool4 = Tool4Page()
     Add = AddPage()
     msg_box = QMessageBox()
     msg_box1 = QMessageBox()
+    msg_box2 = QMessageBox()
     msg_box1.setWindowTitle("App Notification")
     msg_box1.setIcon(QMessageBox.Icon.Information)
     msg_box.setWindowTitle("App Warning")
     msg_box.setIcon(QMessageBox.Icon.Warning)
+    msg_box2.setWindowTitle("App Error!")
+    msg_box2.setIcon(QMessageBox.Icon.Critical)
     sys.exit(app.exec())

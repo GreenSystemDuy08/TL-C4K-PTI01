@@ -265,7 +265,7 @@
      <string> Final Release - Build 8.0</string>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidget">
+   <widget class="QListWidget" name="noteList">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -293,7 +293,7 @@
      </property>
     </item>
    </widget>
-   <widget class="QPushButton" name="bt_add_2">
+   <widget class="QPushButton" name="bt_remove">
     <property name="geometry">
      <rect>
       <x>560</x>
@@ -326,8 +326,8 @@
    <zorder>line_3</zorder>
    <zorder>bt_tool</zorder>
    <zorder>label_3</zorder>
-   <zorder>listWidget</zorder>
-   <zorder>bt_add_2</zorder>
+   <zorder>noteList</zorder>
+   <zorder>bt_remove</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
