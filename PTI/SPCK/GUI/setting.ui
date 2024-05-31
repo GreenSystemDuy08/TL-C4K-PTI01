@@ -518,10 +518,10 @@ Notes pages</string>
      <bool>true</bool>
     </property>
     <property name="currentText">
-     <string>6</string>
+     <string>20</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>10</number>
     </property>
     <item>
      <property name="text">
@@ -713,6 +713,24 @@ Notes pages</string>
 Note for WOW!</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>240</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>7</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Preview</string>
+    </property>
+   </widget>
    <zorder>label_2</zorder>
    <zorder>label_8</zorder>
    <zorder>label_7</zorder>
@@ -740,6 +758,7 @@ Note for WOW!</string>
    <zorder>cb_edition_3</zorder>
    <zorder>chb_read_2</zorder>
    <zorder>bt_about</zorder>
+   <zorder>label_12</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

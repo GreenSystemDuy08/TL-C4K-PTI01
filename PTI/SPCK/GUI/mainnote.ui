@@ -153,7 +153,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Search Panel</string>
+     <string>Search Area</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="le_name">

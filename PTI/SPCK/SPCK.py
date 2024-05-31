@@ -1,7 +1,10 @@
 import sys
 from PyQt6.QtWidgets import *
+from PyQt6 import QtGui
+from PyQt6.QtGui import *
 from PyQt6 import uic
 import json
+import re
 
 # Đọc dữ liệu từ tệp JSON
 with open('account.json', 'r') as file:
@@ -692,10 +695,36 @@ class MainNotePage(QMainWindow, QWidget):
     def showEditNote(self):
         selected = self.noteList.selectedItems()
         if not selected:
-            msg_box2.setText("ERROR! You haven't selected the note page you want to edit!")
+            msg_box2.setText("You haven't selected the note page you want to edit!")
             msg_box2.exec()
             return
         else:
+            # Font
+            font_index = Font.fontComboBox.currentIndex()
+            font = Font.fontComboBox.itemText(font_index)
+            font_object = QFont(font)
+            EditNote1.te_note.setFont(font_object)
+            EditNote1.te_note.update()
+
+            # Font Size
+            cursor = EditNote1.te_note.textCursor()
+            font_size_text = Font.comboBox.currentText()
+            font_size = int(font_size_text)
+
+            # Create a QTextCharFormat object
+            text_format = QtGui.QTextCharFormat()
+
+            # Ensure you're assigning a QFont object to 'font'
+            font = QtGui.QFont()  # Assuming this is where you create the font object
+            font.setPointSize(font_size)
+
+            text_format.setFont(font)
+            cursor.setCharFormat(text_format)
+            EditNote1.te_note.setTextCursor(cursor)
+            EditNote1.te_note.update()
+
+            name = self.noteList.currentItem().text()
+            EditNote1.le_name.setText(name)
             EditNote1.show()
     def check(self):
         name = self.le_name.text()
@@ -830,6 +859,9 @@ class AdminPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi("GUI/AdminPage.ui", self)
+        self.note_List = self.load_data()
+        self.load_data_Ui(self.note_List)
+        # Button:
         self.bt_add.clicked.connect(self.showAdd)
         self.bt_save.clicked.connect(self.showSignIn)
         self.bt_exit.clicked.connect(self.Close)
@@ -839,6 +871,15 @@ class AdminPage(QMainWindow, QWidget):
         self.bt_remove.clicked.connect(self.remove)
         self.bt_detail.clicked.connect(self.showDetail)
         self.bt_task.clicked.connect(self.showTask)
+    def load_data(self):
+        with open("note.json", "r") as file:
+            return json.load(file)
+    def load_data_Ui(self, note_List):
+        for item in note_List:
+            name = item["name"]
+            self.noteList.addItem(QListWidgetItem(name))
+        if self.noteList.count() > 0:
+            self.noteList.setCurrentRow(0)
     def showTask(self):
         Add.show()
     def showDetail(self):
@@ -848,6 +889,8 @@ class AdminPage(QMainWindow, QWidget):
             msg_box2.exec()
             return
         else:
+            name = self.noteList.currentItem().text()
+            NoteDetail.le_name.setText(name)
             NoteDetail.show()
     def remove(self):
         selected_items = self.noteList.selectedItems()
@@ -867,10 +910,34 @@ class AdminPage(QMainWindow, QWidget):
     def showEditNote(self):
         selected = self.noteList.selectedItems()
         if not selected:
-            msg_box2.setText("ERROR! You haven't selected the note page you want to edit!")
+            msg_box2.setText("You haven't selected the note page you want to edit!")
             msg_box2.exec()
             return
         else:
+            # Font
+            font_index = Setting.fontComboBox.currentIndex()
+            font = Setting.fontComboBox.itemText(font_index)
+            font_object = QFont(font)
+            EditNote.te_note.setFont(font_object)
+
+            # Font Size
+            cursor = EditNote.te_note.textCursor()
+            font_size_text = Setting.comboBox.currentText()
+            font_size = int(font_size_text)
+
+            # Create a QTextCharFormat object
+            text_format = QtGui.QTextCharFormat()
+
+            # Ensure you're assigning a QFont object to 'font'
+            font = QtGui.QFont()  # Assuming this is where you create the font object
+            font.setPointSize(font_size)
+
+            text_format.setFont(font)
+            cursor.setCharFormat(text_format)
+            EditNote.te_note.setTextCursor(cursor)
+            name = self.noteList.currentItem().text()
+            EditNote.le_name.setText(name)
+            EditNote.te_note.update()
             EditNote.show()
     def showSetting(self):
         Setting.show()

@@ -51,7 +51,7 @@
      <string>Name this note:</string>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="plainTextEdit">
+   <widget class="QPlainTextEdit" name="te_note">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -59,12 +59,6 @@
       <width>691</width>
       <height>351</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Tahoma</family>
-      <pointsize>15</pointsize>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
@@ -96,7 +90,7 @@
    </widget>
    <zorder>label</zorder>
    <zorder>le_name</zorder>
-   <zorder>plainTextEdit</zorder>
+   <zorder>te_note</zorder>
    <zorder>bt_save</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">

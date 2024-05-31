@@ -3,5 +3,10 @@
         "email": "duy@gmail.com",
         "password": "123456789",
         "type": "admin"
+    },
+    {
+        "email": "duy@gmail.com3",
+        "password": "Huuduy@2011",
+        "type": "local"
     }
 ]

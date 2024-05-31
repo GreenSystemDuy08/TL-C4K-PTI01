@@ -90,10 +90,10 @@
      <bool>true</bool>
     </property>
     <property name="currentText">
-     <string>6</string>
+     <string>20</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>10</number>
     </property>
     <item>
      <property name="text">
@@ -244,6 +244,19 @@
     </property>
     <property name="text">
      <string>OK</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>40</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Preview</string>
     </property>
    </widget>
   </widget>
