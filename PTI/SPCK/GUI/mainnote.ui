@@ -282,16 +282,6 @@
     <property name="cursor" stdset="0">
      <cursorShape>ArrowCursor</cursorShape>
     </property>
-    <item>
-     <property name="text">
-      <string>Note Page 1</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Note Page 2</string>
-     </property>
-    </item>
    </widget>
    <widget class="QPushButton" name="bt_remove">
     <property name="geometry">
