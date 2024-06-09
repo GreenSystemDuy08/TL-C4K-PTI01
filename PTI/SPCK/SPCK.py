@@ -5,7 +5,6 @@ from PyQt6.QtGui import *
 from PyQt6 import uic
 from PyQt6.QtCore import *
 import json
-import re
 
 # Đọc dữ liệu từ tệp JSON
 with open('account.json', 'r') as file:
@@ -192,11 +191,6 @@ class SignInPage2(QMainWindow, QWidget):
             return
         for account in data:
             if account['email'] == email and account['password'] == password:
-                # msg_box1.setText("Welcome to Note for WOW! Application!")
-                # msg_box1.exec()
-                # MainNote.show()
-                # SignIn.close()
-                # Start.close()
                 found = True
                 if account["type"] == "local":
                     msg_box1.setText("Welcome to Note for WOW! Application!")
@@ -681,6 +675,18 @@ class MainNotePage(QMainWindow, QWidget):
         self.bt_search.clicked.connect(self.check)
         self.bt_tool.clicked.connect(self.showTool)
         self.bt_remove.clicked.connect(self.remove)
+
+    def update_list(self):
+        # Xóa danh sách cũ trong QListWidget
+        self.noteList.clear()
+
+        # Thêm các mục mới vào QListWidget
+        self.N_List = self.load_data()
+        self.load_data_Ui(self.N_List)
+
+    def showEvent(self, event):
+        # Khi cửa sổ được hiển thị, cập nhật QListWidget
+        self.update_list()
     def load_data(self):
         with open("note.json", "r") as file:
             return json.load(file)
@@ -759,8 +765,12 @@ class MainNotePage(QMainWindow, QWidget):
             for item in note_data:
                 name = self.noteList.currentItem().text()
                 EditNote1.le_name.setText(name)
-                title = item["title"]
-                EditNote1.le_title.setText(title)
+                name = self.noteList.currentItem().text()
+                if name == item["name"]:
+                    title = item["title"]
+                    data_note = item["note_data"]
+                    EditNote1.te_note.setPlainText(data_note)
+                    EditNote1.le_title.setText(title)
             EditNote1.te_note.update()
             EditNote1.show()
     def check(self):
@@ -774,7 +784,7 @@ class MainNotePage(QMainWindow, QWidget):
             search_text = self.le_name.text().lower()
             for item in self.N_List:
                 if not search_text in item["name"].lower():
-                    msg_box2.setText("ERROR!")
+                    msg_box2.setText("No notes pages found!")
                     msg_box2.exec()
                     return
                 if search_text in item["name"].lower():
@@ -829,7 +839,8 @@ class Create1Page(QMainWindow, QWidget):
             MainNote.noteList.addItem(item)
             create_note = {
             "title": title,
-            "name": name
+            "name": name,
+            "note_data": ""
             }
             note_data.append(create_note)
             with open('note.json', "w") as file:
@@ -868,7 +879,8 @@ class Create2Page(QMainWindow, QWidget):
             AdminTool.noteList.addItem(item)
             create_note = {
             "title": title,
-            "name": name
+            "name": name,
+            "note_data": ""
             }
             note_data.append(create_note)
             with open('note.json', "w") as file:
@@ -897,19 +909,26 @@ class EditNotePage(QMainWindow, QWidget):
         note = self.te_note.toPlainText()
         title = self.le_title.text()
         if selected:
+            
             text = self.le_name.text()
             if text:
                 selected[0].setText(text)
-        if note:
-            update_note = {
-            "name": text,
-            "title": title,
-            "note_data": note
-            }
-            note_data.append(update_note)    
-            with open('note.json', "w") as file:
-                json.dump(note_data, file, indent=4)
-
+        for item in note_data:
+            if note:
+                if note == item["note_data"]:
+                    self.close()
+                    return
+                if not note == item["note_data"]:
+                    update_note = {
+                    "name": text,
+                    "title": title,
+                    "note_data": note
+                    }
+                    note_data.append(update_note)    
+                    with open('note.json', "w") as file:
+                        json.dump(note_data, file, indent=4)
+                    self.close()
+                    return
         self.close()
 
 class EditNotePage_Local(QMainWindow, QWidget):
@@ -920,19 +939,27 @@ class EditNotePage_Local(QMainWindow, QWidget):
     def Close(self):
         selected = MainNote.noteList.selectedItems()
         note = self.te_note.toPlainText()
+        title = self.le_title.text()
         if selected:
             text = self.le_name.text()
             if text:
                 selected[0].setText(text)
-        if note:
-            update_note = {
-            "name": text,
-            "note_data": note,
-            }
-            note_data.append(update_note)    
-            with open('note.json', "w") as json_file:
-                json.dump(note_data, json_file, indent=4)
-        
+        for item in note_data:
+            if note:
+                if note == item["note_data"]:
+                    self.close()
+                    return
+                if not note == item["note_data"]:
+                    update_note = {
+                    "name": text,
+                    "title": title,
+                    "note_data": note
+                    }
+                    note_data.append(update_note)    
+                    with open('note.json', "w") as file:
+                        json.dump(note_data, file, indent=4)
+                    self.close()
+                    return
         self.close()
 
 class AdminPage(QMainWindow, QWidget):
@@ -956,6 +983,8 @@ class AdminPage(QMainWindow, QWidget):
         with open("note.json", "r") as file:
             return json.load(file)
     def load_data_Ui(self, N_List):
+        # Xóa danh sách cũ trong QListWidget
+        # self.noteList.clear()
         for item in N_List:
             name = item["name"]
             self.noteList.addItem(QListWidgetItem(name))
@@ -1038,8 +1067,11 @@ class AdminPage(QMainWindow, QWidget):
             EditNote.te_note.setTextCursor(cursor)
             for item in note_data:
                 name = self.noteList.currentItem().text()
-                title = item["title"]
-                EditNote.le_title.setText(title)
+                if name == item["name"]:
+                    title = item["title"]
+                    data_note = item["note_data"]
+                    EditNote.le_title.setText(title)
+                    EditNote.te_note.setPlainText(data_note)
                 EditNote.le_name.setText(name)
             EditNote.te_note.update()
             EditNote.show()
@@ -1057,7 +1089,7 @@ class AdminPage(QMainWindow, QWidget):
             search_text = self.le_name.text().lower()
             for item in self.N_List:
                 if not search_text in item["name"].lower():
-                    msg_box2.setText("ERROR!")
+                    msg_box2.setText("No notes pages found!")
                     msg_box2.exec()
                     return
                 if search_text in item["name"].lower():
@@ -1071,21 +1103,34 @@ class SettingPage(QMainWindow, QWidget):
         uic.loadUi("GUI/setting.ui", self)
         self.bt_save.clicked.connect(self.back)
         self.bt_reset.clicked.connect(self.showCautionReset)
-        self.bt_delete.clicked.connect(self.showCautionDelete)
+        self.bt_delete.clicked.connect(self.removeAllNotes)
         self.bt_about.clicked.connect(self.showAbout)
     def showAbout(self):
         About.show()
     def back(self):
         AdminTool.show()
         self.close()
-    def showCautionDelete(self):
-        msg_box2.setText("Process cannot be done!")
-        msg_box2.exec()
-        return
     def showCautionReset(self):
         msg_box2.setText("Process cannot be done!")
         msg_box2.exec()
         return
+    def removeAllNotes(self):
+        # Hỏi người dùng xác nhận trước khi xóa
+        reply = QMessageBox.question(self, "Confirm Delete All", "Are you sure you want to delete all notes?",
+                                     QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                                     QMessageBox.StandardButton.No)
+        if reply == QMessageBox.StandardButton.Yes:
+            # Xóa hết item từ QListWidget
+            AdminTool.noteList.clear()
+
+            # Xóa hết dữ liệu trong list
+            AdminTool.N_List.clear()
+
+            # Lưu thay đổi vào file JSON
+            with open('note.json', 'w') as file:
+                json.dump(AdminTool.N_List, file, indent=4)
+            
+            QMessageBox.information(self, "Notes Deleted", "All notes have been successfully deleted!")
     
 class AboutPage(QMainWindow, QWidget):
     def __init__(self):

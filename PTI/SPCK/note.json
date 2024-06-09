@@ -1,8 +1,22 @@
 [
     {
+        "title": "Example 1",
         "name": "Note Page 1",
-        "title": "Duy",
-        "date_modified": "1/1/2011",
-        "note_data": "Hello!"
+        "note_data": "Duy"
+    },
+    {
+        "title": "Example 2",
+        "name": "Note Page 2",
+        "note_data": "Hello"
+    },
+    {
+        "title": "Example 3",
+        "name": "Note Page 3",
+        "note_data": "Xin"
+    },
+    {
+        "title": "duy",
+        "name": "Note Page 4",
+        "note_data": "Ch\u00c3\u00a0o!"
     }
 ]

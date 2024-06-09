@@ -18,13 +18,12 @@ Chức năng:
 	+ Cập nhật giao diện đăng nhập mới
 	+ ...
 Chưa làm được:
-	+ Chưa lưu được những gì đã note
 	+ Phần setting chưa hoạt động
 	+ Chưa làm được các thứ Tiếng có trong lựa chọn phần cài đặt
-	+ Phần chỉnh font chưa hoạt động (Phần setting + Loacal Account)
 	+ ...
 Tính năng mới:
 	+ Lưu được tài khoản người dùng
 	+ Có tên mỗi trang Note ở ô "Name" trong mục chỉnh sửa ghi chú
+	+ Có tên chủ đề mỗi trang Note ở ô "Title" trong mục chỉnh sửa ghi chú
 Lỗi:
 	+ Chưa có lỗi được tìm thấy (N/A)
