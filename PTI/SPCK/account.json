@@ -5,7 +5,12 @@
         "type": "admin"
     },
     {
-        "email": "duy@gmail.com3",
+        "email": "duy123@gmail.com",
+        "password": "Huuduy@2011",
+        "type": "local"
+    },
+    {
+        "email": "duy@gmail.com2",
         "password": "Huuduy@2011",
         "type": "local"
     }

@@ -683,7 +683,6 @@ class MainNotePage(QMainWindow, QWidget):
         # Thêm các mục mới vào QListWidget
         self.N_List = self.load_data()
         self.load_data_Ui(self.N_List)
-
     def showEvent(self, event):
         # Khi cửa sổ được hiển thị, cập nhật QListWidget
         self.update_list()
@@ -979,6 +978,17 @@ class AdminPage(QMainWindow, QWidget):
         self.bt_detail.clicked.connect(self.showDetail)
         self.bt_task.clicked.connect(self.showTask)
 
+    def update_list(self):
+        # Xóa danh sách cũ trong QListWidget
+        self.noteList.clear()
+
+        # Thêm các mục mới vào QListWidget
+        self.N_List = self.load_data()
+        self.load_data_Ui(self.N_List)
+    def showEvent(self, event):
+        # Khi cửa sổ được hiển thị, cập nhật QListWidget
+        self.update_list()
+
     def load_data(self):
         with open("note.json", "r") as file:
             return json.load(file)
@@ -1154,11 +1164,11 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     MainPage = SetupPage()
     Setup = SetupPage()
-    # MainPage.show()
+    MainPage.show()
     Finish = FinishPage()
     Setup1 = Setup1Page()
     AdminTool = AdminPage()
-    AdminTool.show()
+    # AdminTool.show()
     MainNote = MainNotePage()
     Font = FontPage()
     Create1 = Create1Page()
