@@ -536,7 +536,7 @@ class SignUpPage(QMainWindow, QWidget):
         self.name = self.le_fullname.text()
         email = self.le_account.text()
         password = self.le_password.text()
-        # Account_type = ""
+        Account_type = ""
         
         if not email: 
             QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "Please enter your email!")
@@ -626,23 +626,12 @@ class SignUpPage(QMainWindow, QWidget):
         if not self.chb_agree.isChecked():
             QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please agree to the terms of this Application!')
             return
-        
+
         if self.rb_admin.isChecked():
             Account_type = "admin"
-            msg_box1.setText("Hello, Administrator!")
-            msg_box1.exec()
-            AdminTool.show()
-            SignUp2.close()
-            self.close()
-            return
 
-        if self.rb_local.isChecked():
+        elif self.rb_local.isChecked():
             Account_type = "local"
-            msg_box1.setText("Welcome to Note for WOW! Application!")
-            msg_box1.exec()
-            MainNote.show()
-            SignUp2.close()
-            self.close()
         
         elif not self.rb_admin.isChecked():
             QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "YOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!\nNote: Exception admin account!")
@@ -658,10 +647,24 @@ class SignUpPage(QMainWindow, QWidget):
             "password": password,
             "type": Account_type
             }
-            data.append(new_account)    
+            data.append(new_account)
             with open('account.json', "w") as json_file:
-                json.dump(data, json_file, indent=4) 
-
+                json.dump(data, json_file, indent=4)
+            if Account_type == "admin":
+                msg_box1.setText("Hello, Administrator!")
+                msg_box1.exec()
+                AdminTool.show()
+                SignUp2.close()
+                self.close()
+                return
+            if Account_type == "local":
+                msg_box1.setText("Welcome to Note for WOW! Application!")
+                msg_box1.exec()
+                MainNote.show()
+                SignUp2.close()
+                self.close()
+                return
+            
 class MainNotePage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
@@ -1098,13 +1101,14 @@ class AdminPage(QMainWindow, QWidget):
         else:
             search_text = self.le_name.text().lower()
             for item in self.N_List:
-                if not search_text in item["name"].lower():
-                    msg_box2.setText("No notes pages found!")
-                    msg_box2.exec()
-                    return
                 if search_text in item["name"].lower():
                     self.noteList.clear()
                     self.noteList.addItem(QListWidgetItem(item['name']))
+                    return
+                # if not search_text in item["name"].lower():
+                else:
+                    msg_box2.setText("No notes pages found!")
+                    msg_box2.exec()
                     return
 
 class SettingPage(QMainWindow, QWidget):

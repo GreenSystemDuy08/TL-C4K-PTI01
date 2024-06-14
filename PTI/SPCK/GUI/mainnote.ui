@@ -107,71 +107,6 @@
      <string>Add more Notes</string>
     </property>
    </widget>
-   <widget class="QGraphicsView" name="graphicsView">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>60</y>
-      <width>401</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="bt_search">
-    <property name="geometry">
-     <rect>
-      <x>830</x>
-      <y>120</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>9</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Search now!</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>80</y>
-      <width>91</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Search Area</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="le_name">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>120</y>
-      <width>251</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="placeholderText">
-     <string>Type here to seach</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="bt_save">
     <property name="geometry">
      <rect>
@@ -301,16 +236,89 @@
      <string>Remove selected Note</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="le_name">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>110</y>
+      <width>361</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="placeholderText">
+     <string>Type here to seach</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>50</y>
+      <width>401</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>70</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Search Area</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_search">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>150</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px;
+color: rgb(42, 0, 255);</string>
+    </property>
+    <property name="text">
+     <string>Search now!</string>
+    </property>
+   </widget>
    <zorder>line_2</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
    <zorder>bt_edit</zorder>
    <zorder>bt_quit</zorder>
    <zorder>bt_add</zorder>
-   <zorder>graphicsView</zorder>
-   <zorder>bt_search</zorder>
-   <zorder>label_4</zorder>
-   <zorder>le_name</zorder>
    <zorder>bt_save</zorder>
    <zorder>line</zorder>
    <zorder>line_3</zorder>
@@ -318,6 +326,10 @@
    <zorder>label_3</zorder>
    <zorder>noteList</zorder>
    <zorder>bt_remove</zorder>
+   <zorder>graphicsView</zorder>
+   <zorder>label_4</zorder>
+   <zorder>bt_search</zorder>
+   <zorder>le_name</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

@@ -161,7 +161,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Secured by Green Security</string>
+     <string>Secured by Super Security</string>
     </property>
    </widget>
    <widget class="Line" name="line">

@@ -139,6 +139,11 @@
       <string>English</string>
      </property>
     </item>
+    <item>
+     <property name="text">
+      <string>Vietnamese</string>
+     </property>
+    </item>
    </widget>
    <widget class="QComboBox" name="cb_edition">
     <property name="geometry">

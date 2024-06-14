@@ -1,17 +1,12 @@
 [
     {
         "email": "duy@gmail.com",
-        "password": "123456789",
+        "password": "12345678",
         "type": "admin"
     },
     {
         "email": "duy123@gmail.com",
-        "password": "Huuduy@2011",
-        "type": "local"
-    },
-    {
-        "email": "duy@gmail.com2",
-        "password": "Huuduy@2011",
+        "password": "duy123456",
         "type": "local"
     }
 ]
