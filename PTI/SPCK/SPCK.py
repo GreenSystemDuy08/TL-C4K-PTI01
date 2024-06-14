@@ -678,6 +678,14 @@ class MainNotePage(QMainWindow, QWidget):
         self.bt_search.clicked.connect(self.check)
         self.bt_tool.clicked.connect(self.showTool)
         self.bt_remove.clicked.connect(self.remove)
+        self.bt_refresh.clicked.connect(self.refresh)
+    
+    def refresh(self):
+        self.noteList.clear()
+
+        # Thêm các mục mới vào QListWidget
+        self.N_List = self.load_data()
+        self.load_data_Ui(self.N_List)
 
     def update_list(self):
         # Xóa danh sách cũ trong QListWidget
@@ -785,10 +793,6 @@ class MainNotePage(QMainWindow, QWidget):
         else:
             search_text = self.le_name.text().lower()
             for item in self.N_List:
-                if not search_text in item["name"].lower():
-                    msg_box2.setText("No notes pages found!")
-                    msg_box2.exec()
-                    return
                 if search_text in item["name"].lower():
                     self.noteList.clear()
                     self.noteList.addItem(QListWidgetItem(item['name']))
@@ -920,7 +924,7 @@ class EditNotePage(QMainWindow, QWidget):
                 if note == item["note_data"]:
                     self.close()
                     return
-                if not note == item["note_data"]:
+                elif not note == item["note_data"]:
                     update_note = {
                     "name": text,
                     "title": title,
@@ -980,6 +984,14 @@ class AdminPage(QMainWindow, QWidget):
         self.bt_remove.clicked.connect(self.remove)
         self.bt_detail.clicked.connect(self.showDetail)
         self.bt_task.clicked.connect(self.showTask)
+        self.bt_refresh.clicked.connect(self.refresh)
+    
+    def refresh(self):
+        self.noteList.clear()
+
+        # Thêm các mục mới vào QListWidget
+        self.N_List = self.load_data()
+        self.load_data_Ui(self.N_List)
 
     def update_list(self):
         # Xóa danh sách cũ trong QListWidget
@@ -1104,11 +1116,6 @@ class AdminPage(QMainWindow, QWidget):
                 if search_text in item["name"].lower():
                     self.noteList.clear()
                     self.noteList.addItem(QListWidgetItem(item['name']))
-                    return
-                # if not search_text in item["name"].lower():
-                else:
-                    msg_box2.setText("No notes pages found!")
-                    msg_box2.exec()
                     return
 
 class SettingPage(QMainWindow, QWidget):

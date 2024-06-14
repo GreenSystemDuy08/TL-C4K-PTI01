@@ -354,6 +354,32 @@ color: rgb(42, 0, 255);</string>
 note detail</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="bt_refresh">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>270</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px;
+color: rgb(42, 0, 255);</string>
+    </property>
+    <property name="text">
+     <string>Refresh list</string>
+    </property>
+   </widget>
+   <zorder>bt_refresh</zorder>
    <zorder>graphicsView</zorder>
    <zorder>bt_search</zorder>
    <zorder>label</zorder>

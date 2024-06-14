@@ -57,7 +57,7 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>580</y>
+      <y>590</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -204,7 +204,7 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>270</y>
+      <y>280</y>
       <width>461</width>
       <height>291</height>
      </rect>
@@ -313,6 +313,32 @@ color: rgb(42, 0, 255);</string>
      <string>Search now!</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="bt_refresh">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>570</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px;
+color: rgb(42, 0, 255);</string>
+    </property>
+    <property name="text">
+     <string>Refresh list</string>
+    </property>
+   </widget>
+   <zorder>bt_refresh</zorder>
    <zorder>line_2</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>

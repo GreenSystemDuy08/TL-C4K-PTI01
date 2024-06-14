@@ -60,6 +60,11 @@
       <height>371</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
