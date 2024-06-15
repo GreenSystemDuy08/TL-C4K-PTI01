@@ -101,7 +101,7 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>120</x>
       <y>150</y>
       <width>221</width>
       <height>21</height>
@@ -113,7 +113,7 @@
      </font>
     </property>
     <property name="text">
-     <string> Final Release - Build 8.0</string>
+     <string> Final Release with SP1- Build 10.0</string>
     </property>
    </widget>
    <widget class="QPushButton" name="bt_add">
@@ -214,7 +214,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="placeholderText">
-     <string>Type here to seach</string>
+     <string>Type here to search</string>
     </property>
    </widget>
    <widget class="QPushButton" name="bt_search">

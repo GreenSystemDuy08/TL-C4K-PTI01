@@ -59,7 +59,7 @@
      <string/>
     </property>
     <property name="placeholderText">
-     <string>Enter your account/phone number here!</string>
+     <string>Enter your account here!</string>
     </property>
    </widget>
    <widget class="QPushButton" name="bt_login">
@@ -103,7 +103,7 @@
      <string notr="true">color: rgb(255, 0, 4);</string>
     </property>
     <property name="text">
-     <string>EMAIL OR PHONE NUMBER</string>
+     <string>EMAIL</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="le_password">

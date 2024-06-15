@@ -185,7 +185,7 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>150</x>
       <y>140</y>
       <width>221</width>
       <height>21</height>
@@ -197,7 +197,7 @@
      </font>
     </property>
     <property name="text">
-     <string> Final Release - Build 8.0</string>
+     <string> Final Release with SP1 - Build 10.0</string>
     </property>
    </widget>
    <widget class="QListWidget" name="noteList">
@@ -254,7 +254,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="placeholderText">
-     <string>Type here to seach</string>
+     <string>Type here to search</string>
     </property>
    </widget>
    <widget class="QGraphicsView" name="graphicsView">

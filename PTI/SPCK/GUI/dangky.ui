@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>805</width>
+    <width>495</width>
     <height>632</height>
    </rect>
   </property>
@@ -35,7 +35,7 @@
      <string notr="true">color: rgb(255, 0, 4);</string>
     </property>
     <property name="text">
-     <string>EMAIL OR PHONE NUMBER</string>
+     <string>EMAIL</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="le_account">
@@ -56,7 +56,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="placeholderText">
-     <string>Enter your account/phone number here!</string>
+     <string>Enter your account here!</string>
     </property>
    </widget>
    <widget class="QLabel" name="lb_password">
@@ -143,7 +143,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="placeholderText">
-     <string>Your display name </string>
+     <string>Enter your display name here!</string>
     </property>
    </widget>
    <widget class="QLabel" name="lb_date">
@@ -992,7 +992,7 @@
    <widget class="QCheckBox" name="chb_agree">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>150</x>
       <y>470</y>
       <width>251</width>
       <height>17</height>
@@ -1010,7 +1010,7 @@
    <widget class="QPushButton" name="bt_signup">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>200</x>
       <y>500</y>
       <width>111</width>
       <height>41</height>
@@ -1049,7 +1049,7 @@
    <widget class="QPushButton" name="bt_already">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>170</x>
       <y>550</y>
       <width>171</width>
       <height>41</height>
@@ -1068,77 +1068,6 @@
     </property>
     <property name="text">
      <string>Already have an account</string>
-    </property>
-   </widget>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>130</y>
-      <width>20</width>
-      <height>301</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>140</y>
-      <width>241</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 0, 4);</string>
-    </property>
-    <property name="text">
-     <string>Finally, choose your account type
-to complete registration!</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="rb_admin">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>260</y>
-      <width>151</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Administrator Account</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="rb_local">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>300</y>
-      <width>121</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Local Account</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="chb_skip">
@@ -1162,7 +1091,7 @@ to complete registration!</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>130</x>
       <y>30</y>
       <width>241</width>
       <height>71</height>
@@ -1187,7 +1116,7 @@ to complete registration!</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>805</width>
+     <width>495</width>
      <height>21</height>
     </rect>
    </property>

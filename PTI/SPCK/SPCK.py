@@ -137,10 +137,19 @@ class SignInPage(QMainWindow, QWidget):
         self.bt_continue.clicked.connect(self.showMainPage)
         self.bt_forgot.clicked.connect(self.showForgotPass)
     def showAdmin(self):
+        Admin.le_email.clear()
+        Admin.le_password.clear()
+        Admin.le_email.setPlaceholderText("Please enter your email here!")
+        Admin.le_password.setPlaceholderText("Please enter your password here!")
         Admin.show()
     def showStart(self):
+        Start.le_email.clear()
+        Start.le_password.clear()
+        Start.le_email.setPlaceholderText("Please enter your email here!")
+        Start.le_password.setPlaceholderText("Please enter your password here!")
         Start.show()
     def showForgotPass(self):
+        forgotPass.le_email.clear()
         forgotPass.show()
     def showMainPage(self):
         MainNote.show()
@@ -161,15 +170,31 @@ class SignInPage2(QMainWindow, QWidget):
         self.bt_outlook.clicked.connect(self.showOutlook)
         self.bt_finish.clicked.connect(self.checkLogin)
     def showGoogle(self):
+        Google.le_email.clear()
+        Google.le_password.clear()
+        Google.le_email.setPlaceholderText("Please enter your email here!")
+        Google.le_password.setPlaceholderText("Please enter your password here!")
         Google.show()
         self.close()
     def showMicrosoft(self):
+        Microsoft.le_email.clear()
+        Microsoft.le_password.clear()
+        Microsoft.le_email.setPlaceholderText("Please enter your email here!")
+        Microsoft.le_password.setPlaceholderText("Please enter your password here!")
         Microsoft.show()
         self.close()
     def showApple(self):
+        Apple.le_email.clear()
+        Apple.le_password.clear()
+        Apple.le_email.setPlaceholderText("Please enter your email here!")
+        Apple.le_password.setPlaceholderText("Please enter your password here!")
         Apple.show()
         self.close()
     def showOutlook(self):
+        Outlook.le_email.clear()
+        Outlook.le_password.clear()
+        Outlook.le_email.setPlaceholderText("Please enter your email here!")
+        Outlook.le_password.setPlaceholderText("Please enter your password here!")
         Outlook.show()
         self.close()
     def checkLogin(self):
@@ -192,21 +217,13 @@ class SignInPage2(QMainWindow, QWidget):
         for account in data:
             if account['email'] == email and account['password'] == password:
                 found = True
-                if account["type"] == "local":
-                    msg_box1.setText("Welcome to Note for WOW! Application!")
-                    msg_box1.exec()
-                    MainNote.show()
-                    SignIn.close()
-                    Start.close()
-                    return
-                if account["type"] == "admin":
-                    msg_box1.setText("Hello, Administrator!")
-                    msg_box1.exec()
-                    AdminTool.show()
-                    SignIn.close()
-                    Start.close()
-                    return
-
+                msg_box1.setText("Welcome to Note for WOW! Application!")
+                msg_box1.exec()
+                MainNote.show()
+                SignIn.close()
+                Start.close()
+                return
+            
         if not found:
             QMessageBox.warning(self, 'ERROR AT LOGIN!', '=(((\nAccount or password is incorrect or has not been registered!')
             return
@@ -412,11 +429,13 @@ class forgotPassword1(QMainWindow, QWidget):
         for account in data:
             if account["email"] == email:
                 found == True
+                forgotPass2.le_new.clear()
+                forgotPass2.le_re_enter.clear()
                 forgotPass2.show()
                 self.close()
                 return
         if not found:
-            QMessageBox.warning(self, 'ERROR!', '=(((\nAccount or password is incorrect or has not been registered!')
+            QMessageBox.warning(self, 'ERROR!', '=(((\nThe account you just entered is incorrect or not registered!')
             return
 
         elif email == "admin@gmail.com":
@@ -430,15 +449,10 @@ class forgotPassword2(QMainWindow, QWidget):
         uic.loadUi("GUI/forgotPassword.ui", self)
         self.bt_ok.clicked.connect(self.Close)
     def Close(self):
-        current = self.le_current.text()
         email = forgotPass.le_email.text()
         new = self.le_new.text()
         re_enter = self.le_re_enter.text()
         found = False
-        if not current:
-            msg_box.setText("Please enter your current password!")
-            msg_box.exec()
-            return
         if not new:
             msg_box.setText("Please enter your new password!")
             msg_box.exec()
@@ -455,48 +469,30 @@ class forgotPassword2(QMainWindow, QWidget):
             msg_box.setText("Please re-enter your new password! Your new password and your new re-enter password do not match!")
             msg_box.exec()
             return
-        if new == current or re_enter == current:
-            QMessageBox.warning(self, 'ERROR!', '=(((\nYour new password is similar to the current password!')
-            return
-        
-        if self.rb_admin.isChecked() or self.rb_local.isChecked():
-            if self.rb_admin.isChecked():
-                Account_type = "admin"
-            if self.rb_local.isChecked():
-                Account_type = "local"
-            for account in data:
-                if account['password'] == current:
-                    self.close()
-                    msg_box1.setText("Your new password has been set successfully!")
-                    msg_box1.exec()
-                    found == True
-                    if "email" and "password" in account:
-                        del account["email"]
-                        del account["password"]
-                        with open('account.json', "w") as f:
-                            json.dump(data, f, indent=4)
-                            data.clear()
-                    new_account = {
-                    "email": email,
-                    "password": new,
-                    "type": Account_type
-                    }
-                    data.append(new_account)
-                    with open('account.json', "w") as json_file:
-                        json.dump(data, json_file, indent=4)
-                        return
-            if not found:
-                QMessageBox.warning(self, 'ERROR!', '=(((\nThe current password is not right!')
+        for account in data:
+            if account['password'] == new:
+                msg_box.setText("ERROR!\nYour new password matches your old password!")
+                msg_box.exec()
                 return
-            
-        if not self.rb_admin.isChecked():
-            msg_box.setText("You have not confirmed your account type!")
-            msg_box.exec()
-            return
-        if not self.rb_local.isChecked():
-            msg_box.setText("You have not confirmed your account type!")
-            msg_box.exec()
-            return
+            if not account["password"] == new:
+                self.close()
+                msg_box1.setText("Your new password has been set successfully!")
+                msg_box1.exec()
+                found == True
+                if "email" and "password" in account:
+                    del account["email"]
+                    del account["password"]
+                    with open('account.json', "w") as f:
+                        json.dump(data, f, indent=4)
+                        data.clear()
+                new_account = {
+                "email": email,
+                "password": new
+                }
+                data.append(new_account)
+                with open('account.json', "w") as json_file:
+                    json.dump(data, json_file, indent=4)
+                    return
     
 class SignUpPage2(QMainWindow, QWidget):
     def __init__(self):
@@ -505,16 +501,44 @@ class SignUpPage2(QMainWindow, QWidget):
         self.bt_next.clicked.connect(self.check)
     def check(self):
         if self.rb_google.isChecked():
+            SignUp.le_account.clear()
+            SignUp.le_password.clear()
+            SignUp.le_fullname.clear()
+            SignUp.le_account.setPlaceholderText("Please enter your email here!")
+            SignUp.le_password.setPlaceholderText("Please enter your password here!")
+            SignUp.le_fullname.setPlaceholderText("Please enter your display name here!")
             SignUp.show()
+            self.close()
             return
         if self.rb_apple.isChecked():
+            SignUp.le_account.clear()
+            SignUp.le_password.clear()
+            SignUp.le_fullname.clear()
+            SignUp.le_account.setPlaceholderText("Please enter your email here!")
+            SignUp.le_password.setPlaceholderText("Please enter your password here!")
+            SignUp.le_fullname.setPlaceholderText("Please enter your display name here!")
             SignUp.show()
+            self.close()
             return
         if self.rb_microsoft.isChecked():
+            SignUp.le_account.clear()
+            SignUp.le_password.clear()
+            SignUp.le_fullname.clear()
+            SignUp.le_account.setPlaceholderText("Please enter your email here!")
+            SignUp.le_password.setPlaceholderText("Please enter your password here!")
+            SignUp.le_fullname.setPlaceholderText("Please enter your display name here!")
             SignUp.show()
+            self.close()
             return
         if self.rb_outlook.isChecked():
+            SignUp.le_account.clear()
+            SignUp.le_password.clear()
+            SignUp.le_fullname.clear()
+            SignUp.le_account.setPlaceholderText("Please enter your email here!")
+            SignUp.le_password.setPlaceholderText("Please enter your password here!")
+            SignUp.le_fullname.setPlaceholderText("Please enter your display name here!")
             SignUp.show()
+            self.close()
             return
         
         else:
@@ -536,7 +560,6 @@ class SignUpPage(QMainWindow, QWidget):
         self.name = self.le_fullname.text()
         email = self.le_account.text()
         password = self.le_password.text()
-        Account_type = ""
         
         if not email: 
             QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "Please enter your email!")
@@ -626,38 +649,15 @@ class SignUpPage(QMainWindow, QWidget):
         if not self.chb_agree.isChecked():
             QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please agree to the terms of this Application!')
             return
-
-        if self.rb_admin.isChecked():
-            Account_type = "admin"
-
-        elif self.rb_local.isChecked():
-            Account_type = "local"
-        
-        elif not self.rb_admin.isChecked():
-            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "YOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!\nNote: Exception admin account!")
-            return
-        
-        elif not self.rb_local.isChecked():
-            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "YOU HAVEN'T CHOOSED AN ACCOUNT TYPE TO REGISTER!\nNote: Exception admin account!")
-            return
         
         if email and password:
             new_account = {
             "email": email,
             "password": password,
-            "type": Account_type
             }
             data.append(new_account)
             with open('account.json', "w") as json_file:
                 json.dump(data, json_file, indent=4)
-            if Account_type == "admin":
-                msg_box1.setText("Hello, Administrator!")
-                msg_box1.exec()
-                AdminTool.show()
-                SignUp2.close()
-                self.close()
-                return
-            if Account_type == "local":
                 msg_box1.setText("Welcome to Note for WOW! Application!")
                 msg_box1.exec()
                 MainNote.show()
@@ -681,6 +681,8 @@ class MainNotePage(QMainWindow, QWidget):
         self.bt_refresh.clicked.connect(self.refresh)
     
     def refresh(self):
+        self.le_name.clear()
+        self.le_name.setPlaceholderText("Type here to search")
         self.noteList.clear()
 
         # Thêm các mục mới vào QListWidget
@@ -742,6 +744,10 @@ class MainNotePage(QMainWindow, QWidget):
     def Close(self):
         self.close()
     def showCreateNote(self):
+        Create1.le_name.clear()
+        Create1.le_title.clear()
+        Create1.le_name.setPlaceholderText("You can edit this information")
+        Create1.le_title.setPlaceholderText("You can edit this information")
         Create1.show()
     def showEditNote(self):
         selected = self.noteList.selectedItems()
@@ -841,20 +847,26 @@ class Create1Page(QMainWindow, QWidget):
         
         text = self.le_name.text()
         if text:
-            item = QListWidgetItem(text)
-            MainNote.noteList.addItem(item)
-            create_note = {
-            "title": title,
-            "name": name,
-            "note_data": ""
-            }
-            note_data.append(create_note)
-            with open('note.json', "w") as file:
-                json.dump(note_data, file, indent=4) 
-            self.close()
-            msg_box1.setText("The notes page has been added successfully!")
-            msg_box1.exec()
-            return
+            existing_names = [note["name"].lower() for note in note_data]
+            if text.lower() in existing_names:
+                    self.close()
+                    QMessageBox.critical(self, "ERROR!", "Note name already exists!")
+                    return
+            else:
+                item = QListWidgetItem(text)
+                MainNote.noteList.addItem(item)
+                create_note = {
+                "title": title,
+                "name": name,
+                "note_data": ""
+                }
+                note_data.append(create_note)
+                with open('note.json', "w") as file:
+                    json.dump(note_data, file, indent=4) 
+                self.close()
+                msg_box1.setText("The notes page has been added successfully!")
+                msg_box1.exec()
+                return
     
 class Create2Page(QMainWindow, QWidget):
     def __init__(self):
@@ -881,20 +893,26 @@ class Create2Page(QMainWindow, QWidget):
 
         text = self.le_name.text()
         if text:
-            item = QListWidgetItem(text)
-            AdminTool.noteList.addItem(item)
-            create_note = {
-            "title": title,
-            "name": name,
-            "note_data": ""
-            }
-            note_data.append(create_note)
-            with open('note.json', "w") as file:
-                json.dump(note_data, file, indent=4) 
-            self.close()
-            msg_box1.setText("The notes page has been added successfully!")
-            msg_box1.exec()
-            return
+            existing_names = [note["name"].lower() for note in note_data]
+            if text.lower() in existing_names:
+                    self.close()
+                    QMessageBox.critical(self, "ERROR!", "Note name already exists!")
+                    return
+            else:
+                item = QListWidgetItem(text)
+                AdminTool.noteList.addItem(item)
+                create_note = {
+                "title": title,
+                "name": name,
+                "note_data": ""
+                }
+                note_data.append(create_note)
+                with open('note.json', "w") as file:
+                    json.dump(note_data, file, indent=4) 
+                self.close()
+                msg_box1.setText("The notes page has been added successfully!")
+                msg_box1.exec()
+                return
         
 class FontPage(QMainWindow, QWidget):
     def __init__(self):
@@ -987,6 +1005,8 @@ class AdminPage(QMainWindow, QWidget):
         self.bt_refresh.clicked.connect(self.refresh)
     
     def refresh(self):
+        self.le_name.clear()
+        self.le_name.setPlaceholderText("Type here to search")
         self.noteList.clear()
 
         # Thêm các mục mới vào QListWidget
@@ -1058,6 +1078,10 @@ class AdminPage(QMainWindow, QWidget):
     def Close(self):
         self.close()
     def showAdd(self):
+        Create2.le_name.clear()
+        Create2.le_title.clear()
+        Create2.le_name.setPlaceholderText("You can edit this information")
+        Create2.le_title.setPlaceholderText("You can edit this information")
         Create2.show()
     def showSignIn(self):
         SignIn.show()
@@ -1175,11 +1199,10 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     MainPage = SetupPage()
     Setup = SetupPage()
-    MainPage.show()
+    # MainPage.show()
     Finish = FinishPage()
     Setup1 = Setup1Page()
     AdminTool = AdminPage()
-    # AdminTool.show()
     MainNote = MainNotePage()
     Font = FontPage()
     Create1 = Create1Page()
@@ -1188,6 +1211,7 @@ if __name__ == '__main__':
     Setup3 = Setup3Page()
     SetupFinish = SetupFinishPage()
     SignIn = SignInPage()
+    SignIn.show()
     Admin = AdminSignInPage()
     Google = GoogleSignInPage()
     Apple = AppleSignInPage()
