@@ -13,6 +13,60 @@ with open('account.json', 'r') as file:
 with open("note.json", "r") as file:
     note_data = json.load(file)
 
+class VirtualMachine(QMainWindow, QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("GUI/virtual.ui", self)
+        self.bt_setup.clicked.connect(self.showSetup)
+        self.bt_open.clicked.connect(self.showSignIn)
+        self.sign_in_window = None
+        # self.main_note = None
+        # self.main_note = MainNotePage()
+        # self.admin_note = None
+        # self.admin_note = AdminPage()
+
+    def is_sign_in_window_open(self):
+        """Checks if a Another window instance exists and is visible."""
+        return self.sign_in_window is not None and self.sign_in_window.isVisible()
+    # def is_main_note_window_open(self):
+    #     """Checks if a Another window instance exists and is visible."""
+    #     return self.main_note is not None and self.main_note.isVisible()
+    # def is_admin_note_window_open(self):
+    #     """Checks if a Another window instance exists and is visible."""
+    #     return self.admin_note is not None and self.admin_note.isVisible()
+
+    def showSetup(self):
+        if self.is_sign_in_window_open():
+            msg_box.setText("ERROR!\nThe application is still running!\nPlease close the application before starting the installation process!")
+            msg_box.exec()
+            return
+        if self.is_main_note_window_open():
+            msg_box.setText("ERROR!\nThe application is still running!\nPlease close the application before starting the installation process!")
+            msg_box.exec()
+            return
+        if self.is_admin_note_window_open():
+            msg_box.setText("ERROR!\nThe application is still running!\nPlease close the application before starting the installation process!")
+            msg_box.exec()
+            return
+        else:
+        # Open Setup window here (assuming it's a separate class)
+            Setup.show()
+
+    def showSignIn(self):
+        if self.sign_in_window is None:
+            self.sign_in_window = SignInPage()  # Create SignIn instance if needed
+        self.sign_in_window.show()
+        return
+    def closeEvent(self, event):  # Override the closeEvent method
+        response = QMessageBox.question(self, "Confirm closing the application", "Are you sure to close this Windows 10 virtualization window?",
+                                     QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                                     QMessageBox.StandardButton.No)
+
+        if response == QMessageBox.StandardButton.Yes:
+            event.accept()  # Allow closing if confirmed
+        else:
+            event.ignore()  # Prevent closing if not confirmed
+
 class SetupPage(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
@@ -1197,9 +1251,10 @@ class DetailPage(QMainWindow, QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    MainPage = SetupPage()
+    MainPage = VirtualMachine()
+    Virtual = VirtualMachine()
+    MainPage.show()
     Setup = SetupPage()
-    # MainPage.show()
     Finish = FinishPage()
     Setup1 = Setup1Page()
     AdminTool = AdminPage()
@@ -1211,7 +1266,7 @@ if __name__ == '__main__':
     Setup3 = Setup3Page()
     SetupFinish = SetupFinishPage()
     SignIn = SignInPage()
-    SignIn.show()
+    # SignIn.show()
     Admin = AdminSignInPage()
     Google = GoogleSignInPage()
     Apple = AppleSignInPage()
