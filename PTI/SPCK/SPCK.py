@@ -1,4 +1,5 @@
 import sys
+from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import *
 from PyQt6 import QtGui
 from PyQt6.QtGui import *
@@ -19,44 +20,11 @@ class VirtualMachine(QMainWindow, QWidget):
         uic.loadUi("GUI/virtual.ui", self)
         self.bt_setup.clicked.connect(self.showSetup)
         self.bt_open.clicked.connect(self.showSignIn)
-        self.sign_in_window = None
-        # self.main_note = None
-        # self.main_note = MainNotePage()
-        # self.admin_note = None
-        # self.admin_note = AdminPage()
-
-    def is_sign_in_window_open(self):
-        """Checks if a Another window instance exists and is visible."""
-        return self.sign_in_window is not None and self.sign_in_window.isVisible()
-    # def is_main_note_window_open(self):
-    #     """Checks if a Another window instance exists and is visible."""
-    #     return self.main_note is not None and self.main_note.isVisible()
-    # def is_admin_note_window_open(self):
-    #     """Checks if a Another window instance exists and is visible."""
-    #     return self.admin_note is not None and self.admin_note.isVisible()
 
     def showSetup(self):
-        if self.is_sign_in_window_open():
-            msg_box.setText("ERROR!\nThe application is still running!\nPlease close the application before starting the installation process!")
-            msg_box.exec()
-            return
-        if self.is_main_note_window_open():
-            msg_box.setText("ERROR!\nThe application is still running!\nPlease close the application before starting the installation process!")
-            msg_box.exec()
-            return
-        if self.is_admin_note_window_open():
-            msg_box.setText("ERROR!\nThe application is still running!\nPlease close the application before starting the installation process!")
-            msg_box.exec()
-            return
-        else:
-        # Open Setup window here (assuming it's a separate class)
-            Setup.show()
-
+        Setup.show()
     def showSignIn(self):
-        if self.sign_in_window is None:
-            self.sign_in_window = SignInPage()  # Create SignIn instance if needed
-        self.sign_in_window.show()
-        return
+        SignIn.show()
     def closeEvent(self, event):  # Override the closeEvent method
         response = QMessageBox.question(self, "Confirm closing the application", "Are you sure to close this Windows 10 virtualization window?",
                                      QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
@@ -279,7 +247,8 @@ class SignInPage2(QMainWindow, QWidget):
                 return
             
         if not found:
-            QMessageBox.warning(self, 'ERROR AT LOGIN!', '=(((\nAccount or password is incorrect or has not been registered!')
+            msg_box.setText('ERROR AT LOGIN!\nAccount or password is incorrect or has not been registered!')
+            msg_box.exec()
             return
 
 class AdminSignInPage(QMainWindow, QWidget):
@@ -302,9 +271,9 @@ class AdminSignInPage(QMainWindow, QWidget):
         if email == "admin@gmail.com" and password == "admin":
             msg_box1.setText("Hello, Administrator!")
             msg_box1.exec()
-            AdminTool.show()
-            self.close()
             SignIn.close()
+            self.close()
+            AdminTool.show()
             return
         elif not password == "admin":
             msg_box.setText("Wrong password for admin account!")
@@ -489,7 +458,8 @@ class forgotPassword1(QMainWindow, QWidget):
                 self.close()
                 return
         if not found:
-            QMessageBox.warning(self, 'ERROR!', '=(((\nThe account you just entered is incorrect or not registered!')
+            msg_box.setText('=(((\nThe account you just entered is incorrect or not registered!')
+            msg_box.exec()
             return
 
         elif email == "admin@gmail.com":
@@ -616,28 +586,27 @@ class SignUpPage(QMainWindow, QWidget):
         password = self.le_password.text()
         
         if not email: 
-            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "Please enter your email!")
+            msg_box.setText("ERROR WHEN REGISTERING ACCOUNT!\nPlease enter your email!")
+            msg_box.exec()                
             return
         if SignUp2.rb_google.isChecked():
-            if email == "admin@gmail.com" and password == "admin":
-                QMessageBox.information(self, 'Sign Up Information', "Hello, Administrator!")
-                AdminTool.show()
-                self.close()
-                SignUp2.close()
-                return
-            elif "@gmail.com" in email:
+            if "@gmail.com" in email:
                 pass
             else:
-                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "You have selected email type: @gmail.com\nThe email you entered is not the same as the account type you selected!")
-                QMessageBox.information(self, 'Sign Up Information', "Email Type: Example: @abc.com")
+                msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nYou have selected email type: @gmail.com\nThe email you entered is not the same as the account type you selected')
+                msg_box.exec()
+                msg_box1.setText('Sign Up Information\nEmail Type: Example: @abc.com')
+                msg_box1.exec()
                 return
         
         if SignUp2.rb_apple.isChecked():
             if "@apple.com" in email:
                 pass
             else:
-                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "You have selected email type: @apple.com\nThe email you entered is not the same as the account type you selected!")
-                QMessageBox.information(self, 'Sign Up Information', "Email Type: Example: @abc.com")
+                msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nYou have selected email type: @apple.com\nThe email you entered is not the same as the account type you selected!')
+                msg_box.exec()
+                msg_box1.setText('Sign Up Information\nEmail Type: Example: @abc.com')
+                msg_box1.exec()
                 return
 
         if SignUp2.rb_microsoft.isChecked():
@@ -645,8 +614,10 @@ class SignUpPage(QMainWindow, QWidget):
                 pass
 
             else:
-                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "You have selected email type: @microsoft.com\nThe email you entered is not the same as the account type you selected!")
-                QMessageBox.information(self, 'Sign Up Information', "Email Type: Example: @abc.com")
+                msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nYou have selected email type: @microsoft.com\nThe email you entered is not the same as the account type you selected!')
+                msg_box.exec()
+                msg_box1.setText('Sign Up Information\nEmail Type: Example: @abc.com')
+                msg_box1.exec()
                 return
         
         if SignUp2.rb_outlook.isChecked():
@@ -654,54 +625,62 @@ class SignUpPage(QMainWindow, QWidget):
                 pass
 
             else:
-                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', "You have selected email type: @outlook.com\nThe email you entered is not the same as the account type you selected!")
-                QMessageBox.information(self, 'Sign Up Information', "Email Type: Example: @abc.com")
+                msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nYou have selected email type: @outlook.com\nThe email you entered is not the same as the account type you selected!')
+                msg_box.exec()
+                msg_box1.setText('Sign Up Information\nEmail Type: Example: @abc.com')
+                msg_box1.exec()
                 return
         elif email == "admin@gmail.com" and password == "admin":
-            msg_box1.setText("Hello, Administrator!")
-            msg_box1.exec()
-            AdminTool.show()
-            SignUp2.close()
-            self.close()
+            msg_box.setText("The Admin account is a built-in account on the system - registration is not supported!")
+            msg_box.exec()
             return
 
         elif '@' not in email:
-            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Invalid email!')
+            msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nInvalid email!')
+            msg_box.exec()
             return
         
         for account in data:
             if account['email'] == email:
-                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', '=(((\nExisting or previously registered account!')
+                msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nExisting or previously registered account!')
+                msg_box.exec()
                 return
 
         if not password:
-            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please enter your password!')
+            msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nPlease enter your password!')
+            msg_box.exec()
             return
         
         elif password == "admin":
             pass
 
         elif len(password) < 8:
-            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Password is too short! The program requires a password of more than 8 characters!')
+            msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nPassword is too short! The program requires a password of more than 8 characters!')
+            msg_box.exec()
             return
         if not self.name:
-            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please enter your display name!')
+            msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nPlease enter your display name!')
+            msg_box.exec()
             return
         if not self.chb_skip.isChecked():
             if not self.cb_day.currentIndex():
-                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please select your date of birth\nOr check the box "Skip choosing your date of birth"')
+                msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nPlease select your date of birth\nOr check the box "Skip choosing your date of birth"')
+                msg_box.exec()
                 return
 
             elif not self.cb_month.currentIndex():
-                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please select your date of birth\nOr check the box "Skip choosing your date of birth"')
+                msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nPlease select your date of birth\nOr check the box "Skip choosing your date of birth"')
+                msg_box.exec()
                 return
 
             elif not self.cb_year.currentIndex():
-                QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please select your date of birth\nOr check the box "Skip choosing your date of birth"')
+                msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nPlease select your date of birth\nOr check the box "Skip choosing your date of birth"')
+                msg_box.exec()
                 return
 
         if not self.chb_agree.isChecked():
-            QMessageBox.warning(self, 'ERROR WHEN REGISTERING ACCOUNT!', 'Please agree to the terms of this Application!')
+            msg_box.setText('ERROR WHEN REGISTERING ACCOUNT!\nPlease agree to the terms of this Application!')
+            msg_box.exec()
             return
         
         if email and password:
@@ -793,8 +772,8 @@ class MainNotePage(QMainWindow, QWidget):
     def showTool(self):
         Tool3.show()
     def showSignIn(self):
-        SignIn.show()
         self.close()
+        SignIn.show()
     def Close(self):
         self.close()
     def showCreateNote(self):
@@ -857,6 +836,14 @@ class MainNotePage(QMainWindow, QWidget):
                     self.noteList.clear()
                     self.noteList.addItem(QListWidgetItem(item['name']))
                     return
+    def closeEvent(self, event):  # Override the closeEvent method
+        response = QMessageBox.question(self, "Confirm closing the application", "Are you sure you want to close this application?",
+                                     QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                                     QMessageBox.StandardButton.No)
+        if response == QMessageBox.StandardButton.Yes:
+            event.accept()  # Allow closing if confirmed
+        else:
+            event.ignore()  # Prevent closing if not confirmed
         
 class Tool3Page(QMainWindow, QWidget):
     def __init__(self):
@@ -904,7 +891,8 @@ class Create1Page(QMainWindow, QWidget):
             existing_names = [note["name"].lower() for note in note_data]
             if text.lower() in existing_names:
                     self.close()
-                    QMessageBox.critical(self, "ERROR!", "Note name already exists!")
+                    msg_box2.setText("ERROR!\nNote name already exists!")
+                    msg_box2.exec()
                     return
             else:
                 item = QListWidgetItem(text)
@@ -950,7 +938,8 @@ class Create2Page(QMainWindow, QWidget):
             existing_names = [note["name"].lower() for note in note_data]
             if text.lower() in existing_names:
                     self.close()
-                    QMessageBox.critical(self, "ERROR!", "Note name already exists!")
+                    msg_box2.setText("ERROR!\nNote name already exists!")
+                    msg_box2.exec()
                     return
             else:
                 item = QListWidgetItem(text)
@@ -1107,8 +1096,7 @@ class AdminPage(QMainWindow, QWidget):
             msg_box2.setText("You have not selected a note page to delete or there are no more note pages to delete!")
             msg_box2.exec()
             return
-        
-        reply = QMessageBox.question(self, "Confirm Delete", "Are you sure you want to delete this item?",
+        reply = QMessageBox.question(self,"Confirm Delete", "Are you sure you want to delete this item?",
                                      QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
                                      QMessageBox.StandardButton.No)
 
@@ -1119,7 +1107,8 @@ class AdminPage(QMainWindow, QWidget):
             self.noteList.takeItem(row)
             # Xóa khỏi cơ sở dữ liệu
             self.delete_item_from_data(name)
-            QMessageBox.information(self, "Item Deleted", "The item has been successfully deleted!")
+            msg_box1.setText("Item Deleted!\nThe item has been successfully deleted!")
+            msg_box1.exec()
 
     def delete_item_from_data(self, name):
         for i, item in enumerate(self.N_List):
@@ -1138,8 +1127,8 @@ class AdminPage(QMainWindow, QWidget):
         Create2.le_title.setPlaceholderText("You can edit this information")
         Create2.show()
     def showSignIn(self):
-        SignIn.show()
         self.close()
+        return SignIn.show()
     def showEditNote(self):
         selected = self.noteList.selectedItems()
         if not selected:
@@ -1180,7 +1169,6 @@ class AdminPage(QMainWindow, QWidget):
             EditNote.show()
     def showSetting(self):
         Setting.show()
-        self.close()
     def check(self):
         name = self.le_name.text()
 
@@ -1195,6 +1183,17 @@ class AdminPage(QMainWindow, QWidget):
                     self.noteList.clear()
                     self.noteList.addItem(QListWidgetItem(item['name']))
                     return
+    def closeEvent(self, event):  # Override the closeEvent method
+        response = QMessageBox.question(self, "Confirm closing the application", "Are you sure you want to close this application?",
+                                     QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                                     QMessageBox.StandardButton.No)
+
+        if response == QMessageBox.StandardButton.Yes:
+            event.accept()  # Allow closing if confirmed
+            return
+        else:
+            event.ignore()  # Prevent closing if not confirmed
+            return
 
 class SettingPage(QMainWindow, QWidget):
     def __init__(self):
@@ -1229,7 +1228,8 @@ class SettingPage(QMainWindow, QWidget):
             with open('note.json', 'w') as file:
                 json.dump(AdminTool.N_List, file, indent=4)
             
-            QMessageBox.information(self, "Notes Deleted", "All notes have been successfully deleted!")
+            msg_box1.setText("Notes Deleted!\nAll notes have been successfully deleted!")
+            msg_box1.exec()
     
 class AboutPage(QMainWindow, QWidget):
     def __init__(self):
@@ -1287,10 +1287,13 @@ if __name__ == '__main__':
     msg_box = QMessageBox()
     msg_box1 = QMessageBox()
     msg_box2 = QMessageBox()
+    msg_box3 = QMessageBox()
     msg_box1.setWindowTitle("App Notification")
     msg_box1.setIcon(QMessageBox.Icon.Information)
     msg_box.setWindowTitle("App Warning")
     msg_box.setIcon(QMessageBox.Icon.Warning)
     msg_box2.setWindowTitle("App Error!")
     msg_box2.setIcon(QMessageBox.Icon.Critical)
+    msg_box3.setWindowTitle("App Question")
+    msg_box3.setIcon(QMessageBox.Icon.Question)
     sys.exit(app.exec())

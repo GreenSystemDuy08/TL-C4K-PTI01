@@ -14,7 +14,7 @@
    <string>Note for WOW! - Administrator tools</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 243, 207);</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -30,6 +30,9 @@
      <font>
       <pointsize>20</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>         Note for WOW!
@@ -63,6 +66,9 @@
       <pointsize>10</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>Save and Exit</string>
     </property>
@@ -80,6 +86,9 @@
      <font>
       <pointsize>10</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Close Application</string>
@@ -112,6 +121,9 @@
       <pointsize>10</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string> Final Release with SP1- Build 10.0</string>
     </property>
@@ -130,6 +142,9 @@
       <pointsize>10</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>Add more Notes</string>
     </property>
@@ -147,6 +162,9 @@
      <font>
       <pointsize>10</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Welcome to</string>
@@ -178,6 +196,9 @@
      <font>
       <pointsize>10</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Setting</string>
@@ -211,7 +232,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true"/>
     </property>
     <property name="placeholderText">
      <string>Type here to search</string>
@@ -256,6 +277,9 @@ color: rgb(42, 0, 255);</string>
       <pointsize>12</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>Search Area</string>
     </property>
@@ -277,6 +301,9 @@ color: rgb(42, 0, 255);</string>
     <property name="cursor" stdset="0">
      <cursorShape>ArrowCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
    </widget>
    <widget class="QPushButton" name="bt_edit">
     <property name="geometry">
@@ -291,6 +318,9 @@ color: rgb(42, 0, 255);</string>
      <font>
       <pointsize>10</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Edit selected Notes</string>
@@ -309,6 +339,9 @@ color: rgb(42, 0, 255);</string>
      <font>
       <pointsize>10</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Remove selected Note</string>
@@ -348,6 +381,9 @@ color: rgb(42, 0, 255);</string>
      <font>
       <pointsize>10</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>View/Edit

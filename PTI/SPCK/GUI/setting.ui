@@ -14,7 +14,7 @@
    <string>Setting App - Note for WOW! Application</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(220, 220, 220);</string>
+   <string notr="true"/>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>true</bool>
@@ -71,7 +71,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true"/>
     </property>
     <property name="frame">
      <bool>true</bool>
@@ -128,7 +128,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true"/>
     </property>
     <item>
      <property name="text">
@@ -179,7 +179,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true"/>
     </property>
     <item>
      <property name="text">
@@ -263,6 +263,9 @@
       <pointsize>10</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>Reset everything
  to default</string>
@@ -282,6 +285,9 @@
       <pointsize>10</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>Delete all
 Notes pages</string>
@@ -300,6 +306,9 @@ Notes pages</string>
      <font>
       <pointsize>9</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Note page name</string>
@@ -346,6 +355,9 @@ Notes pages</string>
       <pointsize>9</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>Read (View) Only</string>
     </property>
@@ -369,6 +381,9 @@ Notes pages</string>
      <font>
       <pointsize>9</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Enable Setting for Local Account</string>
@@ -415,6 +430,9 @@ Notes pages</string>
       <pointsize>9</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>Enable Detail for Local Account
 (Read-only)</string>
@@ -436,7 +454,7 @@ Notes pages</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true"/>
     </property>
     <property name="currentText">
      <string>Tahoma</string>
@@ -520,7 +538,7 @@ Notes pages</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true"/>
     </property>
     <property name="editable">
      <bool>true</bool>
@@ -655,7 +673,7 @@ Notes pages</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true"/>
     </property>
     <item>
      <property name="text">
@@ -691,6 +709,9 @@ Notes pages</string>
      <font>
       <pointsize>9</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Note page title name</string>

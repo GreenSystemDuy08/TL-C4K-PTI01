@@ -17,9 +17,9 @@
    <widget class="QDateTimeEdit" name="dateTimeEdit">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>227</y>
-      <width>201</width>
+      <x>180</x>
+      <y>230</y>
+      <width>211</width>
       <height>31</height>
      </rect>
     </property>
